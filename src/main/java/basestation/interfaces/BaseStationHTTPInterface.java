@@ -1,10 +1,10 @@
-/**
- * Singleton that exposes all endpoints of BaseStation through HTTP
+package basestation.interfaces; /**
+ * Singleton that exposes all endpoints of basestation.basestation through HTTP
  */
 
+import basestation.BaseStation;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.google.gson.JsonPrimitive;
 
 import static spark.Spark.*;
 
@@ -28,11 +28,10 @@ public class BaseStationHTTPInterface {
             int botId = body.get("botId").getAsJsonPrimitive().getAsInt();
             JsonObject command = body.get("command").getAsJsonObject();
 
-            mStation.sendCommand(botId, command);
+            //mStation.sendCommand(null, command);
             return "OK";
         });
 
         post("/linkBotToVision", (req,res) -> "Yay!");
-
     }
 }
