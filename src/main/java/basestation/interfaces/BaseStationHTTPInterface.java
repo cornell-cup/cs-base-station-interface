@@ -2,7 +2,7 @@ package basestation.interfaces; /**
  * Singleton that exposes all endpoints of basestation.basestation through HTTP
  */
 
-import basestation.BaseStation;
+import basestation.AbstractBaseStation;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -12,9 +12,9 @@ public class BaseStationHTTPInterface {
 
     public static BaseStationHTTPInterface instance;
 
-    private static BaseStation mStation;
+    private static AbstractBaseStation mStation;
 
-    public void setmStation(BaseStation newStation) {
+    public void setmStation(AbstractBaseStation newStation) {
         this.instance.mStation = mStation;
     }
 

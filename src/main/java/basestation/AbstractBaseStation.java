@@ -1,7 +1,7 @@
 package basestation;
 
-import basestation.robot.Command;
-import basestation.robot.Robot;
+import basestation.robot.commands.Command;
+import basestation.robot.Bot;
 import basestation.vision.VisionLocation;
 import basestation.vision.VisionObject;
 
@@ -11,12 +11,12 @@ import java.util.*;
  * The shared interface between the ConcreteBaseStation and Simulator.
  */
 
-public abstract class BaseStation {
+public abstract class AbstractBaseStation {
 
     int botCounter;
-    Map<Integer, Robot> botMap;
+    Map<Integer, Bot> botMap;
 
-    public BaseStation() {
+    public AbstractBaseStation() {
         botCounter = 0;
         botMap = new HashMap<>();
     }
@@ -26,29 +26,29 @@ public abstract class BaseStation {
      * @param bot The Base station's association of a bot ID
      * @param command An agreed upon json object for the command
      */
-    public abstract void sendCommand(Robot bot, Command command);
+    public abstract void sendCommand(Bot bot, Command command);
 
     /**
      * Associates a bot with botId with a vision object with visionId
      */
-    public abstract void linkBotToVision(Robot bot, VisionObject vo);
+    public abstract void linkBotToVision(Bot bot, VisionObject vo);
 
     /**
      * Adds a controllable bot to the basestation.basestation to be tracked.
      */
-    public void addBot(Robot bot) {
+    public void addBot(Bot bot) {
         botMap.put(botCounter++, bot);
     }
 
     /**
      * Stops the tracking of bot with id botId
      */
-    public abstract void removeBot(Robot bot);
+    public abstract void removeBot(Bot bot);
 
     /**
      * Returns all bots known by base station
      */
-    public Collection<Robot> getAllBots() {
+    public Collection<Bot> getAllBots() {
         return botMap.values();
     }
 
@@ -58,10 +58,10 @@ public abstract class BaseStation {
     public abstract List<List<VisionObject>> getAllLocationData();
 
     /**
-     * Gets the location of a bot relative to the BaseStation's interpretation
+     * Gets the location of a bot relative to the AbstractBaseStation's interpretation
      * @param bot
      * @return
      */
-    public abstract VisionLocation getBotLocation(Robot bot);
+    public abstract VisionLocation getBotLocation(Bot bot);
 
 }
