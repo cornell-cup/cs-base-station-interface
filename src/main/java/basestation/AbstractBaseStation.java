@@ -15,6 +15,7 @@ import java.util.*;
 public abstract class AbstractBaseStation {
 
     int botCounter;
+    int visionCounter;
     Map<Integer, Bot> botMap;
     VisionSystem canonicalVisionSystem; // Represents the BaseStation's understanding of locations
     Set<VisionSystem> inputSystems;
@@ -74,4 +75,7 @@ public abstract class AbstractBaseStation {
      */
     public abstract VisionCoordinate getBotLocation(Bot bot);
 
+    public void addVisionSystem(VisionSystem vs) {
+        inputSystems.add(vs);
+    }
 }
