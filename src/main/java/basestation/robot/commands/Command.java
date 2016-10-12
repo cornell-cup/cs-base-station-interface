@@ -27,4 +27,8 @@ public abstract class Command {
     public int hashCode() {
        return this.toString().hashCode();
     }
+
+    @Override public boolean equals(Object other) {
+        return this.toString().equals(other.toString());
+    }
 }

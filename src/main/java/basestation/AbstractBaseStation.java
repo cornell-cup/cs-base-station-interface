@@ -2,8 +2,9 @@ package basestation;
 
 import basestation.robot.commands.Command;
 import basestation.robot.Bot;
-import basestation.vision.VisionLocation;
+import basestation.vision.VisionCoordinate;
 import basestation.vision.VisionObject;
+import basestation.vision.VisionSystem;
 
 import java.util.*;
 
@@ -15,10 +16,17 @@ public abstract class AbstractBaseStation {
 
     int botCounter;
     Map<Integer, Bot> botMap;
+    VisionSystem canonicalVisionSystem; // Represents the BaseStation's understanding of locations
+    Set<VisionSystem> inputSystems;
+
+    // These keep a mapping between our bots and vision which are separate until explicitly linked
+    Map<VisionObject, Bot> visionToBot;
+    Map<Bot, VisionObject> botToVision;
 
     public AbstractBaseStation() {
         botCounter = 0;
         botMap = new HashMap<>();
+        inputSystems = new HashSet<>();
     }
 
     /**
@@ -26,7 +34,9 @@ public abstract class AbstractBaseStation {
      * @param bot The Base station's association of a bot ID
      * @param command An agreed upon json object for the command
      */
-    public abstract void sendCommand(Bot bot, Command command);
+    public void sendCommand(Bot bot, Command command, String[] args) {
+        bot.sendCommand(command, args);
+    }
 
     /**
      * Associates a bot with botId with a vision object with visionId
@@ -62,6 +72,6 @@ public abstract class AbstractBaseStation {
      * @param bot
      * @return
      */
-    public abstract VisionLocation getBotLocation(Bot bot);
+    public abstract VisionCoordinate getBotLocation(Bot bot);
 
 }

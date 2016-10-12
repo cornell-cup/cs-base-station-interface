@@ -9,6 +9,10 @@ public abstract class Bot {
     Connection myConnection;
     Set<Command> myCommands;
 
+    public Bot (Connection c) {
+        myConnection = c;
+    }
+
     public Set<Command> getCommands() {
         return myCommands;
     }
