@@ -22,6 +22,7 @@ public class BaseStationHTTPInterface {
 
         JsonParser mParser = new JsonParser();
 
+        /*
         post("/sendCommand", (req,res) -> {
             JsonObject body = (JsonObject) mParser.parse(req.body());
 
@@ -32,6 +33,8 @@ public class BaseStationHTTPInterface {
             return "OK";
         });
 
+
         post("/linkBotToVision", (req,res) -> "Yay!");
+        */
     }
 }
