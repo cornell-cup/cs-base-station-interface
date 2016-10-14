@@ -16,4 +16,8 @@ public abstract class Connection {
 
     public abstract boolean connectionActive();
 
+    public void destroy() {
+        // Do nothing
+    }
+
 }
