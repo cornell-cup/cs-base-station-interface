@@ -107,6 +107,9 @@ public class IceConnection extends Connection {
             case ("CCLOCKWISE"):
                 setMotorSpeed(-sp, sp, -sp, sp);
                 break;
+            case ("STOP"):
+                setMotorSpeed(0,0,0,0);
+                break;
             default:
                 System.err.println("unrecognized command to ice interface");
                 return false;
