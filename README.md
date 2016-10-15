@@ -1,5 +1,5 @@
 # cs-base-station-interface
-Interface to represent any base station
+Interface to represent any base station. This is not meant to be used standalone and should be used as a submodule within an implementing project. See: https://git-scm.com/docs/git-submodule
 
 # Requirements
 * GSON by Google - Necessary for serializing and deserializing JSON. Add this to your classpath. It can be found on Maven.
