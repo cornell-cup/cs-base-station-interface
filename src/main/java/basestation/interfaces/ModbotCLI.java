@@ -1,9 +1,9 @@
 package basestation.interfaces;
 
 import basestation.robot.connection.IceConnection;
+import basestation.robot.modbot.ModBot;
+import basestation.robot.modbot.ModbotCommandCenter;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 /**
@@ -19,6 +19,7 @@ public class ModbotCLI {
         int port = in.nextInt();
 
         IceConnection c = new IceConnection(ip, port);
+        ModbotCommandCenter commandCenter = new ModBot(c).getCommandCenter();
 
         while (true) {
             System.out.println(">");
@@ -26,19 +27,38 @@ public class ModbotCLI {
             String[] splt = cmd.split(" ");
             if (splt.length == 1) {
                 if (splt[0].equals("STOP")) {
-                    Map<String,String> m = new HashMap<>();
-                    m.put(splt[0], "0");
-                    c.sendKV(m);
+                    commandCenter.stop();
                 }
             } else if (splt.length == 2) {
-                Map<String,String> m = new HashMap<>();
-                m.put(splt[0], splt[1]);
-                c.sendKV(m);
+                double power = Double.parseDouble(splt[1]);
+                switch (splt[0]) {
+                    case ("FORWARD"):
+                        commandCenter.forward(power);
+                        break;
+                    case ("BACKWARD"):
+                        commandCenter.backward(power);
+                        break;
+                    case ("LEFT"):
+                        commandCenter.left(power);
+                        break;
+                    case ("RIGHT"):
+                        commandCenter.right(power);
+                        break;
+                    case ("CLOCKWISE"):
+                        commandCenter.clockwise(power);
+                        break;
+                    case ("CCLOCKWISE"):
+                        commandCenter.counterClockwise(power);
+                        break;
+                    case ("STOP"):
+                        commandCenter.stop();
+                        break;
+                    default:
+                        System.err.println("unrecognized command to ice interface");
+                }
             } else {
                 // Safety stop
-                Map<String,String> m = new HashMap<>();
-                m.put("STOP", "0");
-                c.sendKV(m);
+                commandCenter.stop();
             }
         }
     }

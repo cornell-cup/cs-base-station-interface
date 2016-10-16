@@ -13,13 +13,12 @@ import java.util.Map;
  * Implements Connection by serializing through HTTP. Assumes the given endpoint is a server.
  */
 public class HTTPConnection extends Connection {
+    private String ip;
+    private int port;
 
-    String ip;
-    int port;
-
-    Socket clientSocket;
-    BufferedReader inFromBot;
-    DataOutputStream outToBot;
+    private Socket clientSocket;
+    private BufferedReader inFromBot;
+    private DataOutputStream outToBot;
 
     /**
      * Initializes a keep-alive retrying TCP connection with IP at port
@@ -37,11 +36,10 @@ public class HTTPConnection extends Connection {
         outToBot = new DataOutputStream(clientSocket.getOutputStream());
     }
 
-    @Override
     public boolean sendKV(Map<String, String> kvMap) {
         JsonObject payload = new JsonObject();
         for (String key : kvMap.keySet()) {
-            payload.addProperty(key,kvMap.get(key));
+            payload.addProperty(key, kvMap.get(key));
         }
 
         if (!connectionActive()) {
@@ -57,6 +55,11 @@ public class HTTPConnection extends Connection {
 
             return true;
         }
+    }
+
+    @Override
+    public void destroy() {
+        //Do nothing
     }
 
     @Override

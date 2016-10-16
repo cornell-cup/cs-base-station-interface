@@ -3,9 +3,6 @@ package basestation.robot.connection;
 import CommModule.BaseInterfacePrx;
 import CommModule.BaseInterfacePrxHelper;
 
-import java.util.Map;
-import java.util.Set;
-
 /**
  * Connection to support our Ice protocol
  * Sends controls over a rate-limited thread
@@ -72,54 +69,14 @@ public class IceConnection extends Connection {
         }
     }
 
-    @Override
-    public boolean sendKV(Map<String, String> kvMap) {
-        // Movement support
-        Set<String> keys = kvMap.keySet();
-
-        boolean success = true;
-        for (String k : keys) {
-            success |= translateMovement(k, Double.parseDouble(kvMap.get(k)));
-        }
-
-        return success;
-    }
-
-    private boolean translateMovement(String direction, double amount) {
-        // Speed
-        int sp = (int) (( amount / 100.0 ) * THROTTLE);
-        switch (direction) {
-            case ("FORWARD"):
-                setMotorSpeed(sp, sp, sp, sp);
-                break;
-            case ("BACKWARD"):
-                setMotorSpeed(-sp, -sp, -sp, -sp);
-                break;
-            case ("LEFT"):
-                setMotorSpeed(-sp, -sp, sp, sp);
-                break;
-            case ("RIGHT"):
-                setMotorSpeed(sp, sp, -sp, -sp);
-                break;
-            case ("CLOCKWISE"):
-                setMotorSpeed(sp, -sp, sp, -sp);
-                break;
-            case ("CCLOCKWISE"):
-                setMotorSpeed(-sp, sp, -sp, sp);
-                break;
-            case ("STOP"):
-                setMotorSpeed(0,0,0,0);
-                break;
-            default:
-                System.err.println("unrecognized command to ice interface");
-                return false;
-        }
-
-        return true;
+    public void setMotorPower(double fl, double fr, double bl, double br) {
+        // Adjustment constant for speed
+        double adjustment = THROTTLE / 100.0;
+        setMotorSpeed((int) (fl * adjustment), (int) (fr * adjustment), (int) (bl * adjustment), (int) (br * adjustment));
     }
 
     private void setMotorSpeed(int fl, int fr, int bl, int br) {
-        cmonitor.setMotors(fl,fr,bl,br);
+        cmonitor.setMotors(fl, fr, bl, br);
     }
 
     @Override
