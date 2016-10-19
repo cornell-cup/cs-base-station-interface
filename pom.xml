@@ -27,13 +27,19 @@
             <artifactId>spark-core</artifactId>
             <version>2.5</version>
         </dependency>
-       <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-       <dependency>
-           <groupId>com.google.code.gson</groupId>
-           <artifactId>gson</artifactId>
-           <version>2.7</version>
-       </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.7</version>
+        </dependency>
+
+        <!-- TODO below is an ice maven repository. Configure Ice properly later if necessary-->
+        <!-- https://mvnrepository.com/artifact/com.zeroc/ice -->
+        <dependency>
+            <groupId>com.zeroc</groupId>
+            <artifactId>ice</artifactId>
+            <version>3.6.3</version>
+        </dependency>
     </dependencies>
-
-
 </project>

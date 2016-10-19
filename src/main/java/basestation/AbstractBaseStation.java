@@ -1,7 +1,7 @@
 package basestation;
 
-import basestation.robot.commands.Command;
 import basestation.robot.Bot;
+import basestation.robot.commands.CommandCenter;
 import basestation.vision.VisionCoordinate;
 import basestation.vision.VisionObject;
 import basestation.vision.VisionSystem;
@@ -31,12 +31,13 @@ public abstract class AbstractBaseStation {
     }
 
     /**
-     * Send a command to bot with id botId.
-     * @param bot The Base station's association of a bot ID
-     * @param command An agreed upon json object for the command
+     * Get the command center for a particular bot.
+     *
+     * @param botId
+     * @return A command center object which can be used to issue commands to the robot.
      */
-    public void sendCommand(Bot bot, Command command, String[] args) {
-        bot.sendCommand(command, args);
+    public CommandCenter getCommandCenter(int botId) {
+        return botMap.get(botId).getCommandCenter();
     }
 
     /**
@@ -70,6 +71,7 @@ public abstract class AbstractBaseStation {
 
     /**
      * Gets the location of a bot relative to the AbstractBaseStation's interpretation
+     *
      * @param bot
      * @return
      */

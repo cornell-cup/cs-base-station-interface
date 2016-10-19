@@ -1,22 +1,24 @@
 package basestation.robot;
 
-import basestation.robot.commands.Command;
+import basestation.robot.commands.CommandCenter;
 import basestation.robot.connection.Connection;
 
-import java.util.Set;
-
 public abstract class Bot {
-    Connection myConnection;
-    Set<Command> myCommands;
+    private Connection myConnection;
 
-    public Bot (Connection c) {
+    public Bot(Connection c) {
         myConnection = c;
     }
 
-    public Set<Command> getCommands() {
-        return myCommands;
-    }
-    public void sendCommand(Command c, String[] args) {
-        c.applyCommand(myConnection, args);
+    /**
+     * @return A command center for controlling the robot. Use reflections on this if necessary.
+     */
+    public abstract CommandCenter getCommandCenter();
+
+    /**
+     * Terminates the connection to the robot as safe as possible
+     */
+    public void destroy() {
+        myConnection.destroy();
     }
 }
