@@ -1,5 +1,6 @@
 package basestation.vision;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -31,6 +32,16 @@ public abstract class VisionSystem {
     }
 
     public abstract Set<VisionObject> getAllObjects();
+
+    public Set<VisionObject> getAllObjectsWithRespectTo(VisionSystem other) {
+        Set<VisionObject> vset = getAllObjects();
+        HashSet<VisionObject> transformed = new HashSet<>();
+        for (VisionObject vo : vset) {
+            transformed.add(new VisionObject(vo,other.transformCoordinates(vo.getVisionCoordinate(),this)));
+        }
+
+        return transformed;
+    }
 
     public String toString() {
         return "[Vision System|" + id + "]";

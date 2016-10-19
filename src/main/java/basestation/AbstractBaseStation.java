@@ -21,7 +21,7 @@ public abstract class AbstractBaseStation {
     Set<VisionSystem> inputSystems;
 
     // These keep a mapping between our bots and vision which are separate until explicitly linked
-    Map<VisionObject, Bot> visionToBot;
+    Map<VisionObject, Bot> visionToBot; // TODO: Is this needed?
     Map<Bot, VisionObject> botToVision;
 
     public AbstractBaseStation() {
@@ -65,7 +65,9 @@ public abstract class AbstractBaseStation {
     /**
      * Stops the tracking of bot with id botId
      */
-    public abstract void removeBot(Bot bot);
+    public void removeBot(Bot bot) {
+        botSet.remove(bot);
+    }
 
     /**
      * Returns all bots known by base station
@@ -75,12 +77,12 @@ public abstract class AbstractBaseStation {
     }
 
     /**
-     * Returns a list of vision objects with vision ids
+     * Returns a list of vision objects with vision ids. Coordinates are made canonical.
      */
     public List<VisionObject> getAllLocationData() {
         ArrayList<VisionObject> tracked = new ArrayList<>();
         for (VisionSystem vs : inputSystems) {
-           tracked.addAll(vs.getAllObjects());
+           tracked.addAll(vs.getAllObjectsWithRespectTo(canonicalVisionSystem));
         }
 
         return tracked;
@@ -92,16 +94,31 @@ public abstract class AbstractBaseStation {
      * @param bot
      * @return
      */
-    public abstract VisionCoordinate getBotLocation(Bot bot);
+    public VisionCoordinate getBotCoordinate(Bot bot) {
+        VisionObject vo = botToVision.get(bot);
+        if (vo == null) return null;
+        return canonicalVisionSystem.transformCoordinates(vo.getVisionCoordinate(), vo.getVisionSystem());
+    }
 
     /**
-     * Adds a new vision system to base station
+     * Returns the canonicalVisionSystem which other coordinate systems should be based around
+     */
+    public VisionSystem getCanonicalVisionSystem() {
+        return this.canonicalVisionSystem;
+    }
+
+    /**
+     * Adds a new vision system to base station. Assumes the system is already calibrated to the canonical vision system.
      * @param vs
      */
     public void addVisionSystem(VisionSystem vs) {
         inputSystems.add(vs);
     }
 
+    /**
+     * Stop tracking of vs
+     * @param vs
+     */
     public void removeVisionSystem(VisionSystem vs) {
         inputSystems.remove(vs);
     }

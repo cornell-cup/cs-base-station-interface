@@ -15,6 +15,20 @@ public class VisionObject {
         this.myCoord = myCoord;
     }
 
+    public VisionObject(VisionObject old, VisionCoordinate newCoord) {
+        this.vs = old.vs;
+        this. vid = old.vid;
+        this.myCoord = newCoord;
+    }
+
+    public VisionSystem getVisionSystem() {
+        return vs;
+    }
+
+    public VisionCoordinate getVisionCoordinate() {
+        return myCoord;
+    }
+
     public String toString() {
         return "[Vision Object|" + vs + "|" + myCoord + "|" + vid + "]";
     }
