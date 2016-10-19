@@ -16,7 +16,7 @@ public class IceConnection extends Connection {
 
         BaseInterfacePrx iface;
 
-        private int COMMANDS_PER_SECOND = 10;
+        private int COMMANDS_PER_SECOND = 2; // Since the connection is already reliable, we do not need a high frequency
         private int fl;
         private int fr;
         private int bl;
@@ -29,7 +29,7 @@ public class IceConnection extends Connection {
 
         public void run() {
             while (true) {
-                iface.begin_setMotorSpeeds(fl, fr, bl, br);
+                sendMotors();
                 try {
                     Thread.sleep(1000 / COMMANDS_PER_SECOND);
                 } catch (InterruptedException e) {
@@ -43,6 +43,11 @@ public class IceConnection extends Connection {
             this.fr = fr;
             this.bl = bl;
             this.br = br;
+            sendMotors();
+        }
+
+        private void sendMotors() {
+            iface.begin_setMotorSpeeds(fl, fr, bl, br);
         }
     }
 
@@ -95,11 +100,11 @@ public class IceConnection extends Connection {
             case ("BACKWARD"):
                 setMotorSpeed(-sp, -sp, -sp, -sp);
                 break;
-            case ("LEFT"):
-                setMotorSpeed(-sp, -sp, sp, sp);
-                break;
             case ("RIGHT"):
-                setMotorSpeed(sp, sp, -sp, -sp);
+                setMotorSpeed(sp, -sp, -sp, sp);
+                break;
+            case ("LEFT"):
+                setMotorSpeed(-sp, sp, sp, -sp);
                 break;
             case ("CLOCKWISE"):
                 setMotorSpeed(sp, -sp, sp, -sp);
