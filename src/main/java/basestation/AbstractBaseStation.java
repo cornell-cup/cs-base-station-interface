@@ -2,9 +2,11 @@ package basestation;
 
 import basestation.robot.Bot;
 import basestation.robot.commands.CommandCenter;
+import basestation.robot.sensors.SensorCenter;
 import basestation.vision.VisionCoordinate;
 import basestation.vision.VisionObject;
 import basestation.vision.VisionSystem;
+import com.google.gson.JsonObject;
 
 import java.util.*;
 
@@ -33,11 +35,19 @@ public abstract class AbstractBaseStation {
     /**
      * Get the command center for a particular bot.
      *
-     * @param botId
      * @return A command center object which can be used to issue commands to the robot.
      */
-    public CommandCenter getCommandCenter(int botId) {
-        return botMap.get(botId).getCommandCenter();
+    public CommandCenter getCommandCenter(Bot bot) {
+        return bot.getCommandCenter();
+    }
+
+    /**
+     * Returns the sensor center for a bot
+     * @param bot
+     * @return A sensor center object which can be used to retrieve all current sensor data for the robot
+     */
+    public SensorCenter getSensorCenter(Bot bot) {
+        return bot.getSensorCenter();
     }
 
     /**

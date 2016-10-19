@@ -2,6 +2,7 @@ package basestation.robot.connection;
 
 import CommModule.BaseInterfacePrx;
 import CommModule.BaseInterfacePrxHelper;
+import basestation.robot.Bot;
 
 import java.util.Map;
 

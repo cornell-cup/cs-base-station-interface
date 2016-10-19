@@ -2,6 +2,7 @@ package basestation.robot;
 
 import basestation.robot.commands.CommandCenter;
 import basestation.robot.connection.Connection;
+import basestation.robot.sensors.SensorCenter;
 
 public abstract class Bot {
     private Connection myConnection;
@@ -15,10 +16,13 @@ public abstract class Bot {
      */
     public abstract CommandCenter getCommandCenter();
 
+    public abstract SensorCenter getSensorCenter();
+
     /**
      * Terminates the connection to the robot as safe as possible
      */
     public void destroy() {
         myConnection.destroy();
     }
+
 }
