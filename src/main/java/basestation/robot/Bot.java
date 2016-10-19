@@ -25,4 +25,16 @@ public abstract class Bot {
         myConnection.destroy();
     }
 
+    public String toString() {
+        return "[Bot|"+myConnection+"]";
+    }
+
+    public int hashCode() {
+        return toString().hashCode();
+    }
+
+    public boolean equals(Object o) {
+        return (o instanceof Bot && o.toString().equals(toString()));
+    }
+
 }

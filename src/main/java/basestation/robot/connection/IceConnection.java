@@ -56,12 +56,14 @@ public class IceConnection extends Connection {
     Ice.Communicator ic;
     BaseInterfacePrx iface;
     ControlManager cmonitor;
+    String identity;
 
     public IceConnection(String ip, int port) {
         try {
             if (port == -1) port = 10000;
             ic = Ice.Util.initialize();
-            Ice.ObjectPrx base = ic.stringToProxy("control -t -e 1.0:tcp -h " + ip + " -p " + port);
+            identity = "control -t -e 1.0:tcp -h " + ip + " -p " + port;
+            Ice.ObjectPrx base = ic.stringToProxy(identity);
             iface = BaseInterfacePrxHelper.checkedCast(base);
             if (iface == null)
                 throw new Error("Invalid proxy");
@@ -101,5 +103,9 @@ public class IceConnection extends Connection {
                 System.err.println(e.getMessage());
             }
         }
+    }
+
+    public String toString() {
+        return this.identity;
     }
 }

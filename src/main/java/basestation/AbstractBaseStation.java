@@ -6,9 +6,9 @@ import basestation.robot.sensors.SensorCenter;
 import basestation.vision.VisionCoordinate;
 import basestation.vision.VisionObject;
 import basestation.vision.VisionSystem;
-import com.google.gson.JsonObject;
 
 import java.util.*;
+import java.util.List;
 
 /**
  * The shared interface between the ConcreteBaseStation and Simulator.
@@ -16,9 +16,7 @@ import java.util.*;
 
 public abstract class AbstractBaseStation {
 
-    int botCounter;
-    int visionCounter;
-    Map<Integer, Bot> botMap;
+    Set<Bot> botSet;
     VisionSystem canonicalVisionSystem; // Represents the BaseStation's understanding of locations
     Set<VisionSystem> inputSystems;
 
@@ -27,8 +25,7 @@ public abstract class AbstractBaseStation {
     Map<Bot, VisionObject> botToVision;
 
     public AbstractBaseStation() {
-        botCounter = 0;
-        botMap = new HashMap<>();
+        botSet = new HashSet<>();
         inputSystems = new HashSet<>();
     }
 
@@ -53,13 +50,16 @@ public abstract class AbstractBaseStation {
     /**
      * Associates a bot with botId with a vision object with visionId
      */
-    public abstract void linkBotToVision(Bot bot, VisionObject vo);
+    public void linkBotToVision(Bot bot, VisionObject vo) {
+        visionToBot.put(vo,bot);
+        botToVision.put(bot,vo);
+    }
 
     /**
      * Adds a controllable bot to the basestation.basestation to be tracked.
      */
     public void addBot(Bot bot) {
-        botMap.put(botCounter++, bot);
+        botSet.add(bot);
     }
 
     /**
@@ -71,13 +71,20 @@ public abstract class AbstractBaseStation {
      * Returns all bots known by base station
      */
     public Collection<Bot> getAllBots() {
-        return botMap.values();
+        return botSet;
     }
 
     /**
      * Returns a list of vision objects with vision ids
      */
-    public abstract List<List<VisionObject>> getAllLocationData();
+    public List<VisionObject> getAllLocationData() {
+        ArrayList<VisionObject> tracked = new ArrayList<>();
+        for (VisionSystem vs : inputSystems) {
+           tracked.addAll(vs.getAllObjects());
+        }
+
+        return tracked;
+    }
 
     /**
      * Gets the location of a bot relative to the AbstractBaseStation's interpretation
@@ -87,7 +94,15 @@ public abstract class AbstractBaseStation {
      */
     public abstract VisionCoordinate getBotLocation(Bot bot);
 
+    /**
+     * Adds a new vision system to base station
+     * @param vs
+     */
     public void addVisionSystem(VisionSystem vs) {
         inputSystems.add(vs);
+    }
+
+    public void removeVisionSystem(VisionSystem vs) {
+        inputSystems.remove(vs);
     }
 }

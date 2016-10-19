@@ -18,4 +18,12 @@ public class VisionCoordinate {
         this.y = y;
         this.theta = theta;
     }
+
+    public String toString() {
+        return "("+x+","+y+","+theta+"degrees)";
+    }
+
+    public boolean equals(Object other) {
+        return (other instanceof VisionObject && other.toString().equals(toString()));
+    }
 }

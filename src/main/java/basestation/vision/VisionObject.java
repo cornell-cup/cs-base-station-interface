@@ -5,5 +5,26 @@ package basestation.vision;
  * maintained between receipt of data.
  */
 public class VisionObject {
+    VisionSystem vs;
+    int vid;
+    VisionCoordinate myCoord;
 
+    public VisionObject(VisionSystem vs, int vid, VisionCoordinate myCoord) {
+        this.vs = vs;
+        this.vid = vid;
+        this.myCoord = myCoord;
+    }
+
+    public String toString() {
+        return "[Vision Object|" + vs + "|" + myCoord + "|" + vid + "]";
+    }
+
+    public boolean equals(Object o) {
+        if (!(o instanceof  VisionObject)) return false;
+        return o.toString().equals(toString());
+    }
+
+    public int hashCode() {
+        return toString().hashCode();
+    }
 }

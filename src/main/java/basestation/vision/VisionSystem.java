@@ -7,11 +7,13 @@ import java.util.Set;
  */
 public abstract class VisionSystem {
     int id;
+    double scalingFactor;       // Used in case one vision system has a different scale from another
     VisionCoordinate origin;
 
     public VisionSystem(int id, VisionCoordinate o) {
         this.id = id;
         this.origin = o;
+        this.scalingFactor = 1.0;
     }
 
     /**
@@ -21,14 +23,18 @@ public abstract class VisionSystem {
      * @return a transformed coordinate
      */
     public VisionCoordinate transformCoordinates(VisionCoordinate other, VisionSystem otherSystem) {
-        double newX = otherSystem.origin.x + other.x;
-        double newY = otherSystem.origin.y + other.y;
+        double newX = (otherSystem.origin.x + other.x) / otherSystem.scalingFactor;
+        double newY = (otherSystem.origin.y + other.y) / otherSystem.scalingFactor;
         double newTheta = ((otherSystem.origin.theta + other.theta - origin.theta) + 360) % 360;
 
         return new VisionCoordinate(newX, newY, newTheta);
     }
 
     public abstract Set<VisionObject> getAllObjects();
+
+    public String toString() {
+        return "[Vision System|" + id + "]";
+    }
 
     @Override
     public int hashCode() {
