@@ -14,9 +14,10 @@ import java.util.List;
  * The shared interface between the ConcreteBaseStation and Simulator.
  */
 
-public abstract class AbstractBaseStation {
+public class AbstractBaseStation {
 
-    Set<Bot> botSet;
+    int botCounter;
+    Map<Integer,Bot> botMap;
     VisionSystem canonicalVisionSystem; // Represents the BaseStation's understanding of locations
     Set<VisionSystem> inputSystems;
 
@@ -25,7 +26,7 @@ public abstract class AbstractBaseStation {
     Map<Bot, VisionObject> botToVision;
 
     public AbstractBaseStation() {
-        botSet = new HashSet<>();
+        botMap = new HashMap<>();
         inputSystems = new HashSet<>();
     }
 
@@ -55,25 +56,30 @@ public abstract class AbstractBaseStation {
         botToVision.put(bot,vo);
     }
 
+    public Bot getBotById(int botId) {
+        return botMap.get(botId);
+    }
+
     /**
      * Adds a controllable bot to the basestation.basestation to be tracked.
      */
-    public void addBot(Bot bot) {
-        botSet.add(bot);
+    public int addBot(Bot bot) {
+        botMap.put(botCounter++,bot);
+        return(botCounter-1);
     }
 
     /**
      * Stops the tracking of bot with id botId
      */
-    public void removeBot(Bot bot) {
-        botSet.remove(bot);
+    public void removeBot(int botId) {
+        botMap.remove(botId);
     }
 
     /**
      * Returns all bots known by base station
      */
     public Collection<Bot> getAllBots() {
-        return botSet;
+        return botMap.values();
     }
 
     /**
