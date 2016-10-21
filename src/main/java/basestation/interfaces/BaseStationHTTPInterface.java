@@ -13,6 +13,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import spark.route.RouteOverview;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import static spark.Spark.*;
 
 public class BaseStationHTTPInterface {
@@ -23,8 +31,6 @@ public class BaseStationHTTPInterface {
         JsonParser jp = new JsonParser();
         AbstractBaseStation mStation = new AbstractBaseStation();
         RouteOverview.enableRouteOverview("/");
-
-        Bot myBot;
 
         post("/addBot", (req,res) -> {
             System.out.println("addbot");
@@ -49,5 +55,28 @@ public class BaseStationHTTPInterface {
             ((ModbotCommandCenter)mStation.getBotById(botid).getCommandCenter()).setWheelPower(fl,fr,bl,br);
             return true;
         });
+
+        get("/derp", (req, res) -> renderContent("file:/C://Users/CornellCup/Documents/GitHub/cs-base-station-interface/index.html"));
+        get("/derp.js", (req, res) -> renderContent("file:/C://Users/CornellCup/Documents/GitHub/cs-base-station-interface/derp.js"));
+
+    }
+    private static String renderContent(String htmlFile) {
+        try {
+            // If you are using maven then your files
+            // will be in a folder called resources.
+            // getResource() gets that folder
+            // and any files you specify.
+            System.out.println(htmlFile);
+            URL url = new URL(htmlFile);
+            System.out.println(url);
+
+            // Return a String which has all
+            // the contents of the file.
+            Path path = Paths.get(url.toURI());
+            return new String(Files.readAllBytes(path), Charset.defaultCharset());
+        } catch (IOException | URISyntaxException e) {
+            // Add your own exception handlers here.
+        }
+        return null;
     }
 }
