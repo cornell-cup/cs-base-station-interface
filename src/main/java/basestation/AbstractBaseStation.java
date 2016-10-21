@@ -3,6 +3,7 @@ package basestation;
 import basestation.robot.Bot;
 import basestation.robot.commands.CommandCenter;
 import basestation.robot.sensors.SensorCenter;
+import basestation.vision.OverheadVisionSystem;
 import basestation.vision.VisionCoordinate;
 import basestation.vision.VisionObject;
 import basestation.vision.VisionSystem;
@@ -25,9 +26,13 @@ public class AbstractBaseStation {
     Map<VisionObject, Bot> visionToBot; // TODO: Is this needed?
     Map<Bot, VisionObject> botToVision;
 
+    // TODO: Refactor this into its own repo or set up configurations
+    OverheadVisionSystem ovs;
+
     public AbstractBaseStation() {
         botMap = new HashMap<>();
         inputSystems = new HashSet<>();
+        ovs = new OverheadVisionSystem();
     }
 
     /**
