@@ -23,16 +23,15 @@ public class AbstractBaseStation {
     Set<VisionSystem> inputSystems;
 
     // These keep a mapping between our bots and vision which are separate until explicitly linked
-    Map<VisionObject, Bot> visionToBot; // TODO: Is this needed?
-    Map<Bot, VisionObject> botToVision;
+    Map<Bot, Integer> botToVision;
 
     // TODO: Refactor this into its own repo or set up configurations
     OverheadVisionSystem ovs;
 
     public AbstractBaseStation() {
         botMap = new HashMap<>();
+        botToVision = new HashMap<>();
         inputSystems = new HashSet<>();
-        ovs = new OverheadVisionSystem();
     }
 
     /**
@@ -56,9 +55,8 @@ public class AbstractBaseStation {
     /**
      * Associates a bot with botId with a vision object with visionId
      */
-    public void linkBotToVision(Bot bot, VisionObject vo) {
-        visionToBot.put(vo,bot);
-        botToVision.put(bot,vo);
+    public void linkBotToVision(Bot bot, int visionId) {
+        botToVision.put(bot, visionId);
     }
 
     public Bot getBotById(int botId) {
@@ -106,9 +104,10 @@ public class AbstractBaseStation {
      * @return
      */
     public VisionCoordinate getBotCoordinate(Bot bot) {
-        VisionObject vo = botToVision.get(bot);
+        Integer vid = botToVision.get(bot);
+        VisionObject vo = canonicalVisionSystem.getById(vid);
         if (vo == null) return null;
-        return canonicalVisionSystem.transformCoordinates(vo.getVisionCoordinate(), vo.getVisionSystem());
+        return vo.getVisionCoordinate(); // TODO: Transform
     }
 
     /**
@@ -123,6 +122,7 @@ public class AbstractBaseStation {
      * @param vs
      */
     public void addVisionSystem(VisionSystem vs) {
+        if (canonicalVisionSystem == null) canonicalVisionSystem = vs;
         inputSystems.add(vs);
     }
 

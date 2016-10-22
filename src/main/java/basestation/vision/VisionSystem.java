@@ -33,6 +33,15 @@ public abstract class VisionSystem {
 
     public abstract Set<VisionObject> getAllObjects();
 
+    public VisionObject getById(int target) {
+        Set<VisionObject>  all = this.getAllObjects();
+        for (VisionObject vo : all) {
+            if (vo.vid == target) return vo;
+        }
+
+        return null;
+    }
+
     public Set<VisionObject> getAllObjectsWithRespectTo(VisionSystem other) {
         Set<VisionObject> vset = getAllObjects();
         HashSet<VisionObject> transformed = new HashSet<>();

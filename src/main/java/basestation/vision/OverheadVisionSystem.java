@@ -30,7 +30,7 @@ public class OverheadVisionSystem extends VisionSystem {
     private void processBlobs(Blob[] data) {
         HashSet<VisionObject> newSet = new HashSet<VisionObject>();
         for (Blob b : data) {
-            VisionCoordinate vc = new VisionCoordinate(b.x, b.y, b.orientation);
+            VisionCoordinate vc = new VisionCoordinate(b.x, b.y, ((((b.orientation % (2 * Math.PI)) * 180 / (Math.PI))) + 180) % 360);
             VisionObject vo = new VisionObject(this, b.botID, vc);
             newSet.add(vo);
         }

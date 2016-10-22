@@ -7,6 +7,7 @@ import basestation.robot.Bot;
 import basestation.robot.connection.IceConnection;
 import basestation.robot.modbot.ModBot;
 import basestation.robot.modbot.ModbotCommandCenter;
+import basestation.vision.OverheadVisionSystem;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -30,7 +31,10 @@ public class BaseStationHTTPInterface {
         Gson gson = new Gson();
         JsonParser jp = new JsonParser();
         AbstractBaseStation mStation = new AbstractBaseStation();
+        SquareDance sd = new SquareDance(mStation);
         RouteOverview.enableRouteOverview("/");
+        OverheadVisionSystem ovs = new OverheadVisionSystem();
+        mStation.addVisionSystem(ovs);
 
         post("/addBot", (req,res) -> {
             System.out.println("addbot");
@@ -41,10 +45,13 @@ public class BaseStationHTTPInterface {
             IceConnection ic = new IceConnection(ip, port);
             ModBot mb = new ModBot(ic);
             mStation.addBot(mb);
+            mStation.linkBotToVision(mb, 1);
             return mb;
         });
 
         post("/commandBot", (req,res) -> {
+            System.out.println("command");
+            System.out.println(mStation.getAllBots());
             String body = req.body();
             JsonObject rBody = jp.parse(body).getAsJsonObject();
             int botid = rBody.get("bid").getAsInt();
@@ -56,6 +63,10 @@ public class BaseStationHTTPInterface {
             return true;
         });
 
+        get("/square", (req,res) -> {
+            sd.start();
+            return "ok";
+        });
         get("/derp", (req, res) -> renderContent("file:/C://Users/CornellCup/Documents/GitHub/cs-base-station-interface/index.html"));
         get("/derp.js", (req, res) -> renderContent("file:/C://Users/CornellCup/Documents/GitHub/cs-base-station-interface/derp.js"));
 
@@ -66,9 +77,7 @@ public class BaseStationHTTPInterface {
             // will be in a folder called resources.
             // getResource() gets that folder
             // and any files you specify.
-            System.out.println(htmlFile);
             URL url = new URL(htmlFile);
-            System.out.println(url);
 
             // Return a String which has all
             // the contents of the file.
