@@ -1,8 +1,10 @@
 package basestation.bot.modbot;
 
+import basestation.BaseStation;
 import basestation.bot.commands.ExtendedFourWheelMovement;
 import basestation.bot.connection.Connection;
 import basestation.bot.connection.IceConnection;
+import basestation.bot.commands.Navigator;
 
 /**
  * Class who's methods are all the commands that can be issued to a bot
@@ -10,11 +12,17 @@ import basestation.bot.connection.IceConnection;
  * Each bot must implement this class with their own commands.
  */
 public class ModbotCommandCenter extends ExtendedFourWheelMovement {
+
     //Modbot command center currently implemented with ice connection
     private Connection connection;
+    private Navigator navigator;
+    private BaseStation parent;
+    private ModBot myBot;
 
-    public ModbotCommandCenter(Connection connection) {
+    public ModbotCommandCenter(BaseStation parent, Connection connection, ModBot myBot) {
         this.connection = connection;
+        this.parent = parent;
+        this.myBot = myBot;
     }
 
     /**
@@ -81,6 +89,18 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     public void setWheelPower(double fl, double fr, double bl, double br) {
         if (connection instanceof IceConnection) {
             ((IceConnection) connection).setMotorPower(fl, fr, bl, br);
+        }
+    }
+
+    /**
+     * Navigates the bot to (x,y) using its built in navigator.
+     * Requires an active vision system and association between the bot and the system.
+     * @param x
+     * @param y
+     */
+    public void gotoCoord(double x, double y) {
+        if (this.navigator == null) {
+            this.navigator = new Navigator(parent,myBot);
         }
     }
 }

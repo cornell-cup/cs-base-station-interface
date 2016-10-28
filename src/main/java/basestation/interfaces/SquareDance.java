@@ -1,6 +1,7 @@
 package basestation.interfaces;
 
 import basestation.BaseStation;
+import basestation.bot.commands.Navigator;
 import basestation.vision.VisionCoordinate;
 
 /**

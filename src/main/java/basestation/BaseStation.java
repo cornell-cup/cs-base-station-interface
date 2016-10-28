@@ -13,7 +13,7 @@ public class BaseStation {
     private VisionManager vManager;
 
     public BaseStation() {
-        bManager = new BotManager();
+        bManager = new BotManager(this);
         vManager = new VisionManager();
     }
 

@@ -1,5 +1,7 @@
 package basestation.bot;
 
+import basestation.BaseStation;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,12 +15,15 @@ public class BotManager {
     // Provides unique IDs for all bots
     int botCounter;
 
+    BaseStation myStation;
+
     // Mapping from integer IDs to actual bots
     Map<Integer,Bot> botMap;
 
-    public BotManager() {
+    public BotManager(BaseStation baseStation) {
         botCounter = 0;
         botMap = new HashMap<>();
+        myStation = baseStation;
     }
 
     /**
@@ -30,6 +35,14 @@ public class BotManager {
     }
 
     /**
+     * @param id
+     * @return the bot associated with id or null if none exists
+     */
+    public Bot getBotById(int id) {
+       return botMap.get(id);
+    }
+
+    /**kk
      * Removes bot with id botId from
      * @param botId
      */

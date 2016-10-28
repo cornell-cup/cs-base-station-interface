@@ -1,6 +1,7 @@
-package basestation.interfaces;
+package basestation.bot.commands;
 
 import basestation.BaseStation;
+import basestation.bot.Bot;
 import basestation.bot.modbot.ModbotCommandCenter;
 import basestation.vision.VisionCoordinate;
 
@@ -10,8 +11,8 @@ import basestation.vision.VisionCoordinate;
 public class Navigator {
 
     BaseStation abs;
-    int botid;
     VisionCoordinate destination;
+    Bot myBot;
 
     static final double DISTANCE_BUBBLE = 0.04;
     static final double THETA_BUBBLE = 10;
@@ -20,9 +21,9 @@ public class Navigator {
 
     boolean success;
 
-    public Navigator(BaseStation abs, int botid) {
+    public Navigator(BaseStation abs, Bot myBot) {
         this.abs = abs;
-        this.botid = botid;
+        this.myBot = myBot;
         success = true;
         NavigationManager nm = new NavigationManager(this);
         nm.start();
@@ -44,10 +45,10 @@ public class Navigator {
 
     private void calcRoute() {
         if (success) return;
-        VisionCoordinate vc = abs.getBotCoordinate(abs.getBotById(botid));
+        VisionCoordinate vc = abs.getVisionManager().getBotCoordinate(myBot);
         System.out.println(vc);
         if (vc==null) {
-            ((ModbotCommandCenter)abs.getBotById(botid).getCommandCenter()).stop();
+            ((ModbotCommandCenter)myBot.getCommandCenter()).stop();
             return;
         }
         double spectheta = vc.getTheta();
@@ -71,20 +72,20 @@ public class Navigator {
         if (dist > DISTANCE_BUBBLE) {
             if (Math.abs(angle) > THETA_BUBBLE) {
                 if (angle > 0) {
-                    ((ModbotCommandCenter) abs.getBotById(botid).getCommandCenter()).counterClockwise(angSpeed);
+                    ((ModbotCommandCenter) myBot.getCommandCenter()).counterClockwise(angSpeed);
                 } else {
-                    ((ModbotCommandCenter) abs.getBotById(botid).getCommandCenter()).clockwise(angSpeed);
+                    ((ModbotCommandCenter) myBot.getCommandCenter()).clockwise(angSpeed);
                 }
             } else {
                 if (dist > DISTANCE_BUBBLE) {
-                    ((ModbotCommandCenter) abs.getBotById(botid).getCommandCenter()).forward(speed);
+                    ((ModbotCommandCenter) myBot.getCommandCenter()).forward(speed);
                 } else {
-                    ((ModbotCommandCenter) abs.getBotById(botid).getCommandCenter()).stop();
+                    ((ModbotCommandCenter) myBot.getCommandCenter()).stop();
                     success = true;
                 }
             }
         } else {
-            ((ModbotCommandCenter) abs.getBotById(botid).getCommandCenter()).stop();
+            ((ModbotCommandCenter) myBot.getCommandCenter()).stop();
             success = true;
         }
     }
