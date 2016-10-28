@@ -70,6 +70,10 @@ public abstract class VisionSystem {
         return botMap.get(b);
     }
 
+    public void mapBotToVisionId(Bot b, int id) {
+       botMap.put(b,id);
+    }
+
     public Set<VisionObject> getAllObjectsWithRespectTo(VisionSystem other) {
         Set<VisionObject> vset = getAllObjects();
         HashSet<VisionObject> transformed = new HashSet<>();

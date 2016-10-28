@@ -2,7 +2,10 @@ package basestation.interfaces;
 
 import basestation.BaseStation;
 import basestation.bot.commands.Navigator;
+import basestation.bot.modbot.ModBot;
+import basestation.bot.modbot.ModbotCommandCenter;
 import basestation.vision.VisionCoordinate;
+import basestation.vision.VisionManager;
 
 /**
  * Example Algorithm to make modbots dance in a small square
@@ -10,22 +13,24 @@ import basestation.vision.VisionCoordinate;
 public class SquareDance extends Thread {
 
     BaseStation abs;
-    Navigator ng;
+    ModBot myBot;
 
-    public SquareDance(BaseStation abs) {
+    public SquareDance(BaseStation abs, ModBot myBot) {
         this.abs = abs;
-        ng = new Navigator(abs, 0);
+        this.myBot = myBot;
+        VisionManager vm = abs.getVisionManager();
+        vm.getVisionSystemById(0).mapBotToVisionId(myBot, 0);
     }
 
     public void run() {
-        System.out.println(abs.getAllLocationData());
         boolean first = false;
         while (true) {
-            if (ng.destinationReached()) {
+            ModbotCommandCenter mcc;
+            if (( mcc=(ModbotCommandCenter)myBot.getCommandCenter()).destinationReached()) {
                 if (first) {
-                    ng.setDestination(new VisionCoordinate(-1.6,-0.64));
+                    mcc.gotoCoord(new VisionCoordinate(-1.6,-0.64));
                 } else {
-                    ng.setDestination(new VisionCoordinate(-0.3,-0.64));
+                    mcc.gotoCoord(new VisionCoordinate(-0.3,-0.64));
                 }
 
                 first = !first;

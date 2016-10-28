@@ -5,6 +5,7 @@ import basestation.bot.commands.ExtendedFourWheelMovement;
 import basestation.bot.connection.Connection;
 import basestation.bot.connection.IceConnection;
 import basestation.bot.commands.Navigator;
+import basestation.vision.VisionCoordinate;
 
 /**
  * Class who's methods are all the commands that can be issued to a bot
@@ -95,12 +96,18 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     /**
      * Navigates the bot to (x,y) using its built in navigator.
      * Requires an active vision system and association between the bot and the system.
-     * @param x
-     * @param y
      */
-    public void gotoCoord(double x, double y) {
+    public void gotoCoord(VisionCoordinate vc) {
         if (this.navigator == null) {
             this.navigator = new Navigator(parent,myBot);
         }
+    }
+
+    /**
+     *
+     * @return true if the bot has reached its destination. TODO: convert to a destination queue
+     */
+    public boolean destinationReached() {
+        return this.navigator.destinationReached();
     }
 }
