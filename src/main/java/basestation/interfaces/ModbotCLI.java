@@ -1,8 +1,8 @@
 package basestation.interfaces;
 
-import basestation.robot.connection.IceConnection;
-import basestation.robot.modbot.ModBot;
-import basestation.robot.modbot.ModbotCommandCenter;
+import basestation.bot.connection.IceConnection;
+import basestation.bot.modbot.ModBot;
+import basestation.bot.modbot.ModbotCommandCenter;
 
 import java.util.Scanner;
 

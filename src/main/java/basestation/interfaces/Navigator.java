@@ -1,7 +1,7 @@
 package basestation.interfaces;
 
-import basestation.AbstractBaseStation;
-import basestation.robot.modbot.ModbotCommandCenter;
+import basestation.BaseStation;
+import basestation.bot.modbot.ModbotCommandCenter;
 import basestation.vision.VisionCoordinate;
 
 /**
@@ -9,7 +9,7 @@ import basestation.vision.VisionCoordinate;
  */
 public class Navigator {
 
-    AbstractBaseStation abs;
+    BaseStation abs;
     int botid;
     VisionCoordinate destination;
 
@@ -20,7 +20,7 @@ public class Navigator {
 
     boolean success;
 
-    public Navigator(AbstractBaseStation abs, int botid) {
+    public Navigator(BaseStation abs, int botid) {
         this.abs = abs;
         this.botid = botid;
         success = true;

@@ -1,10 +1,7 @@
-package basestation.robot.connection;
+package basestation.bot.connection;
 
 import CommModule.BaseInterfacePrx;
 import CommModule.BaseInterfacePrxHelper;
-import basestation.robot.Bot;
-
-import java.util.Map;
 
 /**
  * Connection to support our Ice protocol

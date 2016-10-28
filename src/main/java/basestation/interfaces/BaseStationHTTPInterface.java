@@ -2,25 +2,14 @@ package basestation.interfaces; /**
  * Singleton that exposes all endpoints of basestation.basestation through HTTP
  */
 
-import basestation.AbstractBaseStation;
-import basestation.robot.Bot;
-import basestation.robot.connection.IceConnection;
-import basestation.robot.modbot.ModBot;
-import basestation.robot.modbot.ModbotCommandCenter;
-import basestation.vision.OverheadVisionSystem;
+import basestation.BaseStation;
+import basestation.bot.connection.IceConnection;
+import basestation.bot.modbot.ModBot;
+import basestation.bot.modbot.ModbotCommandCenter;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import spark.route.RouteOverview;
-
-import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 import static spark.Spark.*;
 
@@ -30,14 +19,10 @@ public class BaseStationHTTPInterface {
         JsonParser mParser = new JsonParser();
         Gson gson = new Gson();
         JsonParser jp = new JsonParser();
-        AbstractBaseStation mStation = new AbstractBaseStation();
-        SquareDance sd = new SquareDance(mStation);
+        BaseStation mStation = new BaseStation();
         RouteOverview.enableRouteOverview("/");
-        OverheadVisionSystem ovs = new OverheadVisionSystem();
-        mStation.addVisionSystem(ovs);
 
         post("/addBot", (req,res) -> {
-            System.out.println("addbot");
             String body = req.body();
             JsonObject rBody = jp.parse(body).getAsJsonObject();
             String ip = rBody.get("ip").getAsString();
@@ -50,8 +35,6 @@ public class BaseStationHTTPInterface {
         });
 
         post("/commandBot", (req,res) -> {
-            System.out.println("command");
-            System.out.println(mStation.getAllBots());
             String body = req.body();
             JsonObject rBody = jp.parse(body).getAsJsonObject();
             int botid = rBody.get("bid").getAsInt();
@@ -63,29 +46,5 @@ public class BaseStationHTTPInterface {
             return true;
         });
 
-        get("/square", (req,res) -> {
-            sd.start();
-            return "ok";
-        });
-        get("/derp", (req, res) -> renderContent("file:/C://Users/CornellCup/Documents/GitHub/cs-base-station-interface/index.html"));
-        get("/derp.js", (req, res) -> renderContent("file:/C://Users/CornellCup/Documents/GitHub/cs-base-station-interface/derp.js"));
-
-    }
-    private static String renderContent(String htmlFile) {
-        try {
-            // If you are using maven then your files
-            // will be in a folder called resources.
-            // getResource() gets that folder
-            // and any files you specify.
-            URL url = new URL(htmlFile);
-
-            // Return a String which has all
-            // the contents of the file.
-            Path path = Paths.get(url.toURI());
-            return new String(Files.readAllBytes(path), Charset.defaultCharset());
-        } catch (IOException | URISyntaxException e) {
-            // Add your own exception handlers here.
-        }
-        return null;
     }
 }

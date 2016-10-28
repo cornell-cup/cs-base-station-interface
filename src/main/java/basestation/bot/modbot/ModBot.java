@@ -1,8 +1,8 @@
-package basestation.robot.modbot;
+package basestation.bot.modbot;
 
-import basestation.robot.Bot;
-import basestation.robot.connection.IceConnection;
-import basestation.robot.sensors.SensorCenter;
+import basestation.bot.Bot;
+import basestation.bot.connection.IceConnection;
+import basestation.bot.sensors.SensorCenter;
 
 /**
  * A early implementation of a modbot

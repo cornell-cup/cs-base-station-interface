@@ -1,4 +1,4 @@
-package basestation.robot.connection;
+package basestation.bot.connection;
 
 import com.google.gson.JsonObject;
 

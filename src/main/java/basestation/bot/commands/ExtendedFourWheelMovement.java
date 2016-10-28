@@ -1,4 +1,4 @@
-package basestation.robot.commands;
+package basestation.bot.commands;
 
 /**
  * Extends four wheel movement with some useful commands.

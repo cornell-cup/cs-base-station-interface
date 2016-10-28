@@ -1,4 +1,4 @@
-package basestation.robot.sensors;
+package basestation.bot.sensors;
 
 import com.google.gson.JsonObject;
 

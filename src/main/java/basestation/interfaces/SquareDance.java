@@ -1,6 +1,6 @@
 package basestation.interfaces;
 
-import basestation.AbstractBaseStation;
+import basestation.BaseStation;
 import basestation.vision.VisionCoordinate;
 
 /**
@@ -8,10 +8,10 @@ import basestation.vision.VisionCoordinate;
  */
 public class SquareDance extends Thread {
 
-    AbstractBaseStation abs;
+    BaseStation abs;
     Navigator ng;
 
-    public SquareDance(AbstractBaseStation abs) {
+    public SquareDance(BaseStation abs) {
         this.abs = abs;
         ng = new Navigator(abs, 0);
     }

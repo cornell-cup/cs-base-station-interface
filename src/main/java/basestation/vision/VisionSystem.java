@@ -1,20 +1,30 @@
 package basestation.vision;
 
+import basestation.bot.Bot;
+
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
- * Represents a source of input for vision
+ * Represents a source of input for vision. Objects are tracked with VisionObjects which hold a VisionCoordinate.
+ * Each VisionObject must be represented by a persistent and uniquely identifiable integer which is VisionId, though
+ * VisionObjects are permitted to be changed at will as long as the integer ID is preserved for the same object.
  */
 public abstract class VisionSystem {
-    int id;
-    double scalingFactor;       // Used in case one vision system has a different scale from another
-    VisionCoordinate origin;
+    private double scalingFactor;       // Used in case one vision system has a different scale from another
+    private VisionCoordinate origin;
+    private Map<Bot,Integer> botMap;
 
-    public VisionSystem(int id, VisionCoordinate o) {
-        this.id = id;
+    /**
+     * Sets up a VisionSystem with o as its origin
+     * @param o A coordinate specifying the origin of the VisionSystem
+     */
+    public VisionSystem(VisionCoordinate o) {
         this.origin = o;
         this.scalingFactor = 1.0;
+        this.botMap = new HashMap<>();
     }
 
     /**
@@ -31,8 +41,17 @@ public abstract class VisionSystem {
         return new VisionCoordinate(newX, newY, newTheta);
     }
 
+    /**
+     *
+     * @return the set of all VisionObjects actively tracked by the VisionSystem
+     */
     public abstract Set<VisionObject> getAllObjects();
 
+    /**
+     * Returns the vision object represented by target or null if none exists
+     * @param target
+     * @return the VisionObject represented by target or null if none exists
+     */
     public VisionObject getById(int target) {
         Set<VisionObject>  all = this.getAllObjects();
         for (VisionObject vo : all) {
@@ -40,6 +59,15 @@ public abstract class VisionSystem {
         }
 
         return null;
+    }
+
+    /**
+     * Returns the vision id for this system representing b or null if none exists
+     * @param b
+     * @return the vision id or null if none exists
+     */
+    public Integer getIdForBot(Bot b) {
+        return botMap.get(b);
     }
 
     public Set<VisionObject> getAllObjectsWithRespectTo(VisionSystem other) {
@@ -53,12 +81,11 @@ public abstract class VisionSystem {
     }
 
     public String toString() {
-        return "[Vision System|" + id + "]";
+        return "[Vision System|" + this.getClass().getSimpleName() + "]";
     }
 
-    @Override
-    public int hashCode() {
-        return id;
+    public void changeOrigin(VisionCoordinate newOrigin) {
+        this.origin = newOrigin;
     }
 
     @Override

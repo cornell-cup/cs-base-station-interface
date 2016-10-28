@@ -1,13 +1,13 @@
-package basestation.robot.modbot;
+package basestation.bot.modbot;
 
-import basestation.robot.commands.ExtendedFourWheelMovement;
-import basestation.robot.connection.Connection;
-import basestation.robot.connection.IceConnection;
+import basestation.bot.commands.ExtendedFourWheelMovement;
+import basestation.bot.connection.Connection;
+import basestation.bot.connection.IceConnection;
 
 /**
- * Class who's methods are all the commands that can be issued to a robot
+ * Class who's methods are all the commands that can be issued to a bot
  * <p>
- * Each robot must implement this class with their own commands.
+ * Each bot must implement this class with their own commands.
  */
 public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     //Modbot command center currently implemented with ice connection
@@ -18,7 +18,7 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     }
 
     /**
-     * robot translates left
+     * bot translates left
      *
      * @param power the amount of power that should be supplied to the wheels. It should be between 0 and 100
      */
@@ -28,7 +28,7 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     }
 
     /**
-     * robot translates right
+     * bot translates right
      *
      * @param power the amount of power that should be supplied to the wheels. It should be between 0 and 100
      */
@@ -38,7 +38,7 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     }
 
     /**
-     * robot translates forward
+     * bot translates forward
      *
      * @param power the amount of power that should be supplied to the wheels. It should be between 0 and 100
      */
@@ -48,7 +48,7 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     }
 
     /**
-     * robot translates backward
+     * bot translates backward
      *
      * @param power the amount of power that should be supplied to the wheels. It should be between 0 and 100
      */
@@ -58,7 +58,7 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     }
 
     /**
-     * robot rotates clockwise
+     * bot rotates clockwise
      *
      * @param power the amount of power that should be supplied to the wheels. It should be between 0 and 100
      */
@@ -68,7 +68,7 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     }
 
     /**
-     * robot rotates counterclockwise
+     * bot rotates counterclockwise
      *
      * @param power the amount of power that should be supplied to the wheels. It should be between 0 and 100
      */

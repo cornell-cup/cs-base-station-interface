@@ -5,9 +5,16 @@ package basestation.vision;
  * The canonical coordinate system is such that 0 degrees points in the positive x direction.
  */
 public class VisionCoordinate {
+    // Position in meters
     double x;
     double y;
-    double theta; // degrees, optional and defaults to 0
+
+    // Degrees, optional and defaults to 0
+    double theta;
+
+    // m/s Velocities, optional
+    double velX;
+    double velY;
 
     public VisionCoordinate(double x, double y) {
         this.x = x;
@@ -43,7 +50,7 @@ public class VisionCoordinate {
     }
 
     public String toString() {
-        return "("+String.format("%.2f",x)+","+String.format("%.2f",y)+","+String.format("%.2f",theta)+"degrees)";
+        return "("+String.format("%.2f",x)+","+String.format("%.2f",y)+","+String.format("%.2f",theta)+"deg)"; // TODO: Format in velocities
     }
 
     public boolean equals(Object other) {

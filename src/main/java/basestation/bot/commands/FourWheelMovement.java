@@ -1,10 +1,10 @@
-package basestation.robot.commands;
+package basestation.bot.commands;
 
 /**
  * Interface for any wheel movement. Any wheel movement should be expressed as a percentage
  * of the maximum power from 0 to 100.
  * <p>
- * This interface assumes there are 4 wheels on the robot in a cart configuration. In other words
+ * This interface assumes there are 4 wheels on the bot in a cart configuration. In other words
  * there is a front left, front right, back left, and back right wheel.
  */
 public interface FourWheelMovement extends CommandCenter {

@@ -1,6 +1,6 @@
-package basestation.robot.connection;
+package basestation.bot.connection;
 
-import basestation.robot.Bot;
+import basestation.bot.Bot;
 import com.google.gson.JsonObject;
 
 /**
@@ -20,7 +20,7 @@ public abstract class Connection {
     }
 
     /**
-     * Safely disconnects from the robot
+     * Safely disconnects from the bot
      */
     public abstract void destroy();
 

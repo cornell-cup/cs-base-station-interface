@@ -1,6 +1,6 @@
-package basestation.robot.modbot;
+package basestation.bot.modbot;
 
-import basestation.robot.sensors.SensorCenter;
+import basestation.bot.sensors.SensorCenter;
 import com.google.gson.JsonObject;
 
 /**
