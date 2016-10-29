@@ -15,13 +15,14 @@ import java.util.Set;
 public abstract class VisionSystem {
     private double scalingFactor;       // Used in case one vision system has a different scale from another
     private VisionCoordinate origin;
-    private Map<Bot,Integer> botMap;
+    private Map<Bot, Integer> botMap;
 
     /**
      * Sets up a VisionSystem with o as its origin
+     *
      * @param o A coordinate specifying the origin of the VisionSystem
      */
-    public VisionSystem(VisionCoordinate o) {
+    protected VisionSystem(VisionCoordinate o) {
         this.origin = o;
         this.scalingFactor = 1.0;
         this.botMap = new HashMap<>();
@@ -29,7 +30,8 @@ public abstract class VisionSystem {
 
     /**
      * Transforms a coordinate from another system to this system.
-     * @param other The other coordinate
+     *
+     * @param other       The other coordinate
      * @param otherSystem The other system
      * @return a transformed coordinate
      */
@@ -42,18 +44,18 @@ public abstract class VisionSystem {
     }
 
     /**
-     *
      * @return the set of all VisionObjects actively tracked by the VisionSystem
      */
     public abstract Set<VisionObject> getAllObjects();
 
     /**
      * Returns the vision object represented by target or null if none exists
+     *
      * @param target
      * @return the VisionObject represented by target or null if none exists
      */
     public VisionObject getById(int target) {
-        Set<VisionObject>  all = this.getAllObjects();
+        Set<VisionObject> all = this.getAllObjects();
         for (VisionObject vo : all) {
             if (vo.vid == target) return vo;
         }
@@ -63,6 +65,7 @@ public abstract class VisionSystem {
 
     /**
      * Returns the vision id for this system representing b or null if none exists
+     *
      * @param b
      * @return the vision id or null if none exists
      */
@@ -71,14 +74,14 @@ public abstract class VisionSystem {
     }
 
     public void mapBotToVisionId(Bot b, int id) {
-       botMap.put(b,id);
+        botMap.put(b, id);
     }
 
     public Set<VisionObject> getAllObjectsWithRespectTo(VisionSystem other) {
         Set<VisionObject> vset = getAllObjects();
         HashSet<VisionObject> transformed = new HashSet<>();
         for (VisionObject vo : vset) {
-            transformed.add(new VisionObject(vo,other.transformCoordinates(vo.getVisionCoordinate(),this)));
+            transformed.add(new VisionObject(vo, other.transformCoordinates(vo.getVisionCoordinate(), this)));
         }
 
         return transformed;

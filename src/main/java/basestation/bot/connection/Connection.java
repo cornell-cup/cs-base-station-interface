@@ -1,20 +1,22 @@
 package basestation.bot.connection;
 
-import basestation.bot.Bot;
 import com.google.gson.JsonObject;
 
 /**
  * Represents a connection between the base station and a bot
  */
 public abstract class Connection {
-
-    Bot associatedBot;
-
     /**
      * @return True if the connection is still active. Otherwise returns false.
      */
     public abstract boolean connectionActive();
 
+    /**
+     * Used for being able to send arbitrary commands in the form of JSON. Useful for rapid prototyping
+     *
+     * @param data A command to send
+     * @return true if successful, else false
+     */
     public boolean sendArbitrary(JsonObject data) {
         throw new Error("Unimplemented for this connection type");
     }
@@ -23,12 +25,4 @@ public abstract class Connection {
      * Safely disconnects from the bot
      */
     public abstract void destroy();
-
-    public void setAssociatedBot(Bot b) {
-        this.associatedBot = b;
-    }
-
-    public Bot getAssociatedBot() {
-        return this.associatedBot;
-    }
 }

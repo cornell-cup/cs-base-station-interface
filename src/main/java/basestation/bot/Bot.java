@@ -26,7 +26,7 @@ public abstract class Bot {
     }
 
     public String toString() {
-        return "[Bot|"+myConnection+"]";
+        return "[Bot|" + myConnection + "]";
     }
 
     public int hashCode() {

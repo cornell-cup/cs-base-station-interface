@@ -30,6 +30,7 @@ public class VisionCoordinate {
 
     /**
      * Returns the angle from this coordinate to other in degrees. Angle is from 0 to 360.
+     *
      * @param other
      * @return
      */
@@ -42,7 +43,7 @@ public class VisionCoordinate {
     }
 
     public double getDistanceTo(VisionCoordinate other) {
-        return Math.sqrt(Math.pow(other.x - x,2.) + Math.pow(other.y -y,2.));
+        return Math.sqrt(Math.pow(other.x - x, 2.) + Math.pow(other.y - y, 2.));
     }
 
     public double getTheta() {
@@ -50,7 +51,7 @@ public class VisionCoordinate {
     }
 
     public String toString() {
-        return "("+String.format("%.2f",x)+","+String.format("%.2f",y)+","+String.format("%.2f",theta)+"deg)"; // TODO: Format in velocities
+        return "(" + String.format("%.2f", x) + "," + String.format("%.2f", y) + "," + String.format("%.2f", theta) + "deg)"; // TODO: Format in velocities
     }
 
     public boolean equals(Object other) {

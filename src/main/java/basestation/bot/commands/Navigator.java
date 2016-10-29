@@ -2,7 +2,7 @@ package basestation.bot.commands;
 
 import basestation.BaseStation;
 import basestation.bot.Bot;
-import basestation.bot.modbot.ModbotCommandCenter;
+import basestation.bot.robot.modbot.ModbotCommandCenter;
 import basestation.vision.VisionCoordinate;
 
 /**
@@ -10,16 +10,16 @@ import basestation.vision.VisionCoordinate;
  */
 public class Navigator {
 
-    BaseStation abs;
-    VisionCoordinate destination;
-    Bot myBot;
+    private BaseStation abs;
+    private VisionCoordinate destination;
+    private Bot myBot;
 
-    static final double DISTANCE_BUBBLE = 0.04;
-    static final double THETA_BUBBLE = 10;
-    static final int POWER_CONST = 20;
-    static final int START_SPEED = 10;
+    private static final double DISTANCE_BUBBLE = 0.04;
+    private static final double THETA_BUBBLE = 10;
+    private static final int POWER_CONST = 20;
+    private static final int START_SPEED = 10;
 
-    boolean success;
+    private boolean success;
 
     public Navigator(BaseStation abs, Bot myBot) {
         this.abs = abs;
@@ -40,20 +40,20 @@ public class Navigator {
     }
 
     private double mod(double a, double n) {
-        return a - Math.floor(a/n) * n;
+        return a - Math.floor(a / n) * n;
     }
 
     private void calcRoute() {
         if (success) return;
         VisionCoordinate vc = abs.getVisionManager().getBotCoordinate(myBot);
         System.out.println(vc);
-        if (vc==null) {
-            ((ModbotCommandCenter)myBot.getCommandCenter()).stop();
+        if (vc == null) {
+            ((ModbotCommandCenter) myBot.getCommandCenter()).stop();
             return;
         }
         double spectheta = vc.getTheta();
         double toAngle = vc.getAngleTo(destination); // 360 scale
-        double angle = mod((toAngle - spectheta + 180),360) - 180;
+        double angle = mod((toAngle - spectheta + 180), 360) - 180;
         double dist = vc.getDistanceTo(destination);
         double speed = START_SPEED;
         if (dist > 0.2) {
@@ -67,7 +67,7 @@ public class Navigator {
 
         if (speed > POWER_CONST) speed = POWER_CONST;
         if (angSpeed > POWER_CONST) angSpeed = POWER_CONST;
-        System.out.println("ang:"+angle);
+        System.out.println("ang:" + angle);
         int last = -1;
         if (dist > DISTANCE_BUBBLE) {
             if (Math.abs(angle) > THETA_BUBBLE) {

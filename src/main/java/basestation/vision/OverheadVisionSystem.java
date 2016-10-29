@@ -1,7 +1,8 @@
 package basestation.vision;
 
 import Ice.Current;
-import icemodules.VisionModule.*;
+import VisionModule.Blob;
+import VisionModule._BaseInterfaceDisp;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +18,7 @@ public class OverheadVisionSystem extends VisionSystem {
     private VisionListenServerThread vlst;
 
     public OverheadVisionSystem() {
-        super(0,new VisionCoordinate(0,0,0));
+        super(new VisionCoordinate(0, 0, 0));
         vlst = new VisionListenServerThread(this);
         vlst.start();
         set = new HashSet<VisionObject>();
@@ -25,6 +26,7 @@ public class OverheadVisionSystem extends VisionSystem {
 
     /**
      * Handles a new input of data
+     *
      * @param data The data sent from overhead vision
      */
     private void processBlobs(Blob[] data) {

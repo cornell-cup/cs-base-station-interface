@@ -17,7 +17,7 @@ public class VisionObject {
 
     public VisionObject(VisionObject old, VisionCoordinate newCoord) {
         this.vs = old.vs;
-        this. vid = old.vid;
+        this.vid = old.vid;
         this.myCoord = newCoord;
     }
 
@@ -34,7 +34,7 @@ public class VisionObject {
     }
 
     public boolean equals(Object o) {
-        if (!(o instanceof  VisionObject)) return false;
+        if (!(o instanceof VisionObject)) return false;
         return o.toString().equals(toString());
     }
 

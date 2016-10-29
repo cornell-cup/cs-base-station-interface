@@ -9,7 +9,7 @@ import java.util.Set;
 public class CanonicalVisionSystem extends VisionSystem {
 
     public CanonicalVisionSystem() {
-        super(new VisionCoordinate(0,0,0));
+        super(new VisionCoordinate(0, 0, 0));
 
     }
 
