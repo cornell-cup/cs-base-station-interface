@@ -22,13 +22,13 @@ public class BaseStationHTTPInterface {
         BaseStation mStation = new BaseStation();
         RouteOverview.enableRouteOverview("/");
 
+        /*
         post("/addBot", (req,res) -> {
             String body = req.body();
             JsonObject rBody = jp.parse(body).getAsJsonObject();
             String ip = rBody.get("ip").getAsString();
             int port = rBody.get("port").getAsInt();
             IceConnection ic = new IceConnection(ip, port);
-            ModBot mb = new ModBot(ic);
             mStation.addBot(mb);
             mStation.linkBotToVision(mb, 1);
             return mb;
@@ -45,6 +45,7 @@ public class BaseStationHTTPInterface {
             ((ModbotCommandCenter)mStation.getBotById(botid).getCommandCenter()).setWheelPower(fl,fr,bl,br);
             return true;
         });
+        */
 
     }
 }

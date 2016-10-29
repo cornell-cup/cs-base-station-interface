@@ -17,7 +17,7 @@ public class OverheadVisionSystem extends VisionSystem {
     private VisionListenServerThread vlst;
 
     public OverheadVisionSystem() {
-        super(0,new VisionCoordinate(0,0,0));
+        super(new VisionCoordinate(0,0,0));
         vlst = new VisionListenServerThread(this);
         vlst.start();
         set = new HashSet<VisionObject>();
