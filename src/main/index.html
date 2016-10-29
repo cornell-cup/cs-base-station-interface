@@ -47,7 +47,7 @@
 
 	-->
 
-	<h1>modbot gui v1.0</h1>
+	<h1>modbot gui v2.0</h1>
 	<form>
 		<h4>Insert information regarding the currently active bot to control it:</h4>
 		IP: <input type="text" name="ip" id="ip"><br/>
@@ -59,18 +59,24 @@
 		<h4>Movement controls:</h4>
 		Choose bot:
 		<select name="bots">
+			<option value="">-- Choose a bot --</option>
 			<option value="">Bot 1 (IP: 234, ID: 636, PORT: 8080)</option>
 			<option value="">Bot 2 (IP: 134, ID: 336, PORT: 80)</option>
 		</select>
 		
+		<button class="controls" id="enableBot">enable bot</button>
 		<button class="controls" id="removeBot">remove bot</button><br>
-		Power (0-10): <input id="power" type="range" name="power" min="0" max="10" value="0"><br>
+		Power (0-10): <input id="power" type="range" name="power" min="0" max="10" value="0"><br><br>
+
+		<b>Directions:</b><br>
+		<button class="dir" id="fwd">forward</button><br>
 		<button class="dir" id="lft">left</button>
-		<button class="dir" id="rt">right</button>
-		<button class="dir" id="fwd">forward</button>
-		<button class="dir" id="bck">backward</button>
+		<button class="dir" id="rt">right</button><br>
+		<button class="dir" id="bck">backward</button><br><br>
+
+		<b>Turns:</b><br>
 		<button class="dir" id="cw">clockwise</button>
-		<button class="dir" id="ccw">counterclockwise</button>
+		<button class="dir" id="ccw">counterclockwise</button><br><br>
 		<button class="dir" id="stop" style="background:red;">STOP BOT</button>
 		<br/>
 	</form>
