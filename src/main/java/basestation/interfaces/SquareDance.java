@@ -1,9 +1,8 @@
 package basestation.interfaces;
 
 import basestation.BaseStation;
-import basestation.bot.commands.Navigator;
-import basestation.bot.modbot.ModBot;
-import basestation.bot.modbot.ModbotCommandCenter;
+import basestation.bot.robot.modbot.ModBot;
+import basestation.bot.robot.modbot.ModbotCommandCenter;
 import basestation.vision.VisionCoordinate;
 import basestation.vision.VisionManager;
 
@@ -26,11 +25,11 @@ public class SquareDance extends Thread {
         boolean first = false;
         while (true) {
             ModbotCommandCenter mcc;
-            if (( mcc=(ModbotCommandCenter)myBot.getCommandCenter()).destinationReached()) {
+            if ((mcc = (ModbotCommandCenter) myBot.getCommandCenter()).destinationReached()) {
                 if (first) {
-                    mcc.gotoCoord(new VisionCoordinate(-1.6,-0.64));
+                    mcc.gotoCoord(new VisionCoordinate(-1.6, -0.64));
                 } else {
-                    mcc.gotoCoord(new VisionCoordinate(-0.3,-0.64));
+                    mcc.gotoCoord(new VisionCoordinate(-0.3, -0.64));
                 }
 
                 first = !first;

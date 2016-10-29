@@ -11,7 +11,7 @@ public class IceConnection extends Connection {
 
     private class ControlManager extends Thread {
 
-        BaseInterfacePrx iface;
+        private BaseInterfacePrx iface;
 
         private int COMMANDS_PER_SECOND = 2; // Since the connection is already reliable, we do not need a high frequency
         private int fl;
@@ -19,7 +19,7 @@ public class IceConnection extends Connection {
         private int bl;
         private int br;
 
-        public ControlManager(BaseInterfacePrx iface) {
+        private ControlManager(BaseInterfacePrx iface) {
             this.iface = iface;
             fl = fr = bl = br = 0;
         }
@@ -35,7 +35,7 @@ public class IceConnection extends Connection {
             }
         }
 
-        public void setMotors(int fl, int fr, int bl, int br) {
+        private void setMotors(int fl, int fr, int bl, int br) {
             this.fl = fl;
             this.fr = fr;
             this.bl = bl;
@@ -43,17 +43,17 @@ public class IceConnection extends Connection {
             sendMotors();
         }
 
-        private void sendMotors() {
+        private synchronized void sendMotors() {
             iface.begin_setMotorSpeeds(fl, fr, bl, br);
         }
     }
 
-    final static double THROTTLE = 150; // Max 255 TODO set up a config file for this
 
-    Ice.Communicator ic;
-    BaseInterfacePrx iface;
-    ControlManager cmonitor;
-    String identity;
+    private final static double THROTTLE = 150; // Max 255 TODO set up a config file for this
+
+    private Ice.Communicator ic;
+    private ControlManager cmonitor;
+    private String identity;
 
     public IceConnection(String ip, int port) {
         try {
@@ -61,7 +61,7 @@ public class IceConnection extends Connection {
             ic = Ice.Util.initialize();
             identity = "control -t -e 1.0:tcp -h " + ip + " -p " + port;
             Ice.ObjectPrx base = ic.stringToProxy(identity);
-            iface = BaseInterfacePrxHelper.checkedCast(base);
+            BaseInterfacePrx iface = BaseInterfacePrxHelper.checkedCast(base);
             if (iface == null)
                 throw new Error("Invalid proxy");
             else {
