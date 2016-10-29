@@ -36,7 +36,7 @@ function sendMotors(fl, fr, bl, br) {
 		method: "POST",
 		url: getIP() + "/commandBot",
 		data: JSON.stringify({
-			bid: getBotID(),
+			botID: getBotID(),
 			fl: fl,
 			fr: fr,
 			bl: bl,
