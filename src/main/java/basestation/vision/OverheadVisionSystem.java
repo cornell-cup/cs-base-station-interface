@@ -14,12 +14,11 @@ import java.util.Set;
  */
 public class OverheadVisionSystem extends VisionSystem {
 
-    private HashSet<VisionObject> set;
-    private VisionListenServerThread vlst;
+    private volatile HashSet<VisionObject> set;
 
     public OverheadVisionSystem() {
         super(new VisionCoordinate(0, 0, 0));
-        vlst = new VisionListenServerThread(this);
+        VisionListenServerThread vlst = new VisionListenServerThread(this);
         vlst.start();
         set = new HashSet<VisionObject>();
     }
@@ -30,7 +29,7 @@ public class OverheadVisionSystem extends VisionSystem {
      * @param data The data sent from overhead vision
      */
     private void processBlobs(Blob[] data) {
-        HashSet<VisionObject> newSet = new HashSet<VisionObject>();
+        HashSet<VisionObject> newSet = new HashSet<>();
         for (Blob b : data) {
             VisionCoordinate vc = new VisionCoordinate(b.x, b.y, ((((b.orientation % (2 * Math.PI)) * 180 / (Math.PI))) + 180) % 360);
             VisionObject vo = new VisionObject(this, b.botID, vc);

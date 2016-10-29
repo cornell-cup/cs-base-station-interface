@@ -1,31 +1,29 @@
 package basestation.vision;
 
+import java.util.Optional;
+
 /**
  * All vision coordinates are with respect to a coordinate systems.
  * The canonical coordinate system is such that 0 degrees points in the positive x direction.
  */
 public class VisionCoordinate {
     // Position in meters
-    double x;
-    double y;
+    public final double x;
+    public final double y;
 
-    // Degrees, optional and defaults to 0
-    double theta;
-
-    // m/s Velocities, optional
-    double velX;
-    double velY;
+    // Radians, optional
+    private final Optional<Double> theta;
 
     public VisionCoordinate(double x, double y) {
         this.x = x;
         this.y = y;
-        this.theta = 0;
+        this.theta = Optional.empty();
     }
 
     public VisionCoordinate(double x, double y, double theta) {
         this.x = x;
         this.y = y;
-        this.theta = theta;
+        this.theta = Optional.of(theta);
     }
 
     /**
@@ -46,8 +44,12 @@ public class VisionCoordinate {
         return Math.sqrt(Math.pow(other.x - x, 2.) + Math.pow(other.y - y, 2.));
     }
 
-    public double getTheta() {
+    public Optional<Double> getTheta() {
         return theta;
+    }
+
+    public double getThetaOrZero(){
+        return theta.orElse(0.0);
     }
 
     public String toString() {

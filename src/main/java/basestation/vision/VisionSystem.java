@@ -1,6 +1,7 @@
 package basestation.vision;
 
 import basestation.bot.Bot;
+import util.MathUtilities;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -13,8 +14,8 @@ import java.util.Set;
  * VisionObjects are permitted to be changed at will as long as the integer ID is preserved for the same object.
  */
 public abstract class VisionSystem {
-    private double scalingFactor;       // Used in case one vision system has a different scale from another
-    private VisionCoordinate origin;
+    private final double scalingFactor;       // Used in case one vision system has a different scale from another
+    private final VisionCoordinate origin;
     private Map<Bot, Integer> botMap;
 
     /**
@@ -38,7 +39,8 @@ public abstract class VisionSystem {
     public VisionCoordinate transformCoordinates(VisionCoordinate other, VisionSystem otherSystem) {
         double newX = (otherSystem.origin.x + other.x) / otherSystem.scalingFactor;
         double newY = (otherSystem.origin.y + other.y) / otherSystem.scalingFactor;
-        double newTheta = ((otherSystem.origin.theta + other.theta - origin.theta) + 360) % 360;
+        double newTheta = MathUtilities.normalizeAngle(otherSystem.origin.getThetaOrZero() +
+                other.getThetaOrZero() - origin.getThetaOrZero());
 
         return new VisionCoordinate(newX, newY, newTheta);
     }
@@ -51,7 +53,7 @@ public abstract class VisionSystem {
     /**
      * Returns the vision object represented by target or null if none exists
      *
-     * @param target
+     * @param target the vision object we are looking for
      * @return the VisionObject represented by target or null if none exists
      */
     public VisionObject getById(int target) {
@@ -89,10 +91,6 @@ public abstract class VisionSystem {
 
     public String toString() {
         return "[Vision System|" + this.getClass().getSimpleName() + "]";
-    }
-
-    public void changeOrigin(VisionCoordinate newOrigin) {
-        this.origin = newOrigin;
     }
 
     @Override

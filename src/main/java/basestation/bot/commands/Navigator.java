@@ -51,7 +51,7 @@ public class Navigator {
             ((ModbotCommandCenter) myBot.getCommandCenter()).stop();
             return;
         }
-        double spectheta = vc.getTheta();
+        double spectheta = vc.getThetaOrZero();
         double toAngle = vc.getAngleTo(destination); // 360 scale
         double angle = mod((toAngle - spectheta + 180), 360) - 180;
         double dist = vc.getDistanceTo(destination);
