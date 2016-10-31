@@ -14,7 +14,9 @@ import java.util.Set;
  * VisionObjects are permitted to be changed at will as long as the integer ID is preserved for the same object.
  */
 public abstract class VisionSystem {
-    private final double scalingFactor;       // Used in case one vision system has a different scale from another
+
+    // Used in case one vision system has a different scale from another
+    private final double scalingFactor;
     private final VisionCoordinate origin;
     private Map<Bot, Integer> botMap;
 

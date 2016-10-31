@@ -45,7 +45,7 @@ public class VisionManager { //TODO incomplete
         for (VisionSystem vs : visionSystemMap.values()) {
             Integer vid;
             if ((vid = vs.getIdForBot(bot)) != null) {
-
+                return vs.getById(vid).coord;
             }
         }
 

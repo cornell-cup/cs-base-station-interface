@@ -18,26 +18,22 @@ public class VisionObject {
     /**
      * The coordinate of this object
      */
-    public final VisionCoordinate myCoord;
+    public final VisionCoordinate coord;
 
     public VisionObject(VisionSystem vs, int vid, VisionCoordinate myCoord) {
         this.vs = vs;
         this.vid = vid;
-        this.myCoord = myCoord;
+        this.coord = myCoord;
     }
 
     public VisionObject(VisionObject old, VisionCoordinate newCoord) {
         this.vs = old.vs;
         this.vid = old.vid;
-        this.myCoord = newCoord;
-    }
-
-    public VisionCoordinate getVisionCoordinate() {
-        return myCoord;
+        this.coord = newCoord;
     }
 
     public String toString() {
-        return "[Vision Object|" + vs + "|" + myCoord + "|" + vid + "]";
+        return "[Vision Object|" + vs + "|" + coord + "|" + vid + "]";
     }
 
     public boolean equals(Object o) {

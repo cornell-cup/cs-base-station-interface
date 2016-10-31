@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * VisionSystem to take in data from the Tango
+ * VisionSystem to take in data from the Tango. Currently being prototyped.
  */
 public class TangoVisionSystem extends VisionSystem {
 
