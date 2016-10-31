@@ -6,8 +6,8 @@ package basestation.interfaces;
 
 import basestation.BaseStation;
 import basestation.bot.connection.IceConnection;
-import basestation.bot.modbot.ModBot;
-import basestation.bot.modbot.ModbotCommandCenter;
+import basestation.bot.robot.modbot.ModBot;
+import basestation.bot.robot.modbot.ModbotCommandCenter;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;

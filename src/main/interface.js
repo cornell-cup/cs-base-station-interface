@@ -1,5 +1,4 @@
 /*
-
 INTERFACE.
 
 Pages and functions:
@@ -10,12 +9,10 @@ Pages and functions:
 - bot configs
 	- addBot
 	- removeBot
-	- forgetBot
 	- listBots
 - bot dynamics
 	- commandBot
 	- ...
-
 */
 
 /* getters */
