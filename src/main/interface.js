@@ -15,7 +15,7 @@ Pages and functions:
 	- ...
 */
 
-/* getters */
+/* Getters */
 function getBotID(){
 	return $("#id").val();
 }
@@ -44,6 +44,36 @@ function sendMotors(fl, fr, bl, br) {
 	});
 }
 
+/* UPDATES POSITION OF ROBOT ON MAP.
+	Receives information from GET, of all active bots. 
+	Updates each of their locations in the view display. 
+
+	ifMove	true -> called from eventlistener, updating
+					the pos of a robot
+			false -> called from manageBots(), meaning
+					the inherent state of a bot has
+					changed (a bot added or removed).
+*/
+function update(ifMove) {
+	// if it is a position change
+	if(ifMove) {
+		$.ajax({
+			method: "GET",
+			url: getIP() + "/updateloc",
+			data: JSON.stringify({
+				//information to get.
+			}),
+			processData: false,
+			contentType: 'application/json'
+		});
+	}
+	// if it is an entire bot to add/remove
+	else {
+
+	}
+}
+
+/* When .dir is clicked, send motors to take some kind of action. */
 $(".dir").click(function(event) {
 	var pow = getPower();
 	var target = $(event.target);
@@ -72,8 +102,10 @@ $(".dir").click(function(event) {
 	else {
 		console.log("Clicked on a direction button but nothing has been executed.");
 	}
+	update(true);
 });
 
+/* Eventlistener for mouseclick on controls (adding, removing, etc.) */
 $(".controls").click(function() {
 	console.log("clicked");
 	if(this.is("#addBot")){
@@ -86,6 +118,7 @@ $(".controls").click(function() {
 	}
 });
 
+/* Helper function called from the eventlistener */
 function manageBots(option, ip, port){
 	var mthd = "";
 
@@ -106,6 +139,7 @@ function manageBots(option, ip, port){
 		processData: false,
 		contentType: 'application/json'
 	});
+	update(false);
 }
 
 function listBots(){

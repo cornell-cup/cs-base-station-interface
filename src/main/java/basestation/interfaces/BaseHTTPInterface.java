@@ -58,5 +58,9 @@ public class BaseHTTPInterface {
             return true;
         });
 
+        get("/updateloc", (req, res) -> {
+            // TODO: push to js the location of every modbot that is active.
+        });
+
     }
 }

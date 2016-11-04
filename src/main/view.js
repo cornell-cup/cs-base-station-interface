@@ -2,6 +2,8 @@
 pixi - for grid
 */
 
+import interface;
+
 var grid = PIXI.autoDetectRenderer(520, 520);
 document.body.appendChild(grid.view);
 var stage = new PIXI.Container();
@@ -10,10 +12,29 @@ grid.view.style.border = "1px dashed black";
 grid.view.style.position = "absolute";
 grid.view.style.display = "block";
 
+var bots = [];
+
+/* pseudo code; will work on.
+
+parseLocations(getLocations()); (getting locations from backend, converting them into
+	understandable code)
+
+for(each active bot) {
+	bots.push(bot);
+} only when initializing.
+
+
+
+/* Setting up a single modbot */
 var circle = new PIXI.Graphics();
-circle.beginFill(0x9966FF);
+circle.beginFill(0x0EB530);
 circle.drawCircle(0, 0, 25);
 circle.endFill();
+
+circle.beginFill(0xB0252E);
+circle.drawCircle(0, -10, 10);
+circle.endFill();
+
 circle.x = 120;
 circle.y = 120;
 stage.addChild(circle);
