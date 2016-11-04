@@ -14,7 +14,7 @@ grid.view.style.display = "block";
 
 var bots = [];
 
-/* pseudo code; will work on.
+/* Pseudo code; will work on.
 
 parseLocations(getLocations()); (getting locations from backend, converting them into
 	understandable code)
@@ -23,14 +23,14 @@ for(each active bot) {
 	bots.push(bot);
 } only when initializing.
 
-
 */
 
+// pseudo-constructor for a bot object
 function newBot(x, y, o, ip) {
 	var bot = {
 		x: x,
 		y: y,
-		orientation: o,
+		or: o, // 0..3
 		ip: ip
 	};
 	return bot;
@@ -45,7 +45,10 @@ function drawBot(b) {
 	circle.endFill();
 
 	circle.beginFill(0xB0252E);
-	circle.drawCircle(0, -10, 10);
+	if (b.or===1) { circle.drawCircle(10, 0, 10); } // right facing
+	else if(b.or===2) { circle.drawCircle(0, 10, 10); } // down facing 
+	else if(b.or===3) { circle.drawCircle(-10, 0, 10); } // left facing
+	else { circle.drawCircle(0, -10, 10); } // up facing (default)
 	circle.endFill();
 
 	circle.x = b.x*40;
@@ -55,14 +58,13 @@ function drawBot(b) {
 
 function displayBots(botArray) {
 	for(var b in botArray) {
-		console.log("wow " + b);
 		drawBot(botArray[b]);
 	}
 }
 
-bots.push(newBot(1,1,"234"));
-bots.push(newBot(2,5,"5234"));
-bots.push(newBot(4,7, "wer"));
+bots.push(newBot(1,1,0,"234"));
+bots.push(newBot(2,5,1,"5234"));
+bots.push(newBot(4,7,2,"wer"));
 
 console.log(bots);
 displayBots(bots);
