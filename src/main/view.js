@@ -2,7 +2,7 @@
 pixi - for grid
 */
 
-import interface;
+//import interface;
 
 var grid = PIXI.autoDetectRenderer(520, 520);
 document.body.appendChild(grid.view);
@@ -24,20 +24,48 @@ for(each active bot) {
 } only when initializing.
 
 
+*/
 
-/* Setting up a single modbot */
-var circle = new PIXI.Graphics();
-circle.beginFill(0x0EB530);
-circle.drawCircle(0, 0, 25);
-circle.endFill();
+function newBot(x, y, o, ip) {
+	var bot = {
+		x: x,
+		y: y,
+		orientation: o,
+		ip: ip
+	};
+	return bot;
+}
 
-circle.beginFill(0xB0252E);
-circle.drawCircle(0, -10, 10);
-circle.endFill();
+/* Setting up a single modbot at (x, y) 
+	where (0,0) is top left */
+function drawBot(b) {
+	var circle = new PIXI.Graphics();
+	circle.beginFill(0x0EB530);
+	circle.drawCircle(0, 0, 25);
+	circle.endFill();
 
-circle.x = 120;
-circle.y = 120;
-stage.addChild(circle);
+	circle.beginFill(0xB0252E);
+	circle.drawCircle(0, -10, 10);
+	circle.endFill();
+
+	circle.x = b.x*40;
+	circle.y = b.y*40;
+	stage.addChild(circle);
+}
+
+function displayBots(botArray) {
+	for(var b in botArray) {
+		console.log("wow " + b);
+		drawBot(botArray[b]);
+	}
+}
+
+bots.push(newBot(1,1,"234"));
+bots.push(newBot(2,5,"5234"));
+bots.push(newBot(4,7, "wer"));
+
+console.log(bots);
+displayBots(bots);
 
 
 /* setting up grid lines */
