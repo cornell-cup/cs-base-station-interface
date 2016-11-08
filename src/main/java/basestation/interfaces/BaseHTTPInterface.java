@@ -35,7 +35,7 @@ public class BaseHTTPInterface {
             IceConnection ice = new IceConnection(ip, port);
 
             /* new modbot is created to add */
-            ModBot newBot = new ModBot(new BaseStation, ice);
+            ModBot newBot = new ModBot(new BaseStation(), ice);
             station.getBotManager().addBot(newBot);
 
             return newBot;
@@ -58,9 +58,11 @@ public class BaseHTTPInterface {
             return true;
         });
 
+        /*
         get("/updateloc", (req, res) -> {
             // TODO: push to js the location of every modbot that is active.
         });
+        */
 
     }
 }

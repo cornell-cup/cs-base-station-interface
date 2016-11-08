@@ -85,7 +85,7 @@ public abstract class VisionSystem {
         Set<VisionObject> vset = getAllObjects();
         HashSet<VisionObject> transformed = new HashSet<>();
         for (VisionObject vo : vset) {
-            transformed.add(new VisionObject(vo, other.transformCoordinates(vo.getVisionCoordinate(), this)));
+            transformed.add(new VisionObject(vo, other.transformCoordinates(vo.coord, this)));
         }
 
         return transformed;
