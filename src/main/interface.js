@@ -44,7 +44,7 @@ function sendMotors(fl, fr, bl, br) {
 	});
 }
 
-/* UPDATES POSITION OF ROBOT ON MAP.
+/* UPDATES POSITION OF ROBOT ON VISION MAP.
 	Receives information from GET, of all active bots. 
 	Updates each of their locations in the view display. 
 
@@ -106,32 +106,37 @@ $(".dir").click(function(event) {
 });
 
 /* Eventlistener for mouseclick on controls (adding, removing, etc.) */
-$(".controls").click(function() {
+$(".controls").click(function(event) {
 	console.log("clicked");
-	if(this.is("#addBot")){
+	if($(event.target).is("#addBot")){
 		console.log("#addBot has been clicked.");
-		manageBots(1, $("#id").val(), $("#port").val());
+		updateDropdown();
+		manageBots("/addBot", $("#id").val(), $("#port").val());
 	}
-	else if(this.is("#removeBot")){
+	else if($(event.target).is("#removeBot")){
 		console.log("#removeBot has been clicked.");
-		manageBots(-1, $("#id").val(), $("#port").val());
+		manageBots("/removeBot", $("#id").val(), $("#port").val());
 	}
 });
 
-/* Helper function called from the eventlistener */
+/*
+	For any update to the list of active bots, the dropdown menu
+	of active bots will update accordingly (depending on the addition
+	or removal of a bot).
+*/
+function updateDropdown() {
+	console.log("update has been called");
+	var option = document.createElement("option");
+	option.text = "Kiwi";
+	$("#botlist").add(option);
+}
+
+/* Helper function called from the eventlistener
+*/
 function manageBots(option, ip, port){
-	var mthd = "";
-
-	if(option > 0){ // add bot
-		mthd = "/addBot";
-	}
-	else if(option < 0){
-		mthd = "/removeBot";
-	}
-
 	$.ajax({
 		method: "POST",
-		url: getIP() + mthd,
+		url: getIP() + option,
 		data: JSON.stringify({
 			ip: ip,
 			port: port
