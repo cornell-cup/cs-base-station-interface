@@ -1,20 +1,17 @@
-package basestation.bot.commands;
+package basestation.bot.robot.modbot;
 
 import basestation.BaseStation;
-import basestation.bot.Bot;
-import basestation.bot.robot.modbot.ModbotCommandCenter;
 import basestation.vision.VisionCoordinate;
 
 /**
  * Controller for moving the bot to specified coordinates
  */
-public class Navigator {
+public class ModbotNavigator {
 
     private BaseStation myStation;
     private VisionCoordinate destination;
-    private final Bot myBot;
+    private final ModBot myBot;
     private boolean destinationReached;
-    private NavigationManager myNavigationManager;
 
     private static final double DISTANCE_THRESHOLD = 0.04;
     private static final double ANGLE_THRESHOLD = 10;
@@ -24,15 +21,16 @@ public class Navigator {
 
     /**
      * Initialize the controller without any active commands
+     *
      * @param baseStation the active base station
-     * @param myBot the modbot this navigator is meant to control
+     * @param myBot       the modbot this navigator is meant to control
      */
-    public Navigator(BaseStation baseStation, Bot myBot) {
+    public ModbotNavigator(BaseStation baseStation, ModBot myBot) {
         this.myStation = baseStation;
         this.myBot = myBot;
         this.destinationReached = true;
-        this.myNavigationManager = new NavigationManager(this);
-        this.myNavigationManager.start();
+        NavigationManager myNavigationManager = new NavigationManager(this);
+        myNavigationManager.start();
     }
 
     /**
@@ -44,6 +42,7 @@ public class Navigator {
 
     /**
      * Sets the destination for the bot. The navigator will then make an effort to reach that destination using bot commands.
+     *
      * @param dest A visioncoordinate representing the (x,y) desired. Angle currently ignored.
      */
     public void setDestination(VisionCoordinate dest) {
@@ -54,6 +53,7 @@ public class Navigator {
 
     /**
      * A sign-independent mod to be compatible with java
+     *
      * @param a The left argument of the mod
      * @param n The number to mod by
      * @return the positive mod result
@@ -65,10 +65,10 @@ public class Navigator {
     /**
      * Calculates the next necessary action to reach the desired destination and sends
      * the action to the bot. Sends the stop command once destination is reached.
-     *
+     * <p>
      * Route calculation is done by rotating until the bot's angle is within ANGLE_THRESHOLD of the angle to the
      * destination. Then the bot moves forward until it is within DISTANCE_THRESHOLD of the destination.
-     *
+     * <p>
      * Speed is slowed when close to the destination, but MAX_SPEED when far.
      */
     private void calcRoute() {
@@ -101,9 +101,9 @@ public class Navigator {
 
                 // Rotate in proper direction
                 if (angle > 0) {
-                    ((ModbotCommandCenter) myBot.getCommandCenter()).counterClockwise(angSpeed);
+                    myBot.getCommandCenter().counterClockwise(angSpeed);
                 } else {
-                    ((ModbotCommandCenter) myBot.getCommandCenter()).clockwise(angSpeed);
+                    myBot.getCommandCenter().clockwise(angSpeed);
                 }
             } else {
                 if (dist > DISTANCE_THRESHOLD) {
@@ -118,14 +118,14 @@ public class Navigator {
                     if (speed > MAX_SPEED) speed = MAX_SPEED;
 
                     // Move forward
-                    ((ModbotCommandCenter) myBot.getCommandCenter()).forward(speed);
+                    myBot.getCommandCenter().forward(speed);
                 } else {
-                    ((ModbotCommandCenter) myBot.getCommandCenter()).stop();
+                    myBot.getCommandCenter().stop();
                     destinationReached = true;
                 }
             }
         } else {
-            ((ModbotCommandCenter) myBot.getCommandCenter()).stop();
+            myBot.getCommandCenter().stop();
             destinationReached = true;
         }
     }
@@ -135,15 +135,15 @@ public class Navigator {
      */
     private class NavigationManager extends Thread {
 
-        Navigator parent;
+        ModbotNavigator parent;
         private int sleepDurationMillis;
 
-        NavigationManager(Navigator parent) {
+        NavigationManager(ModbotNavigator parent) {
             this.parent = parent;
             this.sleepDurationMillis = 200;
         }
 
-        NavigationManager(Navigator parent, int sleepDurationMillis) {
+        NavigationManager(ModbotNavigator parent, int sleepDurationMillis) {
             this.parent = parent;
             this.sleepDurationMillis = sleepDurationMillis;
         }

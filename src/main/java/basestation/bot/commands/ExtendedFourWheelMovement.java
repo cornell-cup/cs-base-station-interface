@@ -12,16 +12,10 @@ import basestation.vision.VisionCoordinate;
  * that is between 0 and 100
  */
 public abstract class ExtendedFourWheelMovement implements FourWheelMovement {
-
-    private Navigator navigator;
-    private BaseStation parent;
-    private ModBot myBot;
     protected Connection connection;
 
-    public ExtendedFourWheelMovement(BaseStation parent, Connection connection, ModBot myBot) {
-        this.parent = parent;
+    public ExtendedFourWheelMovement(Connection connection) {
         this.connection = connection;
-        this.myBot = myBot;
     }
 
     public void forward(double power) {
@@ -42,25 +36,6 @@ public abstract class ExtendedFourWheelMovement implements FourWheelMovement {
     public void counterClockwise(double power) {
         assert power >= 0 && power <= 100;
         setWheelPower(-power, power, -power, power);
-    }
-
-    /**
-     * Navigates the bot to (x,y) using its built in navigator.
-     * Requires an active vision system and association between the bot and the system.
-     */
-    public void gotoCoord(VisionCoordinate vc) {
-        if (this.navigator == null) {
-            this.navigator = new Navigator(parent, myBot);
-        }
-
-        this.navigator.setDestination(vc);
-    }
-
-    /**
-     * @return true if the bot has reached its destination. TODO: convert to a destination queue
-     */
-    public boolean destinationReached() {
-        return this.navigator.destinationReached();
     }
 
     public void stop() {

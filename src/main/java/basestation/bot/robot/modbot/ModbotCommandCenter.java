@@ -2,7 +2,6 @@ package basestation.bot.robot.modbot;
 
 import basestation.BaseStation;
 import basestation.bot.commands.ExtendedFourWheelMovement;
-import basestation.bot.commands.Navigator;
 import basestation.bot.connection.Connection;
 import basestation.bot.connection.IceConnection;
 import basestation.vision.VisionCoordinate;
@@ -14,10 +13,29 @@ import basestation.vision.VisionCoordinate;
  */
 public class ModbotCommandCenter extends ExtendedFourWheelMovement {
 
+    private ModbotNavigator navigator;
+
 
     public ModbotCommandCenter(BaseStation parent, Connection connection, ModBot myBot) {
-        super(parent, connection, myBot);
+        super(connection);
+        this.navigator = new ModbotNavigator(parent, myBot);
     }
+
+    /**
+     * @return true if the bot has reached its destination. TODO: convert to a destination queue
+     */
+    public boolean destinationReached() {
+        return this.navigator.destinationReached();
+    }
+
+    /**
+     * Navigates the bot to (x,y) using its built in navigator.
+     * Requires an active vision system and association between the bot and the system.
+     */
+    public void gotoCoord(VisionCoordinate vc) {
+        this.navigator.setDestination(vc);
+    }
+
 
     /**
      * bot translates left

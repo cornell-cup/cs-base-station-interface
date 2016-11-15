@@ -8,7 +8,6 @@ import basestation.BaseStation;
 import basestation.bot.connection.IceConnection;
 import basestation.bot.robot.modbot.ModBot;
 import basestation.bot.robot.modbot.ModbotCommandCenter;
-import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import spark.route.RouteOverview;
