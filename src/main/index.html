@@ -52,14 +52,16 @@
 -->
 
 	<h1>modbot gui v2.0</h1>
-	<form>
+	<form id="add">
 		<h4>Insert information regarding the currently active bot to control it:</h4>
 		IP: <input type="text" name="ip" id="ip"><br/>
 		ID: <input type="text" name="id" id="id"><br/>
 		Port: <input type="text" name="port" id="port"><br/>
 		<button class="controls" onclick="updateDropdown()" id="addBot">add bot</button><br>
-		<br>
+	</form>
+	<br>
 
+	<form id="set">
 		<h4>Movement controls:</h4>
 		Choose bot:
 		<select id="botlist" name="bots">
@@ -71,7 +73,9 @@
 		<button class="controls" id="enableBot">enable bot</button>
 		<button class="controls" id="removeBot">remove bot</button><br>
 		Power (0-10): <input id="power" type="range" name="power" min="0" max="10" value="0"><br><br>
+	</form>
 
+	<form id="move">
 		<b>Directions:</b><br>
 		<button class="dir" id="fwd">forward</button><br>
 		<button class="dir" id="lft">left</button>
@@ -89,7 +93,7 @@
 
 	<h3>Vision:</h3>
 
-	
+
 	<script src="view.js"></script>
 </body>
 </html>

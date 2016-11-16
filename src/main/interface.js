@@ -107,10 +107,11 @@ $(".dir").click(function(event) {
 
 /* Eventlistener for mouseclick on controls (adding, removing, etc.) */
 $(".controls").click(function(event) {
+
 	console.log("clicked");
 	if($(event.target).is("#addBot")){
 		console.log("#addBot has been clicked.");
-		updateDropdown();
+		//updateDropdown();
 		manageBots("/addBot", $("#id").val(), $("#port").val());
 	}
 	else if($(event.target).is("#removeBot")){
@@ -119,17 +120,21 @@ $(".controls").click(function(event) {
 	}
 });
 
-// $(".controls").click(function(e) {
-// 	e.preventDefault();
-// 	updateDropdown();
-// });
+$("#add").submit(function(e) {
+	console.log("update has been called");
+	e.preventDefault();
+	
+	var option = document.createElement("option");
+	option.text = "PLEASE WORK FOR THE LOVE OF GOD";
+	document.getElementById("botlist").add(option);
+});
 
 /*
 	For any update to the list of active bots, the dropdown menu
 	of active bots will update accordingly (depending on the addition
 	or removal of a bot).
 */
-function updateDropdown() {
+function updateDropdown(text) {
 	console.log("update has been called");
 	var option = document.createElement("option");
 	option.text = "Kiwi";
