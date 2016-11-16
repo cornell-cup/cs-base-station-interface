@@ -7,7 +7,7 @@ import CommModule.BaseInterfacePrxHelper;
  * Connection to support our Ice protocol
  * Sends controls over a rate-limited thread
  */
-public class IceConnection extends Connection {
+public class IceConnection extends MotorConnection {
 
     private final static double THROTTLE = 150; // Max 255 TODO set up a config file for this
 
