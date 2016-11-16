@@ -119,6 +119,11 @@ $(".controls").click(function(event) {
 	}
 });
 
+// $(".controls").click(function(e) {
+// 	e.preventDefault();
+// 	updateDropdown();
+// });
+
 /*
 	For any update to the list of active bots, the dropdown menu
 	of active bots will update accordingly (depending on the addition
@@ -128,7 +133,7 @@ function updateDropdown() {
 	console.log("update has been called");
 	var option = document.createElement("option");
 	option.text = "Kiwi";
-	$("#botlist").add(option);
+	document.getElementById("botlist").add(option);
 }
 
 /* Helper function called from the eventlistener

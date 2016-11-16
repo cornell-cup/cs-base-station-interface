@@ -5,12 +5,16 @@ package basestation.interfaces;
  */
 
 import basestation.BaseStation;
+import basestation.bot.Bot;
 import basestation.bot.connection.IceConnection;
 import basestation.bot.robot.modbot.ModBot;
 import basestation.bot.robot.modbot.ModbotCommandCenter;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import spark.route.RouteOverview;
+
+import java.util.Map;
+import java.util.Set;
 
 import static spark.Spark.*;
 
@@ -57,11 +61,19 @@ public class BaseHTTPInterface {
             return true;
         });
 
-        /*
+
         get("/updateloc", (req, res) -> {
             // TODO: push to js the location of every modbot that is active.
+
+            Set<Map.Entry<Integer, Bot>> addedBots = station.getBotManager().getAllTrackedBots();
+
+            for(Map.Entry<Integer, Bot> entry : addedBots) {
+                //TODO: do something
+            }
+
+            return true;
         });
-        */
+
 
     }
 }
