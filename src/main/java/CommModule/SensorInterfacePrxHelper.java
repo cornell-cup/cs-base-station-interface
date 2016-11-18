@@ -72,14 +72,14 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_initializeBot(botnum, __ctx, true, false, __cb);
     }
 
-    public Ice.AsyncResult begin_initializeBot(int botnum, 
+    public Ice.AsyncResult begin_initializeBot(int botnum,
                                                IceInternal.Functional_VoidCallback __responseCb, 
                                                IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb)
     {
         return begin_initializeBot(botnum, null, false, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_initializeBot(int botnum, 
+    public Ice.AsyncResult begin_initializeBot(int botnum,
                                                IceInternal.Functional_VoidCallback __responseCb, 
                                                IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                IceInternal.Functional_BoolCallback __sentCb)
@@ -87,7 +87,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_initializeBot(botnum, null, false, false, __responseCb, __exceptionCb, __sentCb);
     }
 
-    public Ice.AsyncResult begin_initializeBot(int botnum, 
+    public Ice.AsyncResult begin_initializeBot(int botnum,
                                                java.util.Map<String, String> __ctx, 
                                                IceInternal.Functional_VoidCallback __responseCb, 
                                                IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb)
@@ -95,7 +95,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_initializeBot(botnum, __ctx, true, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_initializeBot(int botnum, 
+    public Ice.AsyncResult begin_initializeBot(int botnum,
                                                java.util.Map<String, String> __ctx, 
                                                IceInternal.Functional_VoidCallback __responseCb, 
                                                IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
@@ -193,14 +193,14 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_pokeBase(botnum, __ctx, true, false, __cb);
     }
 
-    public Ice.AsyncResult begin_pokeBase(int botnum, 
+    public Ice.AsyncResult begin_pokeBase(int botnum,
                                           IceInternal.Functional_VoidCallback __responseCb, 
                                           IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb)
     {
         return begin_pokeBase(botnum, null, false, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_pokeBase(int botnum, 
+    public Ice.AsyncResult begin_pokeBase(int botnum,
                                           IceInternal.Functional_VoidCallback __responseCb, 
                                           IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                           IceInternal.Functional_BoolCallback __sentCb)
@@ -208,7 +208,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_pokeBase(botnum, null, false, false, __responseCb, __exceptionCb, __sentCb);
     }
 
-    public Ice.AsyncResult begin_pokeBase(int botnum, 
+    public Ice.AsyncResult begin_pokeBase(int botnum,
                                           java.util.Map<String, String> __ctx, 
                                           IceInternal.Functional_VoidCallback __responseCb, 
                                           IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb)
@@ -216,7 +216,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_pokeBase(botnum, __ctx, true, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_pokeBase(int botnum, 
+    public Ice.AsyncResult begin_pokeBase(int botnum,
                                           java.util.Map<String, String> __ctx, 
                                           IceInternal.Functional_VoidCallback __responseCb, 
                                           IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
@@ -314,7 +314,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendHallSensorData(botnum, frontLeft, frontRight, backLeft, backRight, __ctx, true, false, __cb);
     }
 
-    public Ice.AsyncResult begin_sendHallSensorData(int botnum, 
+    public Ice.AsyncResult begin_sendHallSensorData(int botnum,
                                                     float frontLeft, 
                                                     float frontRight, 
                                                     float backLeft, 
@@ -325,7 +325,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendHallSensorData(botnum, frontLeft, frontRight, backLeft, backRight, null, false, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_sendHallSensorData(int botnum, 
+    public Ice.AsyncResult begin_sendHallSensorData(int botnum,
                                                     float frontLeft, 
                                                     float frontRight, 
                                                     float backLeft, 
@@ -337,7 +337,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendHallSensorData(botnum, frontLeft, frontRight, backLeft, backRight, null, false, false, __responseCb, __exceptionCb, __sentCb);
     }
 
-    public Ice.AsyncResult begin_sendHallSensorData(int botnum, 
+    public Ice.AsyncResult begin_sendHallSensorData(int botnum,
                                                     float frontLeft, 
                                                     float frontRight, 
                                                     float backLeft, 
@@ -349,7 +349,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendHallSensorData(botnum, frontLeft, frontRight, backLeft, backRight, __ctx, true, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_sendHallSensorData(int botnum, 
+    public Ice.AsyncResult begin_sendHallSensorData(int botnum,
                                                     float frontLeft, 
                                                     float frontRight, 
                                                     float backLeft, 
@@ -467,7 +467,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendImuData(botnum, yaw, pitch, roll, ax, ay, az, __ctx, true, false, __cb);
     }
 
-    public Ice.AsyncResult begin_sendImuData(int botnum, 
+    public Ice.AsyncResult begin_sendImuData(int botnum,
                                              float yaw, 
                                              float pitch, 
                                              float roll, 
@@ -480,7 +480,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendImuData(botnum, yaw, pitch, roll, ax, ay, az, null, false, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_sendImuData(int botnum, 
+    public Ice.AsyncResult begin_sendImuData(int botnum,
                                              float yaw, 
                                              float pitch, 
                                              float roll, 
@@ -494,7 +494,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendImuData(botnum, yaw, pitch, roll, ax, ay, az, null, false, false, __responseCb, __exceptionCb, __sentCb);
     }
 
-    public Ice.AsyncResult begin_sendImuData(int botnum, 
+    public Ice.AsyncResult begin_sendImuData(int botnum,
                                              float yaw, 
                                              float pitch, 
                                              float roll, 
@@ -508,7 +508,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendImuData(botnum, yaw, pitch, roll, ax, ay, az, __ctx, true, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_sendImuData(int botnum, 
+    public Ice.AsyncResult begin_sendImuData(int botnum,
                                              float yaw, 
                                              float pitch, 
                                              float roll, 
@@ -636,7 +636,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendLaserTagData(botnum, laserTagDataType, hitCount, __ctx, true, false, __cb);
     }
 
-    public Ice.AsyncResult begin_sendLaserTagData(int botnum, 
+    public Ice.AsyncResult begin_sendLaserTagData(int botnum,
                                                   String laserTagDataType, 
                                                   int hitCount, 
                                                   IceInternal.Functional_VoidCallback __responseCb, 
@@ -645,7 +645,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendLaserTagData(botnum, laserTagDataType, hitCount, null, false, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_sendLaserTagData(int botnum, 
+    public Ice.AsyncResult begin_sendLaserTagData(int botnum,
                                                   String laserTagDataType, 
                                                   int hitCount, 
                                                   IceInternal.Functional_VoidCallback __responseCb, 
@@ -655,7 +655,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendLaserTagData(botnum, laserTagDataType, hitCount, null, false, false, __responseCb, __exceptionCb, __sentCb);
     }
 
-    public Ice.AsyncResult begin_sendLaserTagData(int botnum, 
+    public Ice.AsyncResult begin_sendLaserTagData(int botnum,
                                                   String laserTagDataType, 
                                                   int hitCount, 
                                                   java.util.Map<String, String> __ctx, 
@@ -665,7 +665,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendLaserTagData(botnum, laserTagDataType, hitCount, __ctx, true, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_sendLaserTagData(int botnum, 
+    public Ice.AsyncResult begin_sendLaserTagData(int botnum,
                                                   String laserTagDataType, 
                                                   int hitCount, 
                                                   java.util.Map<String, String> __ctx, 
@@ -773,7 +773,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendStreamingVideoData(botnum, bytes, cameraID, numObjectsDetected, imgProcseq, __ctx, true, false, __cb);
     }
 
-    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum, 
+    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum,
                                                         byte[] bytes, 
                                                         int cameraID, 
                                                         int numObjectsDetected, 
@@ -784,7 +784,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendStreamingVideoData(botnum, bytes, cameraID, numObjectsDetected, imgProcseq, null, false, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum, 
+    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum,
                                                         byte[] bytes, 
                                                         int cameraID, 
                                                         int numObjectsDetected, 
@@ -796,7 +796,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendStreamingVideoData(botnum, bytes, cameraID, numObjectsDetected, imgProcseq, null, false, false, __responseCb, __exceptionCb, __sentCb);
     }
 
-    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum, 
+    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum,
                                                         byte[] bytes, 
                                                         int cameraID, 
                                                         int numObjectsDetected, 
@@ -808,7 +808,7 @@ public final class SensorInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_sendStreamingVideoData(botnum, bytes, cameraID, numObjectsDetected, imgProcseq, __ctx, true, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum, 
+    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum,
                                                         byte[] bytes, 
                                                         int cameraID, 
                                                         int numObjectsDetected, 

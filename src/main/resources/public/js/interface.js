@@ -40,7 +40,7 @@ function sendMotors(fl, fr, bl, br) {
 			br: br
 		}),
 		processData: false,
-		contentType: 'applicaion/json'
+		contentType: 'application/json'
 	});
 }
 
@@ -155,10 +155,10 @@ $(".controls").click(function(event) {
 */
 function updateDropdown(text, val) {
 	$("#botlist").append(new Option(text, val));
-	// console.log("update has been called");
-	// var option = document.createElement("option");
-	// option.text = "Kiwi";
-	// document.getElementById("botlist").add(option);
+	//console.log("update has been called");
+	var option = document.createElement("option");
+	option.text = "Kiwi";
+	document.getElementById("botlist").add(option);
 }
 
 /* Helper function called from the eventlistener

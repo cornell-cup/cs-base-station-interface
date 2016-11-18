@@ -38,21 +38,21 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_initializeBot(int botnum, java.util.Map<String, String> __ctx, Callback_SensorInterface_initializeBot __cb);
 
-    public Ice.AsyncResult begin_initializeBot(int botnum, 
+    public Ice.AsyncResult begin_initializeBot(int botnum,
                                                IceInternal.Functional_VoidCallback __responseCb, 
                                                IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_initializeBot(int botnum, 
+    public Ice.AsyncResult begin_initializeBot(int botnum,
                                                IceInternal.Functional_VoidCallback __responseCb, 
                                                IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_initializeBot(int botnum, 
+    public Ice.AsyncResult begin_initializeBot(int botnum,
                                                java.util.Map<String, String> __ctx, 
                                                IceInternal.Functional_VoidCallback __responseCb, 
                                                IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_initializeBot(int botnum, 
+    public Ice.AsyncResult begin_initializeBot(int botnum,
                                                java.util.Map<String, String> __ctx, 
                                                IceInternal.Functional_VoidCallback __responseCb, 
                                                IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
@@ -76,27 +76,27 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_sendLaserTagData(int botnum, String laserTagDataType, int hitCount, java.util.Map<String, String> __ctx, Callback_SensorInterface_sendLaserTagData __cb);
 
-    public Ice.AsyncResult begin_sendLaserTagData(int botnum, 
+    public Ice.AsyncResult begin_sendLaserTagData(int botnum,
                                                   String laserTagDataType, 
                                                   int hitCount, 
                                                   IceInternal.Functional_VoidCallback __responseCb, 
                                                   IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendLaserTagData(int botnum, 
+    public Ice.AsyncResult begin_sendLaserTagData(int botnum,
                                                   String laserTagDataType, 
                                                   int hitCount, 
                                                   IceInternal.Functional_VoidCallback __responseCb, 
                                                   IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                   IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_sendLaserTagData(int botnum, 
+    public Ice.AsyncResult begin_sendLaserTagData(int botnum,
                                                   String laserTagDataType, 
                                                   int hitCount, 
                                                   java.util.Map<String, String> __ctx, 
                                                   IceInternal.Functional_VoidCallback __responseCb, 
                                                   IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendLaserTagData(int botnum, 
+    public Ice.AsyncResult begin_sendLaserTagData(int botnum,
                                                   String laserTagDataType, 
                                                   int hitCount, 
                                                   java.util.Map<String, String> __ctx, 
@@ -122,7 +122,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_sendStreamingVideoData(int botnum, byte[] bytes, int cameraID, int numObjectsDetected, ImgProcData[] imgProcseq, java.util.Map<String, String> __ctx, Callback_SensorInterface_sendStreamingVideoData __cb);
 
-    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum, 
+    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum,
                                                         byte[] bytes, 
                                                         int cameraID, 
                                                         int numObjectsDetected, 
@@ -130,7 +130,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
                                                         IceInternal.Functional_VoidCallback __responseCb, 
                                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum, 
+    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum,
                                                         byte[] bytes, 
                                                         int cameraID, 
                                                         int numObjectsDetected, 
@@ -139,7 +139,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
                                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                         IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum, 
+    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum,
                                                         byte[] bytes, 
                                                         int cameraID, 
                                                         int numObjectsDetected, 
@@ -148,7 +148,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
                                                         IceInternal.Functional_VoidCallback __responseCb, 
                                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum, 
+    public Ice.AsyncResult begin_sendStreamingVideoData(int botnum,
                                                         byte[] bytes, 
                                                         int cameraID, 
                                                         int numObjectsDetected, 
@@ -176,21 +176,21 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_pokeBase(int botnum, java.util.Map<String, String> __ctx, Callback_SensorInterface_pokeBase __cb);
 
-    public Ice.AsyncResult begin_pokeBase(int botnum, 
+    public Ice.AsyncResult begin_pokeBase(int botnum,
                                           IceInternal.Functional_VoidCallback __responseCb, 
                                           IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_pokeBase(int botnum, 
+    public Ice.AsyncResult begin_pokeBase(int botnum,
                                           IceInternal.Functional_VoidCallback __responseCb, 
                                           IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                           IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_pokeBase(int botnum, 
+    public Ice.AsyncResult begin_pokeBase(int botnum,
                                           java.util.Map<String, String> __ctx, 
                                           IceInternal.Functional_VoidCallback __responseCb, 
                                           IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_pokeBase(int botnum, 
+    public Ice.AsyncResult begin_pokeBase(int botnum,
                                           java.util.Map<String, String> __ctx, 
                                           IceInternal.Functional_VoidCallback __responseCb, 
                                           IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
@@ -214,7 +214,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_sendHallSensorData(int botnum, float frontLeft, float frontRight, float backLeft, float backRight, java.util.Map<String, String> __ctx, Callback_SensorInterface_sendHallSensorData __cb);
 
-    public Ice.AsyncResult begin_sendHallSensorData(int botnum, 
+    public Ice.AsyncResult begin_sendHallSensorData(int botnum,
                                                     float frontLeft, 
                                                     float frontRight, 
                                                     float backLeft, 
@@ -222,7 +222,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
                                                     IceInternal.Functional_VoidCallback __responseCb, 
                                                     IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendHallSensorData(int botnum, 
+    public Ice.AsyncResult begin_sendHallSensorData(int botnum,
                                                     float frontLeft, 
                                                     float frontRight, 
                                                     float backLeft, 
@@ -231,7 +231,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
                                                     IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                     IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_sendHallSensorData(int botnum, 
+    public Ice.AsyncResult begin_sendHallSensorData(int botnum,
                                                     float frontLeft, 
                                                     float frontRight, 
                                                     float backLeft, 
@@ -240,7 +240,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
                                                     IceInternal.Functional_VoidCallback __responseCb, 
                                                     IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendHallSensorData(int botnum, 
+    public Ice.AsyncResult begin_sendHallSensorData(int botnum,
                                                     float frontLeft, 
                                                     float frontRight, 
                                                     float backLeft, 
@@ -268,7 +268,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_sendImuData(int botnum, float yaw, float pitch, float roll, float ax, float ay, float az, java.util.Map<String, String> __ctx, Callback_SensorInterface_sendImuData __cb);
 
-    public Ice.AsyncResult begin_sendImuData(int botnum, 
+    public Ice.AsyncResult begin_sendImuData(int botnum,
                                              float yaw, 
                                              float pitch, 
                                              float roll, 
@@ -278,7 +278,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
                                              IceInternal.Functional_VoidCallback __responseCb, 
                                              IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendImuData(int botnum, 
+    public Ice.AsyncResult begin_sendImuData(int botnum,
                                              float yaw, 
                                              float pitch, 
                                              float roll, 
@@ -289,7 +289,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
                                              IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                              IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_sendImuData(int botnum, 
+    public Ice.AsyncResult begin_sendImuData(int botnum,
                                              float yaw, 
                                              float pitch, 
                                              float roll, 
@@ -300,7 +300,7 @@ public interface SensorInterfacePrx extends Ice.ObjectPrx
                                              IceInternal.Functional_VoidCallback __responseCb, 
                                              IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendImuData(int botnum, 
+    public Ice.AsyncResult begin_sendImuData(int botnum,
                                              float yaw, 
                                              float pitch, 
                                              float roll, 

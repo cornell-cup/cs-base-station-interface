@@ -38,18 +38,18 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_ping(java.util.Map<String, String> __ctx, Callback_BaseInterface_ping __cb);
 
-    public Ice.AsyncResult begin_ping(IceInternal.Functional_DoubleCallback __responseCb, 
+    public Ice.AsyncResult begin_ping(IceInternal.Functional_DoubleCallback __responseCb,
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_ping(IceInternal.Functional_DoubleCallback __responseCb, 
+    public Ice.AsyncResult begin_ping(IceInternal.Functional_DoubleCallback __responseCb,
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                       IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_ping(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_ping(java.util.Map<String, String> __ctx,
                                       IceInternal.Functional_DoubleCallback __responseCb, 
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_ping(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_ping(java.util.Map<String, String> __ctx,
                                       IceInternal.Functional_DoubleCallback __responseCb, 
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                       IceInternal.Functional_BoolCallback __sentCb);
@@ -72,21 +72,21 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_update(Blob[] data, java.util.Map<String, String> __ctx, Callback_BaseInterface_update __cb);
 
-    public Ice.AsyncResult begin_update(Blob[] data, 
+    public Ice.AsyncResult begin_update(Blob[] data,
                                         IceInternal.Functional_IntCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_update(Blob[] data, 
+    public Ice.AsyncResult begin_update(Blob[] data,
                                         IceInternal.Functional_IntCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                         IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_update(Blob[] data, 
+    public Ice.AsyncResult begin_update(Blob[] data,
                                         java.util.Map<String, String> __ctx, 
                                         IceInternal.Functional_IntCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_update(Blob[] data, 
+    public Ice.AsyncResult begin_update(Blob[] data,
                                         java.util.Map<String, String> __ctx, 
                                         IceInternal.Functional_IntCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 

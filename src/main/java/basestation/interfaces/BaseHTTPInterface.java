@@ -22,6 +22,8 @@ import static spark.Spark.*;
 public class BaseHTTPInterface {
 
     public static void main(String[] args) {
+        port(8080);
+        staticFiles.location("/public");
         JsonParser jp = new JsonParser();
         BaseStation station = new BaseStation();
         RouteOverview.enableRouteOverview("/");

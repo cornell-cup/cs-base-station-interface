@@ -73,27 +73,27 @@ public final class VisionInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_getVision(__ctx, true, false, __cb);
     }
 
-    public Ice.AsyncResult begin_getVision(IceInternal.Functional_GenericCallback1<Blob[]> __responseCb, 
+    public Ice.AsyncResult begin_getVision(IceInternal.Functional_GenericCallback1<Blob[]> __responseCb,
                                            IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb)
     {
         return begin_getVision(null, false, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_getVision(IceInternal.Functional_GenericCallback1<Blob[]> __responseCb, 
+    public Ice.AsyncResult begin_getVision(IceInternal.Functional_GenericCallback1<Blob[]> __responseCb,
                                            IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                            IceInternal.Functional_BoolCallback __sentCb)
     {
         return begin_getVision(null, false, false, __responseCb, __exceptionCb, __sentCb);
     }
 
-    public Ice.AsyncResult begin_getVision(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_getVision(java.util.Map<String, String> __ctx,
                                            IceInternal.Functional_GenericCallback1<Blob[]> __responseCb, 
                                            IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb)
     {
         return begin_getVision(__ctx, true, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_getVision(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_getVision(java.util.Map<String, String> __ctx,
                                            IceInternal.Functional_GenericCallback1<Blob[]> __responseCb, 
                                            IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                            IceInternal.Functional_BoolCallback __sentCb)
@@ -238,7 +238,7 @@ public final class VisionInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_ping(a, b, c, d, e, f, g, h, i, j, k, l, __ctx, true, false, __cb);
     }
 
-    public Ice.AsyncResult begin_ping(double a, 
+    public Ice.AsyncResult begin_ping(double a,
                                       double b, 
                                       double c, 
                                       double d, 
@@ -256,7 +256,7 @@ public final class VisionInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_ping(a, b, c, d, e, f, g, h, i, j, k, l, null, false, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_ping(double a, 
+    public Ice.AsyncResult begin_ping(double a,
                                       double b, 
                                       double c, 
                                       double d, 
@@ -275,7 +275,7 @@ public final class VisionInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_ping(a, b, c, d, e, f, g, h, i, j, k, l, null, false, false, __responseCb, __exceptionCb, __sentCb);
     }
 
-    public Ice.AsyncResult begin_ping(double a, 
+    public Ice.AsyncResult begin_ping(double a,
                                       double b, 
                                       double c, 
                                       double d, 
@@ -294,7 +294,7 @@ public final class VisionInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
         return begin_ping(a, b, c, d, e, f, g, h, i, j, k, l, __ctx, true, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_ping(double a, 
+    public Ice.AsyncResult begin_ping(double a,
                                       double b, 
                                       double c, 
                                       double d, 
