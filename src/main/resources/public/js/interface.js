@@ -16,22 +16,26 @@ Pages and functions:
 */
 
 /* Getters */
-function getBotID(){
-	return $("#id").val();
-}
-
 function getIP(){
 	return $("#ip").val();
 }
 
+function getPort(){
+	return $("#port").val();
+}
+
 function getPower(){
-	return $("power").val();
+	return $("#power").val() * 3;
+}
+
+function getBotID() {
+    return $("#botlist").val();
 }
 
 function sendMotors(fl, fr, bl, br) {
 	$.ajax({
 		method: "POST",
-		url: getIP() + "/commandBot",
+		url: "/commandBot",
 		data: JSON.stringify({
 			botID: getBotID(),
 			fl: fl,
@@ -54,6 +58,7 @@ function sendMotors(fl, fr, bl, br) {
 					the inherent state of a bot has
 					changed (a bot added or removed).
 */
+
 function update(ifMove) {
 	// if it is a position change
 	if(ifMove) {
@@ -103,7 +108,7 @@ $(".dir").click(function(event) {
 	else {
 		console.log("Clicked on a direction button but nothing has been executed.");
 	}
-	update(true);
+	//update(true);
 });
 
 /* Eventlistener for mouseclick on controls (adding, removing, etc.) */
@@ -111,15 +116,26 @@ $(".controls").click(function(event) {
 	event.preventDefault();
 
 	console.log("clicked");
-	if($(event.target).is("#addBot")){
-		console.log("#addBot has been clicked.");
-		updateDropdown("BOT 3 (ID: " + $("#id").val + ", PORT: " + $("#port").val(), "1");
-		manageBots("/addBot", $("#id").val(), $("#port").val());
-	}
-	else if($(event.target).is("#removeBot")){
+	if($(event.target).is("#removeBot")){
 		console.log("#removeBot has been clicked.");
 		manageBots("/removeBot", $("#id").val(), $("#port").val());
 	}
+});
+
+$('#addBot').click(function() {
+    $.ajax({
+    		method: "POST",
+    		url: '/addBot',
+    		dataType: 'json',
+    		data: JSON.stringify({
+    			ip: getIP(),
+    			port: (getPort() || 10000)
+    		}),
+    		contentType: 'application/json',
+    		success: function addSuccess(data) {
+                updateDropdown(data,data);
+    		}
+    });
 });
 
 // $("#add").submit(function(e) {
@@ -143,12 +159,11 @@ function doThing(event) {
 	or removal of a bot).
 */
 function updateDropdown(text, val) {
-	//this.preventDefault();
-	$("#botlist").append(new Option(text, val));
-	//console.log("update has been called");
-	var option = document.createElement("option");
-	option.text = "Kiwi";
-	document.getElementById("botlist").add(option);
+    var opt = document.createElement('option');
+    opt.text = text;
+    opt.value = val;
+    var botlist = document.getElementById("botlist");
+	botlist.appendChild(opt);
 }
 
 /* Helper function called from the eventlistener

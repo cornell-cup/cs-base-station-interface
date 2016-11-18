@@ -14,8 +14,16 @@ public class VisionManager { //TODO incomplete
     private int visionCounter;
 
     public VisionManager() {
+        visionCounter = 0;
         canonicalVisionSystem = new CanonicalVisionSystem();
         visionSystemMap = new HashMap<>();
+        visionSystemMap.put(visionCounter++, canonicalVisionSystem);
+    }
+
+    public int addVisionSystem(VisionSystem vs) {
+        int ct = visionCounter;
+        this.visionSystemMap.put(visionCounter++, vs);
+        return ct;
     }
 
     public Set<Map.Entry<Integer, VisionSystem>> getAllVisionMappings() {

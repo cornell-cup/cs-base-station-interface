@@ -9,24 +9,37 @@ import basestation.bot.connection.IceConnection;
 import basestation.bot.robot.Bot;
 import basestation.bot.robot.modbot.ModBot;
 import basestation.bot.robot.modbot.ModbotCommandCenter;
+import basestation.vision.OverheadVisionSystem;
+import basestation.vision.VisionObject;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import spark.route.RouteOverview;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 
 import static spark.Spark.*;
 
-/* attempt at life */
+/* attempt at life TODO Make this more informative */
 public class BaseHTTPInterface {
+
+    // Temp config settings
+    public static final boolean OVERHEAD_VISION = true;
 
     public static void main(String[] args) {
         port(8080);
         staticFiles.location("/public");
         JsonParser jp = new JsonParser();
         BaseStation station = new BaseStation();
+
+        if (OVERHEAD_VISION) {
+            OverheadVisionSystem ovs = new OverheadVisionSystem();
+            station.getVisionManager().addVisionSystem(ovs);
+        }
+
         RouteOverview.enableRouteOverview("/");
 
         post("/addBot", (req,res) -> {
@@ -42,9 +55,9 @@ public class BaseHTTPInterface {
 
             /* new modbot is created to add */
             ModBot newBot = new ModBot(new BaseStation(), ice);
-            station.getBotManager().addBot(newBot);
+            int ret = station.getBotManager().addBot(newBot);
 
-            return newBot;
+            return ret;
         });
 
         post("/commandBot", (req,res) -> {
@@ -65,15 +78,18 @@ public class BaseHTTPInterface {
 
 
         get("/updateloc", (req, res) -> {
-            // TODO: push to js the location of every modbot that is active.
-
-            Set<Map.Entry<Integer, Bot>> addedBots = station.getBotManager().getAllTrackedBots();
-
-            for(Map.Entry<Integer, Bot> entry : addedBots) {
-                //TODO: do something
+            List<VisionObject> vol = station.getVisionManager().getAllLocationData();
+            JsonArray respData = new JsonArray();
+            for (VisionObject vo : vol) {
+                JsonObject jo = new JsonObject();
+                jo.addProperty("x", vo.coord.x);
+                jo.addProperty("y", vo.coord.y);
+                jo.addProperty("angle", vo.coord.getThetaOrZero());
+                jo.addProperty("id", vo.vid);
+                respData.add(jo);
             }
 
-            return true;
+            return respData;
         });
 
 
