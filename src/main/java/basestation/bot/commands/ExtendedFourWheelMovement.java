@@ -12,10 +12,7 @@ import basestation.vision.VisionCoordinate;
  * that is between 0 and 100
  */
 public abstract class ExtendedFourWheelMovement implements FourWheelMovement {
-    protected Connection connection;
-
     public ExtendedFourWheelMovement(Connection connection) {
-        this.connection = connection;
     }
 
     public void forward(double power) {

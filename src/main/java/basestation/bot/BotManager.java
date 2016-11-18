@@ -1,5 +1,7 @@
 package basestation.bot;
 
+import basestation.bot.robot.Bot;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;

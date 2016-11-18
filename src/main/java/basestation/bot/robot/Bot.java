@@ -1,4 +1,4 @@
-package basestation.bot;
+package basestation.bot.robot;
 
 import basestation.bot.commands.CommandCenter;
 import basestation.bot.connection.Connection;

@@ -12,13 +12,14 @@ import basestation.vision.VisionCoordinate;
  * Each bot must implement this class with their own commands.
  */
 public class ModbotCommandCenter extends ExtendedFourWheelMovement {
+    private final Connection connection;
 
-    private ModbotNavigator navigator;
-
+    private final ModbotNavigator navigator;
 
     public ModbotCommandCenter(BaseStation parent, Connection connection, ModBot myBot) {
         super(connection);
         this.navigator = new ModbotNavigator(parent, myBot);
+        this.connection = connection;
     }
 
     /**

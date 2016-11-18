@@ -1,6 +1,6 @@
 package basestation.bot.connection;
 
-import com.google.gson.JsonObject;
+//import com.google.gson.JsonObject;
 
 /**
  * Represents a connection between the base station and a bot
@@ -17,9 +17,9 @@ public abstract class Connection {
      * @param data A command to send
      * @return true if successful, else false
      */
-    public boolean sendArbitrary(JsonObject data) {
-        throw new Error("Unimplemented for this connection type");
-    }
+    //public boolean sendArbitrary(JsonObject data) {
+     //   throw new Error("Unimplemented for this connection type");
+    //}
 
     /**
      * Safely disconnects from the bot

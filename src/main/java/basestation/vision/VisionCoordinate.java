@@ -53,7 +53,7 @@ public class VisionCoordinate {
     }
 
     public String toString() {
-        return "(" + String.format("%.2f", x) + "," + String.format("%.2f", y) + "," + String.format("%.2f", theta) + "deg)"; // TODO: Format in velocities
+        return "(" + String.format("%.2f", x) + "," + String.format("%.2f", y); //+ "," + String.format("%.2f", theta) + "deg)"; // TODO: Format in velocities and optional theta
     }
 
     public boolean equals(Object other) {

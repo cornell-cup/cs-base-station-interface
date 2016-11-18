@@ -1,6 +1,6 @@
 package basestation.vision;
 
-import basestation.bot.Bot;
+import basestation.bot.robot.Bot;
 
 import java.util.*;
 

@@ -1,12 +1,11 @@
 package basestation.bot.sensors;
 
-import com.google.gson.JsonObject;
-
 /**
  * Hosts methods to retrieve data from all applicable sensors
  */
 public abstract class SensorCenter {
-
-    public abstract JsonObject getAllData();
-
+    /**
+     * @return a JSON string with the data for all the sensors.
+     */
+    public abstract String getAllDataJson();
 }
