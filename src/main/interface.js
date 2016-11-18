@@ -73,23 +73,6 @@ function update(ifMove) {
 	}
 }
 
-var op = document.createElement('option');
-op.value = "a";
-op.text = "a";
-op.innerHTML = "JESUS PLEASE WORK FOR THE LOVE OF GOD";
-$("#botlist").add(op, 0);
-
-console.log("started to work?");
-var o = new Option("text", "value");
-$(o).html("more text");
-console.log(o);
-$("#botlist").append(o);
-console.log($("#botlist"));
-console.log("pls work");
-
-// $("#botlist").append(
-// 	new Option("text", "val", false, true)
-// );
 
 /* When .dir is clicked, send motors to take some kind of action. */
 $(".dir").click(function(event) {
@@ -126,7 +109,7 @@ $(".dir").click(function(event) {
 /* Eventlistener for mouseclick on controls (adding, removing, etc.) */
 $(".controls").click(function(event) {
 	event.preventDefault();
-	
+
 	console.log("clicked");
 	if($(event.target).is("#addBot")){
 		console.log("#addBot has been clicked.");
@@ -142,7 +125,13 @@ $(".controls").click(function(event) {
 // $("#add").submit(function(e) {
 // 	console.log("update has been called");
 // 	e.preventDefault();
-	
+
+function doThing(event) {
+	updateDropdown("BOT 3", "1");
+	return false;
+}
+
+
 // 	var option = document.createElement("option");
 // 	option.text = "PLEASE WORK FOR THE LOVE OF GOD";
 // 	document.getElementById("botlist").add(option);
@@ -154,6 +143,7 @@ $(".controls").click(function(event) {
 	or removal of a bot).
 */
 function updateDropdown(text, val) {
+	this.preventDefault();
 	$("#botlist").append(new Option(text, val));
 	// console.log("update has been called");
 	// var option = document.createElement("option");
