@@ -73,27 +73,27 @@ public final class BaseInterfacePrxHelper extends Ice.ObjectPrxHelperBase implem
         return begin_ping(__ctx, true, false, __cb);
     }
 
-    public Ice.AsyncResult begin_ping(IceInternal.Functional_DoubleCallback __responseCb, 
+    public Ice.AsyncResult begin_ping(IceInternal.Functional_DoubleCallback __responseCb,
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb)
     {
         return begin_ping(null, false, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_ping(IceInternal.Functional_DoubleCallback __responseCb, 
+    public Ice.AsyncResult begin_ping(IceInternal.Functional_DoubleCallback __responseCb,
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                       IceInternal.Functional_BoolCallback __sentCb)
     {
         return begin_ping(null, false, false, __responseCb, __exceptionCb, __sentCb);
     }
 
-    public Ice.AsyncResult begin_ping(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_ping(java.util.Map<String, String> __ctx,
                                       IceInternal.Functional_DoubleCallback __responseCb, 
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb)
     {
         return begin_ping(__ctx, true, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_ping(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_ping(java.util.Map<String, String> __ctx,
                                       IceInternal.Functional_DoubleCallback __responseCb, 
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                       IceInternal.Functional_BoolCallback __sentCb)
@@ -238,14 +238,14 @@ public final class BaseInterfacePrxHelper extends Ice.ObjectPrxHelperBase implem
         return begin_update(data, __ctx, true, false, __cb);
     }
 
-    public Ice.AsyncResult begin_update(Blob[] data, 
+    public Ice.AsyncResult begin_update(Blob[] data,
                                         IceInternal.Functional_IntCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb)
     {
         return begin_update(data, null, false, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_update(Blob[] data, 
+    public Ice.AsyncResult begin_update(Blob[] data,
                                         IceInternal.Functional_IntCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                         IceInternal.Functional_BoolCallback __sentCb)
@@ -253,7 +253,7 @@ public final class BaseInterfacePrxHelper extends Ice.ObjectPrxHelperBase implem
         return begin_update(data, null, false, false, __responseCb, __exceptionCb, __sentCb);
     }
 
-    public Ice.AsyncResult begin_update(Blob[] data, 
+    public Ice.AsyncResult begin_update(Blob[] data,
                                         java.util.Map<String, String> __ctx, 
                                         IceInternal.Functional_IntCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb)
@@ -261,7 +261,7 @@ public final class BaseInterfacePrxHelper extends Ice.ObjectPrxHelperBase implem
         return begin_update(data, __ctx, true, false, __responseCb, __exceptionCb, null);
     }
 
-    public Ice.AsyncResult begin_update(Blob[] data, 
+    public Ice.AsyncResult begin_update(Blob[] data,
                                         java.util.Map<String, String> __ctx, 
                                         IceInternal.Functional_IntCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 

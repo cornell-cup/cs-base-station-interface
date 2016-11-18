@@ -3,6 +3,7 @@ package basestation.bot.robot.modbot;
 import basestation.BaseStation;
 import basestation.bot.robot.Bot;
 import basestation.bot.connection.IceConnection;
+import basestation.bot.connection.MotorConnection;
 import basestation.bot.sensors.SensorCenter;
 
 /**
@@ -17,7 +18,7 @@ public class ModBot extends Bot {
      *
      * @param c an ice connection that has already been created
      */
-    public ModBot(BaseStation myStation, IceConnection c) {
+    public ModBot(BaseStation myStation, MotorConnection c) {
         super(c);
         this.commandCenter = new ModbotCommandCenter(myStation, c, this);
         this.sensorCenter = new ModbotSensorCenter();

@@ -4,6 +4,7 @@ import basestation.BaseStation;
 import basestation.bot.commands.ExtendedFourWheelMovement;
 import basestation.bot.connection.Connection;
 import basestation.bot.connection.IceConnection;
+import basestation.bot.connection.MotorConnection;
 import basestation.vision.VisionCoordinate;
 
 /**
@@ -60,8 +61,8 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
 
     @Override
     public void setWheelPower(double fl, double fr, double bl, double br) {
-        if (connection instanceof IceConnection) {
-            ((IceConnection) connection).setMotorPower(fl, fr, bl, br);
+        if (connection instanceof MotorConnection) {
+            ((MotorConnection) connection).setMotorPower(fl, fr, bl, br);
         }
     }
 

@@ -6,11 +6,16 @@ package basestation.interfaces;
 
 import basestation.BaseStation;
 import basestation.bot.connection.IceConnection;
+import basestation.bot.robot.Bot;
 import basestation.bot.robot.modbot.ModBot;
 import basestation.bot.robot.modbot.ModbotCommandCenter;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import spark.route.RouteOverview;
+
+import java.util.Map;
+import java.util.Set;
+
 
 import static spark.Spark.*;
 
@@ -18,6 +23,8 @@ import static spark.Spark.*;
 public class BaseHTTPInterface {
 
     public static void main(String[] args) {
+        port(8080);
+        staticFiles.location("/public");
         JsonParser jp = new JsonParser();
         BaseStation station = new BaseStation();
         RouteOverview.enableRouteOverview("/");
@@ -51,17 +58,24 @@ public class BaseHTTPInterface {
             int bl = commandInfo.get("bl").getAsInt();
             int br = commandInfo.get("br").getAsInt();
 
-            // question: why is the casting to (ModbotCommandCenter) necessary?
             ((ModbotCommandCenter)station.getBotManager().getBotById(botID).getCommandCenter()).setWheelPower(fl,fr,bl,br);
 
             return true;
         });
 
-        /*
+
         get("/updateloc", (req, res) -> {
             // TODO: push to js the location of every modbot that is active.
+
+            Set<Map.Entry<Integer, Bot>> addedBots = station.getBotManager().getAllTrackedBots();
+
+            for(Map.Entry<Integer, Bot> entry : addedBots) {
+                //TODO: do something
+            }
+
+            return true;
         });
-        */
+
 
     }
 }

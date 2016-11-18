@@ -38,27 +38,27 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_sendMovementData(int forward, int strafe, int rotate, java.util.Map<String, String> __ctx, Callback_BaseInterface_sendMovementData __cb);
 
-    public Ice.AsyncResult begin_sendMovementData(int forward, 
+    public Ice.AsyncResult begin_sendMovementData(int forward,
                                                   int strafe, 
                                                   int rotate, 
                                                   IceInternal.Functional_VoidCallback __responseCb, 
                                                   IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendMovementData(int forward, 
+    public Ice.AsyncResult begin_sendMovementData(int forward,
                                                   int strafe, 
                                                   int rotate, 
                                                   IceInternal.Functional_VoidCallback __responseCb, 
                                                   IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                   IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_sendMovementData(int forward, 
+    public Ice.AsyncResult begin_sendMovementData(int forward,
                                                   int strafe, 
                                                   int rotate, 
                                                   java.util.Map<String, String> __ctx, 
                                                   IceInternal.Functional_VoidCallback __responseCb, 
                                                   IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendMovementData(int forward, 
+    public Ice.AsyncResult begin_sendMovementData(int forward,
                                                   int strafe, 
                                                   int rotate, 
                                                   java.util.Map<String, String> __ctx, 
@@ -84,14 +84,14 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_setMotorSpeeds(int frontLeft, int frontRight, int backLeft, int backRight, java.util.Map<String, String> __ctx, Callback_BaseInterface_setMotorSpeeds __cb);
 
-    public Ice.AsyncResult begin_setMotorSpeeds(int frontLeft, 
+    public Ice.AsyncResult begin_setMotorSpeeds(int frontLeft,
                                                 int frontRight, 
                                                 int backLeft, 
                                                 int backRight, 
                                                 IceInternal.Functional_VoidCallback __responseCb, 
                                                 IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_setMotorSpeeds(int frontLeft, 
+    public Ice.AsyncResult begin_setMotorSpeeds(int frontLeft,
                                                 int frontRight, 
                                                 int backLeft, 
                                                 int backRight, 
@@ -99,7 +99,7 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
                                                 IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                 IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_setMotorSpeeds(int frontLeft, 
+    public Ice.AsyncResult begin_setMotorSpeeds(int frontLeft,
                                                 int frontRight, 
                                                 int backLeft, 
                                                 int backRight, 
@@ -107,7 +107,7 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
                                                 IceInternal.Functional_VoidCallback __responseCb, 
                                                 IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_setMotorSpeeds(int frontLeft, 
+    public Ice.AsyncResult begin_setMotorSpeeds(int frontLeft,
                                                 int frontRight, 
                                                 int backLeft, 
                                                 int backRight, 
@@ -134,21 +134,21 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_moveArm(String pos, java.util.Map<String, String> __ctx, Callback_BaseInterface_moveArm __cb);
 
-    public Ice.AsyncResult begin_moveArm(String pos, 
+    public Ice.AsyncResult begin_moveArm(String pos,
                                          IceInternal.Functional_VoidCallback __responseCb, 
                                          IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_moveArm(String pos, 
+    public Ice.AsyncResult begin_moveArm(String pos,
                                          IceInternal.Functional_VoidCallback __responseCb, 
                                          IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                          IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_moveArm(String pos, 
+    public Ice.AsyncResult begin_moveArm(String pos,
                                          java.util.Map<String, String> __ctx, 
                                          IceInternal.Functional_VoidCallback __responseCb, 
                                          IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_moveArm(String pos, 
+    public Ice.AsyncResult begin_moveArm(String pos,
                                          java.util.Map<String, String> __ctx, 
                                          IceInternal.Functional_VoidCallback __responseCb, 
                                          IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
@@ -172,24 +172,24 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_sendControlInfo(int port, int on, java.util.Map<String, String> __ctx, Callback_BaseInterface_sendControlInfo __cb);
 
-    public Ice.AsyncResult begin_sendControlInfo(int port, 
+    public Ice.AsyncResult begin_sendControlInfo(int port,
                                                  int on, 
                                                  IceInternal.Functional_VoidCallback __responseCb, 
                                                  IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendControlInfo(int port, 
+    public Ice.AsyncResult begin_sendControlInfo(int port,
                                                  int on, 
                                                  IceInternal.Functional_VoidCallback __responseCb, 
                                                  IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                  IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_sendControlInfo(int port, 
+    public Ice.AsyncResult begin_sendControlInfo(int port,
                                                  int on, 
                                                  java.util.Map<String, String> __ctx, 
                                                  IceInternal.Functional_VoidCallback __responseCb, 
                                                  IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendControlInfo(int port, 
+    public Ice.AsyncResult begin_sendControlInfo(int port,
                                                  int on, 
                                                  java.util.Map<String, String> __ctx, 
                                                  IceInternal.Functional_VoidCallback __responseCb, 
@@ -214,14 +214,14 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_init(String ip, String name, int port, int id, java.util.Map<String, String> __ctx, Callback_BaseInterface_init __cb);
 
-    public Ice.AsyncResult begin_init(String ip, 
+    public Ice.AsyncResult begin_init(String ip,
                                       String name, 
                                       int port, 
                                       int id, 
                                       IceInternal.Functional_VoidCallback __responseCb, 
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_init(String ip, 
+    public Ice.AsyncResult begin_init(String ip,
                                       String name, 
                                       int port, 
                                       int id, 
@@ -229,7 +229,7 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                       IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_init(String ip, 
+    public Ice.AsyncResult begin_init(String ip,
                                       String name, 
                                       int port, 
                                       int id, 
@@ -237,7 +237,7 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
                                       IceInternal.Functional_VoidCallback __responseCb, 
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_init(String ip, 
+    public Ice.AsyncResult begin_init(String ip,
                                       String name, 
                                       int port, 
                                       int id, 
@@ -264,21 +264,21 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_pokeBot(String baseIP, java.util.Map<String, String> __ctx, Callback_BaseInterface_pokeBot __cb);
 
-    public Ice.AsyncResult begin_pokeBot(String baseIP, 
+    public Ice.AsyncResult begin_pokeBot(String baseIP,
                                          IceInternal.Functional_VoidCallback __responseCb, 
                                          IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_pokeBot(String baseIP, 
+    public Ice.AsyncResult begin_pokeBot(String baseIP,
                                          IceInternal.Functional_VoidCallback __responseCb, 
                                          IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                          IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_pokeBot(String baseIP, 
+    public Ice.AsyncResult begin_pokeBot(String baseIP,
                                          java.util.Map<String, String> __ctx, 
                                          IceInternal.Functional_VoidCallback __responseCb, 
                                          IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_pokeBot(String baseIP, 
+    public Ice.AsyncResult begin_pokeBot(String baseIP,
                                          java.util.Map<String, String> __ctx, 
                                          IceInternal.Functional_VoidCallback __responseCb, 
                                          IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
@@ -302,18 +302,18 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_shoot(java.util.Map<String, String> __ctx, Callback_BaseInterface_shoot __cb);
 
-    public Ice.AsyncResult begin_shoot(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_shoot(IceInternal.Functional_VoidCallback __responseCb,
                                        IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_shoot(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_shoot(IceInternal.Functional_VoidCallback __responseCb,
                                        IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                        IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_shoot(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_shoot(java.util.Map<String, String> __ctx,
                                        IceInternal.Functional_VoidCallback __responseCb, 
                                        IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_shoot(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_shoot(java.util.Map<String, String> __ctx,
                                        IceInternal.Functional_VoidCallback __responseCb, 
                                        IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                        IceInternal.Functional_BoolCallback __sentCb);
@@ -336,18 +336,18 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_reload(java.util.Map<String, String> __ctx, Callback_BaseInterface_reload __cb);
 
-    public Ice.AsyncResult begin_reload(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_reload(IceInternal.Functional_VoidCallback __responseCb,
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_reload(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_reload(IceInternal.Functional_VoidCallback __responseCb,
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                         IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_reload(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_reload(java.util.Map<String, String> __ctx,
                                         IceInternal.Functional_VoidCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_reload(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_reload(java.util.Map<String, String> __ctx,
                                         IceInternal.Functional_VoidCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                         IceInternal.Functional_BoolCallback __sentCb);
@@ -370,18 +370,18 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_allOff(java.util.Map<String, String> __ctx, Callback_BaseInterface_allOff __cb);
 
-    public Ice.AsyncResult begin_allOff(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_allOff(IceInternal.Functional_VoidCallback __responseCb,
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_allOff(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_allOff(IceInternal.Functional_VoidCallback __responseCb,
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                         IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_allOff(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_allOff(java.util.Map<String, String> __ctx,
                                         IceInternal.Functional_VoidCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_allOff(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_allOff(java.util.Map<String, String> __ctx,
                                         IceInternal.Functional_VoidCallback __responseCb, 
                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                         IceInternal.Functional_BoolCallback __sentCb);
@@ -404,18 +404,18 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_laserTagFire(java.util.Map<String, String> __ctx, Callback_BaseInterface_laserTagFire __cb);
 
-    public Ice.AsyncResult begin_laserTagFire(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_laserTagFire(IceInternal.Functional_VoidCallback __responseCb,
                                               IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_laserTagFire(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_laserTagFire(IceInternal.Functional_VoidCallback __responseCb,
                                               IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                               IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_laserTagFire(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_laserTagFire(java.util.Map<String, String> __ctx,
                                               IceInternal.Functional_VoidCallback __responseCb, 
                                               IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_laserTagFire(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_laserTagFire(java.util.Map<String, String> __ctx,
                                               IceInternal.Functional_VoidCallback __responseCb, 
                                               IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                               IceInternal.Functional_BoolCallback __sentCb);
@@ -438,18 +438,18 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_laserTagShield(java.util.Map<String, String> __ctx, Callback_BaseInterface_laserTagShield __cb);
 
-    public Ice.AsyncResult begin_laserTagShield(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_laserTagShield(IceInternal.Functional_VoidCallback __responseCb,
                                                 IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_laserTagShield(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_laserTagShield(IceInternal.Functional_VoidCallback __responseCb,
                                                 IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                 IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_laserTagShield(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_laserTagShield(java.util.Map<String, String> __ctx,
                                                 IceInternal.Functional_VoidCallback __responseCb, 
                                                 IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_laserTagShield(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_laserTagShield(java.util.Map<String, String> __ctx,
                                                 IceInternal.Functional_VoidCallback __responseCb, 
                                                 IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                 IceInternal.Functional_BoolCallback __sentCb);
@@ -472,21 +472,21 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_sendSteeringData(int direction, java.util.Map<String, String> __ctx, Callback_BaseInterface_sendSteeringData __cb);
 
-    public Ice.AsyncResult begin_sendSteeringData(int direction, 
+    public Ice.AsyncResult begin_sendSteeringData(int direction,
                                                   IceInternal.Functional_VoidCallback __responseCb, 
                                                   IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendSteeringData(int direction, 
+    public Ice.AsyncResult begin_sendSteeringData(int direction,
                                                   IceInternal.Functional_VoidCallback __responseCb, 
                                                   IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                   IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_sendSteeringData(int direction, 
+    public Ice.AsyncResult begin_sendSteeringData(int direction,
                                                   java.util.Map<String, String> __ctx, 
                                                   IceInternal.Functional_VoidCallback __responseCb, 
                                                   IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendSteeringData(int direction, 
+    public Ice.AsyncResult begin_sendSteeringData(int direction,
                                                   java.util.Map<String, String> __ctx, 
                                                   IceInternal.Functional_VoidCallback __responseCb, 
                                                   IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
@@ -510,24 +510,24 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_sendTurretData(int horizontal, int vertical, java.util.Map<String, String> __ctx, Callback_BaseInterface_sendTurretData __cb);
 
-    public Ice.AsyncResult begin_sendTurretData(int horizontal, 
+    public Ice.AsyncResult begin_sendTurretData(int horizontal,
                                                 int vertical, 
                                                 IceInternal.Functional_VoidCallback __responseCb, 
                                                 IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendTurretData(int horizontal, 
+    public Ice.AsyncResult begin_sendTurretData(int horizontal,
                                                 int vertical, 
                                                 IceInternal.Functional_VoidCallback __responseCb, 
                                                 IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                 IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_sendTurretData(int horizontal, 
+    public Ice.AsyncResult begin_sendTurretData(int horizontal,
                                                 int vertical, 
                                                 java.util.Map<String, String> __ctx, 
                                                 IceInternal.Functional_VoidCallback __responseCb, 
                                                 IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_sendTurretData(int horizontal, 
+    public Ice.AsyncResult begin_sendTurretData(int horizontal,
                                                 int vertical, 
                                                 java.util.Map<String, String> __ctx, 
                                                 IceInternal.Functional_VoidCallback __responseCb, 
@@ -552,14 +552,14 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_setDuneBotMotorSpeeds(int frontLeft, int frontRight, int backRight, int backLeft, java.util.Map<String, String> __ctx, Callback_BaseInterface_setDuneBotMotorSpeeds __cb);
 
-    public Ice.AsyncResult begin_setDuneBotMotorSpeeds(int frontLeft, 
+    public Ice.AsyncResult begin_setDuneBotMotorSpeeds(int frontLeft,
                                                        int frontRight, 
                                                        int backRight, 
                                                        int backLeft, 
                                                        IceInternal.Functional_VoidCallback __responseCb, 
                                                        IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_setDuneBotMotorSpeeds(int frontLeft, 
+    public Ice.AsyncResult begin_setDuneBotMotorSpeeds(int frontLeft,
                                                        int frontRight, 
                                                        int backRight, 
                                                        int backLeft, 
@@ -567,7 +567,7 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
                                                        IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                        IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_setDuneBotMotorSpeeds(int frontLeft, 
+    public Ice.AsyncResult begin_setDuneBotMotorSpeeds(int frontLeft,
                                                        int frontRight, 
                                                        int backRight, 
                                                        int backLeft, 
@@ -575,7 +575,7 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
                                                        IceInternal.Functional_VoidCallback __responseCb, 
                                                        IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_setDuneBotMotorSpeeds(int frontLeft, 
+    public Ice.AsyncResult begin_setDuneBotMotorSpeeds(int frontLeft,
                                                        int frontRight, 
                                                        int backRight, 
                                                        int backLeft, 
@@ -602,18 +602,18 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_requestImageProcessing(java.util.Map<String, String> __ctx, Callback_BaseInterface_requestImageProcessing __cb);
 
-    public Ice.AsyncResult begin_requestImageProcessing(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_requestImageProcessing(IceInternal.Functional_VoidCallback __responseCb,
                                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_requestImageProcessing(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_requestImageProcessing(IceInternal.Functional_VoidCallback __responseCb,
                                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                         IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_requestImageProcessing(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_requestImageProcessing(java.util.Map<String, String> __ctx,
                                                         IceInternal.Functional_VoidCallback __responseCb, 
                                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_requestImageProcessing(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_requestImageProcessing(java.util.Map<String, String> __ctx,
                                                         IceInternal.Functional_VoidCallback __responseCb, 
                                                         IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                                         IceInternal.Functional_BoolCallback __sentCb);
@@ -636,18 +636,18 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_restartBot(java.util.Map<String, String> __ctx, Callback_BaseInterface_restartBot __cb);
 
-    public Ice.AsyncResult begin_restartBot(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_restartBot(IceInternal.Functional_VoidCallback __responseCb,
                                             IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_restartBot(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_restartBot(IceInternal.Functional_VoidCallback __responseCb,
                                             IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                             IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_restartBot(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_restartBot(java.util.Map<String, String> __ctx,
                                             IceInternal.Functional_VoidCallback __responseCb, 
                                             IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_restartBot(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_restartBot(java.util.Map<String, String> __ctx,
                                             IceInternal.Functional_VoidCallback __responseCb, 
                                             IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                             IceInternal.Functional_BoolCallback __sentCb);
@@ -670,18 +670,18 @@ public interface BaseInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_shutdownBot(java.util.Map<String, String> __ctx, Callback_BaseInterface_shutdownBot __cb);
 
-    public Ice.AsyncResult begin_shutdownBot(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_shutdownBot(IceInternal.Functional_VoidCallback __responseCb,
                                              IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_shutdownBot(IceInternal.Functional_VoidCallback __responseCb, 
+    public Ice.AsyncResult begin_shutdownBot(IceInternal.Functional_VoidCallback __responseCb,
                                              IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                              IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_shutdownBot(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_shutdownBot(java.util.Map<String, String> __ctx,
                                              IceInternal.Functional_VoidCallback __responseCb, 
                                              IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_shutdownBot(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_shutdownBot(java.util.Map<String, String> __ctx,
                                              IceInternal.Functional_VoidCallback __responseCb, 
                                              IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                              IceInternal.Functional_BoolCallback __sentCb);

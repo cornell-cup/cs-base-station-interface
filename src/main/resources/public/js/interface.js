@@ -40,7 +40,7 @@ function sendMotors(fl, fr, bl, br) {
 			br: br
 		}),
 		processData: false,
-		contentType: 'applicaion/json'
+		contentType: 'application/json'
 	});
 }
 
@@ -72,6 +72,7 @@ function update(ifMove) {
 
 	}
 }
+
 
 /* When .dir is clicked, send motors to take some kind of action. */
 $(".dir").click(function(event) {
@@ -107,10 +108,12 @@ $(".dir").click(function(event) {
 
 /* Eventlistener for mouseclick on controls (adding, removing, etc.) */
 $(".controls").click(function(event) {
+	event.preventDefault();
+
 	console.log("clicked");
 	if($(event.target).is("#addBot")){
 		console.log("#addBot has been clicked.");
-		updateDropdown();
+		updateDropdown("BOT 3 (ID: " + $("#id").val + ", PORT: " + $("#port").val(), "1");
 		manageBots("/addBot", $("#id").val(), $("#port").val());
 	}
 	else if($(event.target).is("#removeBot")){
@@ -119,16 +122,33 @@ $(".controls").click(function(event) {
 	}
 });
 
+// $("#add").submit(function(e) {
+// 	console.log("update has been called");
+// 	e.preventDefault();
+
+function doThing(event) {
+	updateDropdown("BOT 3", "1");
+	return false;
+}
+
+
+// 	var option = document.createElement("option");
+// 	option.text = "PLEASE WORK FOR THE LOVE OF GOD";
+// 	document.getElementById("botlist").add(option);
+// });
+
 /*
 	For any update to the list of active bots, the dropdown menu
 	of active bots will update accordingly (depending on the addition
 	or removal of a bot).
 */
-function updateDropdown() {
-	console.log("update has been called");
+function updateDropdown(text, val) {
+	//this.preventDefault();
+	$("#botlist").append(new Option(text, val));
+	//console.log("update has been called");
 	var option = document.createElement("option");
 	option.text = "Kiwi";
-	$("#botlist").add(option);
+	document.getElementById("botlist").add(option);
 }
 
 /* Helper function called from the eventlistener

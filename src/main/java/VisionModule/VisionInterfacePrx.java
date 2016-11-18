@@ -38,7 +38,7 @@ public interface VisionInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_ping(double a, double b, double c, double d, double e, double f, double g, double h, double i, double j, double k, double l, java.util.Map<String, String> __ctx, Callback_VisionInterface_ping __cb);
 
-    public Ice.AsyncResult begin_ping(double a, 
+    public Ice.AsyncResult begin_ping(double a,
                                       double b, 
                                       double c, 
                                       double d, 
@@ -53,7 +53,7 @@ public interface VisionInterfacePrx extends Ice.ObjectPrx
                                       IceInternal.Functional_DoubleCallback __responseCb, 
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_ping(double a, 
+    public Ice.AsyncResult begin_ping(double a,
                                       double b, 
                                       double c, 
                                       double d, 
@@ -69,7 +69,7 @@ public interface VisionInterfacePrx extends Ice.ObjectPrx
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                       IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_ping(double a, 
+    public Ice.AsyncResult begin_ping(double a,
                                       double b, 
                                       double c, 
                                       double d, 
@@ -85,7 +85,7 @@ public interface VisionInterfacePrx extends Ice.ObjectPrx
                                       IceInternal.Functional_DoubleCallback __responseCb, 
                                       IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_ping(double a, 
+    public Ice.AsyncResult begin_ping(double a,
                                       double b, 
                                       double c, 
                                       double d, 
@@ -120,18 +120,18 @@ public interface VisionInterfacePrx extends Ice.ObjectPrx
 
     public Ice.AsyncResult begin_getVision(java.util.Map<String, String> __ctx, Callback_VisionInterface_getVision __cb);
 
-    public Ice.AsyncResult begin_getVision(IceInternal.Functional_GenericCallback1<Blob[]> __responseCb, 
+    public Ice.AsyncResult begin_getVision(IceInternal.Functional_GenericCallback1<Blob[]> __responseCb,
                                            IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_getVision(IceInternal.Functional_GenericCallback1<Blob[]> __responseCb, 
+    public Ice.AsyncResult begin_getVision(IceInternal.Functional_GenericCallback1<Blob[]> __responseCb,
                                            IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                            IceInternal.Functional_BoolCallback __sentCb);
 
-    public Ice.AsyncResult begin_getVision(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_getVision(java.util.Map<String, String> __ctx,
                                            IceInternal.Functional_GenericCallback1<Blob[]> __responseCb, 
                                            IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb);
 
-    public Ice.AsyncResult begin_getVision(java.util.Map<String, String> __ctx, 
+    public Ice.AsyncResult begin_getVision(java.util.Map<String, String> __ctx,
                                            IceInternal.Functional_GenericCallback1<Blob[]> __responseCb, 
                                            IceInternal.Functional_GenericCallback1<Ice.Exception> __exceptionCb, 
                                            IceInternal.Functional_BoolCallback __sentCb);
