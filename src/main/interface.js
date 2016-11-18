@@ -73,6 +73,24 @@ function update(ifMove) {
 	}
 }
 
+var op = document.createElement('option');
+op.value = "a";
+op.text = "a";
+op.innerHTML = "JESUS PLEASE WORK FOR THE LOVE OF GOD";
+$("#botlist").add(op, 0);
+
+console.log("started to work?");
+var o = new Option("text", "value");
+$(o).html("more text");
+console.log(o);
+$("#botlist").append(o);
+console.log($("#botlist"));
+console.log("pls work");
+
+// $("#botlist").append(
+// 	new Option("text", "val", false, true)
+// );
+
 /* When .dir is clicked, send motors to take some kind of action. */
 $(".dir").click(function(event) {
 	var pow = getPower();
@@ -107,11 +125,12 @@ $(".dir").click(function(event) {
 
 /* Eventlistener for mouseclick on controls (adding, removing, etc.) */
 $(".controls").click(function(event) {
-
+	event.preventDefault();
+	
 	console.log("clicked");
 	if($(event.target).is("#addBot")){
 		console.log("#addBot has been clicked.");
-		//updateDropdown();
+		updateDropdown("BOT 3 (ID: " + $("#id").val + ", PORT: " + $("#port").val(), "1");
 		manageBots("/addBot", $("#id").val(), $("#port").val());
 	}
 	else if($(event.target).is("#removeBot")){
@@ -120,25 +139,26 @@ $(".controls").click(function(event) {
 	}
 });
 
-$("#add").submit(function(e) {
-	console.log("update has been called");
-	e.preventDefault();
+// $("#add").submit(function(e) {
+// 	console.log("update has been called");
+// 	e.preventDefault();
 	
-	var option = document.createElement("option");
-	option.text = "PLEASE WORK FOR THE LOVE OF GOD";
-	document.getElementById("botlist").add(option);
-});
+// 	var option = document.createElement("option");
+// 	option.text = "PLEASE WORK FOR THE LOVE OF GOD";
+// 	document.getElementById("botlist").add(option);
+// });
 
 /*
 	For any update to the list of active bots, the dropdown menu
 	of active bots will update accordingly (depending on the addition
 	or removal of a bot).
 */
-function updateDropdown(text) {
-	console.log("update has been called");
-	var option = document.createElement("option");
-	option.text = "Kiwi";
-	document.getElementById("botlist").add(option);
+function updateDropdown(text, val) {
+	$("#botlist").append(new Option(text, val));
+	// console.log("update has been called");
+	// var option = document.createElement("option");
+	// option.text = "Kiwi";
+	// document.getElementById("botlist").add(option);
 }
 
 /* Helper function called from the eventlistener
