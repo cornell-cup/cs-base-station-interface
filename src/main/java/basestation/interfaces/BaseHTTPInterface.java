@@ -57,7 +57,6 @@ public class BaseHTTPInterface {
             int bl = commandInfo.get("bl").getAsInt();
             int br = commandInfo.get("br").getAsInt();
 
-            // question: why is the casting to (ModbotCommandCenter) necessary?
             ((ModbotCommandCenter)station.getBotManager().getBotById(botID).getCommandCenter()).setWheelPower(fl,fr,bl,br);
 
             return true;
