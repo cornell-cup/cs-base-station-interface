@@ -21,7 +21,7 @@ function getBotID(){
 }
 
 function getIP(){
-	return $("#ip").val();
+	return $("#ip").val() * 10;
 }
 
 function getPower(){

@@ -23,14 +23,19 @@ import java.util.Set;
 
 import static spark.Spark.*;
 
-/* attempt at life TODO Make this more informative */
+/**
+ * HTTP connections for modbot GUI
+ * <p>
+ * Used for modbot to control and use the GUI while connecting to basestation.
+ * */
 public class BaseHTTPInterface {
 
     // Temp config settings
     public static final boolean OVERHEAD_VISION = true;
+    private static Map<String, Integer> botList;
 
     public static void main(String[] args) {
-        port(8080);
+        port(4567);
         staticFiles.location("/public");
         JsonParser jp = new JsonParser();
         BaseStation station = new BaseStation();
@@ -49,15 +54,32 @@ public class BaseHTTPInterface {
             /* storing json objects into actual variables */
             String ip = addInfo.get("ip").getAsString();
             int port = addInfo.get("port").getAsInt();
+            String name = addInfo.get("name").getAsString();
 
             /* setting up ice connection */
             IceConnection ice = new IceConnection(ip, port);
 
             /* new modbot is created to add */
             ModBot newBot = new ModBot(new BaseStation(), ice);
-            int ret = station.getBotManager().addBot(newBot);
+            int ret = station.getBotManager().addBot(newBot); // returns the id used to get the bot info from BotManager
+
+            botList.put(name, ret);
 
             return ret;
+        });
+
+        post("/removeBot", (req,res) -> {
+            String body = req.body();
+            JsonObject removeInfo = jp.parse(body).getAsJsonObject(); // gets (ip, port) from js
+
+            String ip = removeInfo.get("ip").getAsString();
+            int port = removeInfo.get("port").getAsInt();
+            String name = removeInfo.get("name").getAsString();
+
+            int index = botList.get(name); // finds the index stored in local hashmap of Bots relating Bot to its index in BotManager's map.
+            station.getBotManager().removeBotById(index);
+
+            return true;
         });
 
         post("/commandBot", (req,res) -> {
@@ -76,9 +98,16 @@ public class BaseHTTPInterface {
             return true;
         });
 
-
+        /*
+            Collects updated JSON objects in the form:
+            {   "x": vo.coord.x,
+                "y": vo.coord.y,
+                "angle": vo.coord.getThetaOrZero(),
+                "id": vo.id
+            }
+         */
         get("/updateloc", (req, res) -> {
-            List<VisionObject> vol = station.getVisionManager().getAllLocationData();
+            List<VisionObject> vol = station.getVisionManager().getAllLocationData(); // all locations of active bots.
             JsonArray respData = new JsonArray();
             for (VisionObject vo : vol) {
                 JsonObject jo = new JsonObject();
@@ -88,10 +117,8 @@ public class BaseHTTPInterface {
                 jo.addProperty("id", vo.vid);
                 respData.add(jo);
             }
-
             return respData;
         });
-
 
     }
 }

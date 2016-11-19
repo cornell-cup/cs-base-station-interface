@@ -1,4 +1,5 @@
-/* css */
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 html,body {
 	width:100%;
 	height:100%;
@@ -6,6 +7,35 @@ html,body {
 }
 body {
 	padding:50px;
+	font-family:'Roboto';
+	margin-bottom:50px;
+}
+
+.box#title {
+	padding:20px;
+	background:#C9C9C9;
+	width:70%;
+	border-radius:10px;
+}
+.box {
+	padding:20px;
+	margin:20px 0;
+	background:#e0e0e0;
+	width:70%;
+	border-radius:10px;
+}
+h4 {
+	font-size:17px;
+	margin:0 0 25px 0; padding:0;
+}
+button {
+	font-family:'Roboto';
+	font-size:12px;
+	padding:8px;
+	border:none;
+	background:#ffffff;
+	margin:10px;
+	border-radius:4px;
 }
 
 /* ================ USELESS AESTHETIC MODIFICATIONS =============== */

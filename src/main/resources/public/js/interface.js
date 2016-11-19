@@ -15,6 +15,8 @@ Pages and functions:
 	- ...
 */
 
+$("#ip").value = document.URL;
+
 /* Getters */
 function getIP(){
 	return $("#ip").val();
@@ -58,23 +60,21 @@ function sendMotors(fl, fr, bl, br) {
 					the inherent state of a bot has
 					changed (a bot added or removed).
 */
-
 function update(ifMove) {
 	// if it is a position change
 	if(ifMove) {
 		$.ajax({
 			method: "GET",
 			url: getIP() + "/updateloc",
-			data: JSON.stringify({
-				//information to get.
-			}),
 			processData: false,
 			contentType: 'application/json'
 		});
 	}
 	// if it is an entire bot to add/remove
 	else {
-
+		$.ajax({
+			//
+		});
 	}
 }
 
@@ -122,6 +122,26 @@ $(".controls").click(function(event) {
 	}
 });
 
+// when removing a bot
+$('#removeBot').click(function() {
+	// ajax post to backend to remove a bot from list.
+	$.ajax({
+		method: "POST",
+		url: '/removeBot',
+		dataType: 'json',
+		data: JSON.stringify({
+			ip: getIP(),
+			port: (getPort() || 10000),
+			name: $("#id").val()
+		}),
+		contentType: 'application/json',
+		success: function properlyRemoved(data) {
+			updateDropdown(false, data, data);
+		}
+	});
+});
+
+// when adding a bot
 $('#addBot').click(function() {
     $.ajax({
     		method: "POST",
@@ -129,41 +149,44 @@ $('#addBot').click(function() {
     		dataType: 'json',
     		data: JSON.stringify({
     			ip: getIP(),
-    			port: (getPort() || 10000)
+    			port: (getPort() || 10000),
+    			name: $("#id").val()
     		}),
     		contentType: 'application/json',
     		success: function addSuccess(data) {
-                updateDropdown(data,data);
+                updateDropdown(true, data, data);
     		}
     });
 });
-
-// $("#add").submit(function(e) {
-// 	console.log("update has been called");
-// 	e.preventDefault();
-
-function doThing() {
-	updateDropdown("BOT 3", "1");
-	return false;
-}
-
-
-// 	var option = document.createElement("option");
-// 	option.text = "PLEASE WORK FOR THE LOVE OF GOD";
-// 	document.getElementById("botlist").add(option);
-// });
 
 /*
 	For any update to the list of active bots, the dropdown menu
 	of active bots will update accordingly (depending on the addition
 	or removal of a bot).
 */
-function updateDropdown(text, val) {
-    var opt = document.createElement('option');
-    opt.text = text;
-    opt.value = val;
-    var botlist = document.getElementById("botlist");
-	botlist.appendChild(opt);
+
+function updateDropdown(toAdd, text, val) {
+	// if adding to update
+	if(toAdd) { 
+		var opt = document.createElement('option');
+	    opt.text = text;
+	    opt.value = val;
+	    opt.className = "blist";
+	    var botlist = document.getElementById("botlist");
+		botlist.appendChild(opt);
+	}
+
+	// if removing to update
+    else { 
+    	var allBots = $("#botlist").getElementsByTagName("*");
+    	var removed = false;
+    	for(var i=0; i<allBots.length && !removed; i++) {
+    		if(allBots[i].text === text) {
+    			$("#botlist").removeChild(allBots[i]);
+    			removed = true;
+    		}
+    	}
+    }
 }
 
 /* Helper function called from the eventlistener
@@ -179,7 +202,9 @@ function manageBots(option, ip, port){
 		processData: false,
 		contentType: 'application/json'
 	});
-	update(false);
+	//update(false);
+
+	//TODO: do something that adds or removes the robot.
 }
 
 function listBots(){
