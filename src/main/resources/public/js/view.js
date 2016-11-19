@@ -16,6 +16,7 @@ grid.view.style.position = "absolute";
 grid.view.style.display = "block";
 
 var bots = [];
+bots.push(newBot(1,1,0,"bob"));
 
 // pseudo-constructor for a bot object
 function newBot(x, y, angle, id) {
@@ -43,6 +44,7 @@ function drawBot(b) {
 	botContainer.addChild(circle);
 }
 
+/* Displays all bots given an array of bots */
 function displayBots(botArray) {
 	for(var b in botArray) {
 		drawBot(botArray[b]);
@@ -51,8 +53,14 @@ function displayBots(botArray) {
 
 displayBots(bots);
 
+
+/*
+	Sets up grid lines within view.
+	- 13 x 13 grid
+	- x:[0, 12], y:[0, 12]
+	- 
+*/
 function setupGridLines() {
-    /* setting up grid lines */
     var lines_y = [];
     var lines_x = [];
 
@@ -76,6 +84,10 @@ function setupGridLines() {
 setupGridLines();
 grid.render(stage);
 
+
+/*
+	Updating location of bots on grid.
+*/
 const TIME_PER_UPDATE = 120; // ms
 
 function getNewVisionData() {
@@ -98,3 +110,42 @@ function getNewVisionData() {
 }
 
 setInterval(getNewVisionData, TIME_PER_UPDATE);
+
+/*
+	Zoom-out function to make all active bots visible on grid.
+*/
+$("#zoom_out").click(function() {
+if(bots.length!==0) {
+
+	var botmin_x = bots[0].x;
+	var botmin_y = bots[0].y;
+	var botmax_x = bots[0].x;
+	var botmax_y = bots[0].y;
+
+	for each (var b in bots) {
+		botmin_x = Math.min(botmin_x, b[0].x);
+		botmin_y = Math.min(botmin_y, b[0].y);
+		botmax_x = Math.max(botmax_x, b[0].x);
+		botmax_y = Math.max(botmax_y, b[0].y);
+	}
+
+	/*  TODO: rescale bot locations on grid so that they are to scale 
+		within x:[botmin_x, botmax_x] and y: [botmin_y, botmax_y]
+	*/
+	var xrange = botmax_x - botmin_x;
+	var yrange = botmax_y - botmin_y;
+
+	zoombots = [];
+	for each (var b in bots) {
+		zoombots.push(newBot(
+			(b.x - botmin_x)+(b.x-botmin_x)*xrange, // x pos
+			(b.y - botmin_y)+(b.y-botmin_y)*yrange, // y pos
+			b.angle, // angle
+			b.id// id
+		);
+	}
+
+	botContainer.removeChildren();
+	displayBots(zoombots);
+}
+});
