@@ -53,7 +53,8 @@ public class VisionManager { //TODO incomplete
         for (VisionSystem vs : visionSystemMap.values()) {
             Integer vid;
             if ((vid = vs.getIdForBot(bot)) != null) {
-                return vs.getById(vid).coord;
+                VisionObject voo = vs.getById(vid);
+                if (voo != null) return voo.coord;
             }
         }
 

@@ -72,10 +72,12 @@ public class ModbotNavigator {
      * Speed is slowed when close to the destination, but MAX_SPEED when far.
      */
     private void calcRoute() {
+
         if (destinationReached) return;
+        System.out.println("calc");
         VisionCoordinate vc = myStation.getVisionManager().getBotCoordinate(myBot);
         if (vc == null) {
-            ((ModbotCommandCenter) myBot.getCommandCenter()).stop();
+            (myBot.getCommandCenter()).stop();
             return;
         }
 
