@@ -3,13 +3,27 @@
 <head>
 	<title>ModBot GUI</title>
 
-	<!-- IMPORTS -->
-	<link rel="stylesheet" href="css/general.css"/>
+<!-- IMPORTS -->
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS --
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme --
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript --
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script-->
+
+	<link rel="stylesheet" href="general.css"/>
 	<script src="http://pixijs.download/release/pixi.min.js"></script>
 
-	<!-- END IMPORTS -->
+
+	<script src="response.js"></script>
+	<script src="interface.js"></script>
+
+<!-- END IMPORTS -->
 
 </head>
 <body>
@@ -38,35 +52,33 @@
 -->
 
 	<h1>modbot gui v2.0</h1>
-	<!--<form id="add">-->
+	<form id="add">
 		<h4>Insert information regarding the currently active bot to control it:</h4>
 		IP: <input type="text" name="ip" id="ip"><br/>
-		<!--ID: <input type="text" name="id" id="id"><br/>-->
+		ID: <input type="text" name="id" id="id"><br/>
 		Port: <input type="text" name="port" id="port"><br/>
-<<<<<<< Updated upstream
-		<button id="addBot">add bot</button>
-	<br>
-=======
-		<button class="controls" onclick="doThing()" id="addBot">add bot</button><br>
->>>>>>> Stashed changes
-	<!--</form>-->
+		<button class="controls" onclick="return doThing()" id="addBot">add bot</button><br>
+	</form>
 	<br>
 
-	<!--<form id="set">-->
+	<form id="set">
 		<h4>Movement controls:</h4>
 		Choose bot:
 		<select id="botlist" name="bots">
 			<option value="">-- Choose a bot --</option>
-			<!--<option value="">Bot 1 (IP: 234, ID: 636, PORT: 8080)</option>-->
-			<!--<option value="">Bot 2 (IP: 134, ID: 336, PORT: 80)</option>-->
+			<option value="">Bot 1 (IP: 234, ID: 636, PORT: 8080)</option>
+			<option value="">Bot 2 (IP: 134, ID: 336, PORT: 80)</option>
 		</select>
-
+		<script>
+		$("#botlist").append(new Option("hi", "bye"));
+		</script>
+		
 		<button class="controls" id="enableBot">enable bot</button>
 		<button class="controls" id="removeBot">remove bot</button><br>
 		Power (0-10): <input id="power" type="range" name="power" min="0" max="10" value="0"><br><br>
-	<!--</form>-->
+	</form>
 
-	<!--<form id="move">-->
+	<form id="move">
 		<b>Directions:</b><br>
 		<button class="dir" id="fwd">forward</button><br>
 		<button class="dir" id="lft">left</button>
@@ -78,14 +90,13 @@
 		<button class="dir" id="ccw">counterclockwise</button><br><br>
 		<button class="dir" id="stop" style="background:red;">STOP BOT</button>
 		<br/>
-	<!--</form>-->
+	</form>
 
 	<br>
 
 	<h3>Vision:</h3>
 
-	<script src="js/response.js"></script>
-	<script src="js/interface.js"></script>
-	<script src="js/view.js"></script>
+
+	<script src="view.js"></script>
 </body>
 </html>
