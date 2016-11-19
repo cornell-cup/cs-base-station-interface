@@ -2,8 +2,6 @@
 pixi - for grid
 */
 
-//import interface;
-
 var grid = PIXI.autoDetectRenderer(520, 520);
 document.body.appendChild(grid.view);
 var stage = new PIXI.Container();
