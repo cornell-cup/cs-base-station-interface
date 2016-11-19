@@ -159,20 +159,11 @@ function doThing() {
 	or removal of a bot).
 */
 function updateDropdown(text, val) {
-<<<<<<< Updated upstream
     var opt = document.createElement('option');
     opt.text = text;
     opt.value = val;
     var botlist = document.getElementById("botlist");
 	botlist.appendChild(opt);
-=======
-	//this.preventDefault();
-	$("#botlist").append(new Option(text, val));
-	console.log("update has been called");
-	var option = document.createElement("option");
-	option.text = "Kiwi";
-	document.getElementById("botlist").add(option);
->>>>>>> Stashed changes
 }
 
 /* Helper function called from the eventlistener
