@@ -59,7 +59,7 @@ function sendMotors(fl, fr, bl, br) {
 			false -> called from manageBots(), meaning
 					the inherent state of a bot has
 					changed (a bot added or removed).
-*/
+
 function update(ifMove) {
 	// if it is a position change
 	if(ifMove) {
@@ -77,6 +77,7 @@ function update(ifMove) {
 		});
 	}
 }
+*/
 
 
 /* When .dir is clicked, send motors to take some kind of action. */
