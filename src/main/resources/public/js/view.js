@@ -2,6 +2,9 @@
 pixi - for grid
 */
 
+/*
+	SIMPLE SETUP OF GRID.
+*/
 var grid = PIXI.autoDetectRenderer(520, 520);
 document.body.appendChild(grid.view);
 var stage = new PIXI.Container();
@@ -15,10 +18,13 @@ grid.view.style.border = "1px dashed black";
 grid.view.style.position = "absolute";
 grid.view.style.display = "block";
 
-var bots = [];
-bots.push(newBot(1,1,0,"bob"));
+// "fields"
+var bots = [newBot(1,1,0,"bob"), newBot(3,3,0,"bobette")];
+const x_range = 13;
+const y_range = 13;
 
-// pseudo-constructor for a bot object
+
+/* pseudo-CONSTRUCTOR for a bot object */
 function newBot(x, y, angle, id) {
 	var bot = {
 		x: x,
@@ -115,37 +121,44 @@ setInterval(getNewVisionData, TIME_PER_UPDATE);
 	Zoom-out function to make all active bots visible on grid.
 */
 $("#zoom_out").click(function() {
-if(bots.length!==0) {
+	if(bots.length!==0) scaleToFit(bots);
+});
 
+function scaleToFit(botlist) {
 	var botmin_x = bots[0].x;
 	var botmin_y = bots[0].y;
 	var botmax_x = bots[0].x;
 	var botmax_y = bots[0].y;
 
-	for each (var b in bots) {
-		botmin_x = Math.min(botmin_x, b[0].x);
-		botmin_y = Math.min(botmin_y, b[0].y);
-		botmax_x = Math.max(botmax_x, b[0].x);
-		botmax_y = Math.max(botmax_y, b[0].y);
+	for (var b in bots) {
+		botmin_x = Math.min(botmin_x, bots[b].x);
+		botmin_y = Math.min(botmin_y, bots[b].y);
+		botmax_x = Math.max(botmax_x, bots[b].x);
+		botmax_y = Math.max(botmax_y, bots[b].y);
+		console.log("new iteration!");
+		console.log("botmin_x: " + botmin_x + ", botmax_x: " + botmax_x);
+		console.log("botmin_y: " + botmin_y + ", botmax_y: " + botmax_y)
+		console.log();
 	}
 
 	/*  TODO: rescale bot locations on grid so that they are to scale 
 		within x:[botmin_x, botmax_x] and y: [botmin_y, botmax_y]
 	*/
-	var xrange = botmax_x - botmin_x;
-	var yrange = botmax_y - botmin_y;
+	var xran = botmax_x - botmin_x;
+	var yran = botmax_y - botmin_y;
 
 	zoombots = [];
-	for each (var b in bots) {
+	for (var b in bots) {
 		zoombots.push(newBot(
-			(b.x - botmin_x)+(b.x-botmin_x)*xrange, // x pos
-			(b.y - botmin_y)+(b.y-botmin_y)*yrange, // y pos
-			b.angle, // angle
-			b.id// id
-		);
+			(bots[b].x - botmin_x)+(bots[b].x/xran)*x_range, // x pos
+			(bots[b].y - botmin_y)+(bots[b].y/yran)*y_range, // y pos
+			bots[b].angle, // angle
+			bots[b].id// id
+		));
+		console.log("X: " + zoombots[b].x);
+		console.log("Y: " + zoombots[b].y);
 	}
 
 	botContainer.removeChildren();
 	displayBots(zoombots);
 }
-});
