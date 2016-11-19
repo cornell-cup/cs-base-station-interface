@@ -40,15 +40,6 @@ function drawBot(b) {
 	circle.drawCircle(0, 0, 25);
 	circle.endFill();
 
-    /*
-	circle.beginFill(0xB0252E);
-	if (b.or===1) { circle.drawCircle(10, 0, 10); } // right facing
-	else if(b.or===2) { circle.drawCircle(0, 10, 10); } // down facing 
-	else if(b.or===3) { circle.drawCircle(-10, 0, 10); } // left facing
-	else { circle.drawCircle(0, -10, 10); } // up facing (default)
-	circle.endFill();
-	*/
-
 	circle.x = b.x*40;
 	circle.y = b.y*40;
 	botContainer.addChild(circle);

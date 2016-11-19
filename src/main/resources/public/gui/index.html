@@ -4,7 +4,7 @@
 	<title>ModBot GUI</title>
 
 	<!-- IMPORTS -->
-	<link rel="stylesheet" href="css/general.css"/>
+	<link rel="stylesheet" href="../css/general.css"/>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="http://pixijs.download/release/pixi.min.js"></script>
@@ -36,23 +36,21 @@
 	</div>
 
 -->
-
-	<h1>modbot gui v2.0</h1>
+	<div class="box" id="title"><h1>MODBOT GUI V2.0</h1></div>
+	
 	<!--<form id="add">-->
+	<div class="box">
 		<h4>Insert information regarding the currently active bot to control it:</h4>
 		IP: <input type="text" name="ip" id="ip"><br/>
-		<!--ID: <input type="text" name="id" id="id"><br/>-->
 		Port: <input type="text" name="port" id="port"><br/>
-<<<<<<< Updated upstream
+		Name: <input type="text" name="id" id="id"><br/>
 		<button id="addBot">add bot</button>
-	<br>
-=======
-		<button class="controls" onclick="doThing()" id="addBot">add bot</button><br>
->>>>>>> Stashed changes
+	</div>
+		<!--button class="controls" onclick="doThing()" id="addBot">add bot</button><br-->
 	<!--</form>-->
-	<br>
 
 	<!--<form id="set">-->
+	<div class="box">
 		<h4>Movement controls:</h4>
 		Choose bot:
 		<select id="botlist" name="bots">
@@ -63,10 +61,12 @@
 
 		<button class="controls" id="enableBot">enable bot</button>
 		<button class="controls" id="removeBot">remove bot</button><br>
-		Power (0-10): <input id="power" type="range" name="power" min="0" max="10" value="0"><br><br>
+		Power (0-10): <input id="power" type="range" name="power" min="0" max="10" value="0">
+	<Br><br>
 	<!--</form>-->
 
 	<!--<form id="move">-->
+	
 		<b>Directions:</b><br>
 		<button class="dir" id="fwd">forward</button><br>
 		<button class="dir" id="lft">left</button>
@@ -77,15 +77,13 @@
 		<button class="dir" id="cw">clockwise</button>
 		<button class="dir" id="ccw">counterclockwise</button><br><br>
 		<button class="dir" id="stop" style="background:red;">STOP BOT</button>
-		<br/>
+	</div>
 	<!--</form>-->
-
-	<br>
 
 	<h3>Vision:</h3>
 
-	<script src="js/response.js"></script>
-	<script src="js/interface.js"></script>
-	<script src="js/view.js"></script>
+	<script src="../js/response.js"></script>
+	<script src="../js/interface.js"></script>
+	<script src="../js/view.js"></script>
 </body>
 </html>
