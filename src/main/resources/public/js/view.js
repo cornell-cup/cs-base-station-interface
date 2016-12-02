@@ -20,9 +20,8 @@ grid.view.style.display = "block";
 
 // "fields"
 var bots = [newBot(1,1,0,"bob"), newBot(3,3,0,"bobette")];
-const x_range = 13;
-const y_range = 13;
-
+const x_range = 12;
+const y_range = 12;
 
 /* pseudo-CONSTRUCTOR for a bot object */
 function newBot(x, y, angle, id) {
@@ -32,7 +31,6 @@ function newBot(x, y, angle, id) {
 		angle: angle, // radians
 		id: id
 	};
-
 	return bot;
 }
 
@@ -53,12 +51,15 @@ function drawBot(b) {
 /* Displays all bots given an array of bots */
 function displayBots(botArray) {
 	for(var b in botArray) {
+		console.log("drawing!");
+		console.log(botArray[b]);
 		drawBot(botArray[b]);
 	}
 }
 
 displayBots(bots);
-
+var bots_2 = [newBot(0,0,0,"bob"), newBot(13,13,0,"bobette")];
+displayBots(bots_2);
 
 /*
 	Sets up grid lines within view.
@@ -89,7 +90,6 @@ function setupGridLines() {
 
 setupGridLines();
 grid.render(stage);
-
 
 /*
 	Updating location of bots on grid.
@@ -125,6 +125,9 @@ $("#zoom_out").click(function() {
 });
 
 function scaleToFit(botlist) {
+
+	testDrawBot();
+
 	var botmin_x = bots[0].x;
 	var botmin_y = bots[0].y;
 	var botmax_x = bots[0].x;
@@ -150,8 +153,8 @@ function scaleToFit(botlist) {
 	zoombots = [];
 	for (var b in bots) {
 		zoombots.push(newBot(
-			(bots[b].x - botmin_x)+(bots[b].x/xran)*x_range, // x pos
-			(bots[b].y - botmin_y)+(bots[b].y/yran)*y_range, // y pos
+			(bots[b].x - botmin_x)*(x_range/xran), // x pos
+			(bots[b].y - botmin_y)*(y_range/yran), // y pos
 			bots[b].angle, // angle
 			bots[b].id// id
 		));
@@ -159,6 +162,16 @@ function scaleToFit(botlist) {
 		console.log("Y: " + zoombots[b].y);
 	}
 
+	console.log("printing zoombots");
+	console.log(zoombots);
+
 	botContainer.removeChildren();
 	displayBots(zoombots);
+}
+
+function testDrawBot() {
+	console.log("testDrawBot() called.");
+	var testBot = [newBot(1, 2, 0, "bob")];
+	displayBots(testBot);
+	console.log("testDrawBot() ended.");
 }
