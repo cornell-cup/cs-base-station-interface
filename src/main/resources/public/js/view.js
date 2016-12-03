@@ -19,19 +19,24 @@ var bots = [            // hard-coded bots for testing
     ]; 
 const x_range = 11; // x range for grid
 const y_range = 11; // y range for grid
+var x_int = 40;
+var y_int = 40;
 
-var botContainer;   // pixi elements for displaying information
+var stage; // pixi elements for displaying information
+var botContainer;
 var gridContainer;
-var stage;
 var grid;
 
 function main() {
+    //TODO: insert content into $("#x_int"), $("#y_int")
+    updateInfo(x_int, y_int);
+
     botContainer = new PIXI.Container();
     gridContainer = new PIXI.Container();
 
     stage = new PIXI.Container();
     grid = PIXI.autoDetectRenderer(520, 520);
-    document.body.appendChild(grid.view);
+    $("#view").append(grid.view);
 
     stage.addChild(botContainer);
     stage.addChild(gridContainer);
@@ -71,6 +76,7 @@ $("#zoom_out").click(function() {
 /* Reset function to return to original view (from zoom-out). */
 $("#reset").click(function(){ 
     if(zoomclicked){
+        updateInfo(x_int, y_int);
         botContainer.removeChildren();
         setupGridLines();
         displayBots(bots);
@@ -89,18 +95,21 @@ function drawBot(b) {
 	circle.drawCircle(0, 0, 25);
 	circle.endFill();
 
-	circle.x = b.x*40;
-	circle.y = b.y*40;
+	circle.x = b.x*x_int;
+	circle.y = b.y*y_int;
 	botContainer.addChild(circle);
 }
 
 /* Displays all bots given an array of bots */
 function displayBots(botArray) {
 	for(var b in botArray) {
-		console.log("drawing!");
-		console.log(botArray[b]);
 		drawBot(botArray[b]);
 	}
+}
+
+function updateInfo(xint, yint){
+    $("#x_int").text(xint);
+    $("#y_int").text(yint);
 }
 
 /*
@@ -166,15 +175,12 @@ function scaleToFit() {
         botmin_y = Math.min(botmin_y, bots[b].y);
         botmax_x = Math.max(botmax_x, bots[b].x);
         botmax_y = Math.max(botmax_y, bots[b].y);
-        console.log("new iteration!");
-        console.log("botmin_x: " + botmin_x + ", botmax_x: " + botmax_x);
-        console.log("botmin_y: " + botmin_y + ", botmax_y: " + botmax_y)
-        console.log();
+        // console.log("new iteration!");
+        // console.log("botmin_x: " + botmin_x + ", botmax_x: " + botmax_x);
+        // console.log("botmin_y: " + botmin_y + ", botmax_y: " + botmax_y)
+        // console.log();
     }
 
-    /*  TODO: rescale bot locations on grid so that they are to scale 
-        within x:[botmin_x, botmax_x] and y: [botmin_y, botmax_y]
-    */
     var xran = botmax_x - botmin_x;
     var yran = botmax_y - botmin_y;
     zoombots = [];
@@ -185,11 +191,11 @@ function scaleToFit() {
             bots[b].angle, // angle
             bots[b].id// id
         ));
-        console.log("X: " + zoombots[b].x);
-        console.log("Y: " + zoombots[b].y);
+        // console.log("X: " + zoombots[b].x);
+        // console.log("Y: " + zoombots[b].y);
     }
-    console.log("printing zoombots");
-    console.log(zoombots);
+
+    updateInfo((x_range/xran), (y_range/yran));
     botContainer.removeChildren();
     setupGridLines();
     displayBots(zoombots);

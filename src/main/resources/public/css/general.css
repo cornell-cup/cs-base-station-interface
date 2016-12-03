@@ -6,23 +6,26 @@ html,body {
 	margin:0; padding:0;
 }
 body {
-	padding:50px;
 	font-family:'Roboto';
-	margin-bottom:50px;
 }
+h1,h2,h3,h4 {margin:0;padding:0;}
 
-.box#title {
-	padding:20px;
+header {
+	padding:40px;
 	background:#C9C9C9;
-	width:70%;
-	border-radius:10px;
+	width:100vw;
 }
 .box {
 	padding:20px;
-	margin:20px 0;
-	background:#e0e0e0;
-	width:70%;
-	border-radius:10px;
+	margin:50px 0 0 50px;
+	background:#F2F2F2;
+	border-radius:5px;
+	float:left;
+	font-size:13px;
+}
+.box.view {
+	width:550px;
+	padding-bottom:550px;
 }
 h4 {
 	font-size:17px;
@@ -41,6 +44,13 @@ button#reset {
 	display:none;
 }
 button:hover { background:#DBDBDB; }
+
 .box button {
 	background:#ffffff;
+}
+.dir#cw, .dir#ccw {
+	background:#D0DBD2;
+}
+#view:after {
+	content:"";
 }
