@@ -17,9 +17,9 @@ var bots = [            // hard-coded bots for testing
     newBot(1,1,0,"bob"), 
     newBot(3,3,0,"bobette")
     ]; 
-const x_range = 11; // x range for grid
+const x_range = 11; // x range for grid, TODO: capitalize const
 const y_range = 11; // y range for grid
-var x_int = 40;
+var x_int = 40; // actual spacing between grid lines
 var y_int = 40;
 
 var stage; // pixi elements for displaying information
@@ -28,7 +28,6 @@ var gridContainer;
 var grid;
 
 function main() {
-    //TODO: insert content into $("#x_int"), $("#y_int")
     updateInfo(x_int, y_int);
 
     botContainer = new PIXI.Container();
@@ -49,7 +48,7 @@ function main() {
     displayBots(bots);
     grid.render(stage);
 
-    //setInterval(getNewVisionData, TIME_PER_UPDATE);
+    setInterval(getNewVisionData, TIME_PER_UPDATE);
 }
 
 /* pseudo-constructor for a bot object */
@@ -89,7 +88,6 @@ $("#reset").click(function(){
 /* Setting up a single modbot at (x, y) 
 	where (0,0) is top left */
 function drawBot(b) {
-    // TODO: Responsive field rendering
 	var circle = new PIXI.Graphics();
 	circle.beginFill(0x0EB530);
 	circle.drawCircle(0, 0, 25);
@@ -107,6 +105,8 @@ function displayBots(botArray) {
 	}
 }
 
+/* Helper function to update HTML text indicating
+   spacing intervals on view */
 function updateInfo(xint, yint){
     $("#x_int").text(xint);
     $("#y_int").text(yint);
@@ -163,7 +163,10 @@ function getNewVisionData() {
 }
 
 /*
-    Re-displays a list of bots so that 
+    Re-displays a list of bots so that all bots are visible
+    in view.
+
+    Array bots is not empty.
 */
 function scaleToFit() {
 	var botmin_x = bots[0].x;
@@ -175,15 +178,12 @@ function scaleToFit() {
         botmin_y = Math.min(botmin_y, bots[b].y);
         botmax_x = Math.max(botmax_x, bots[b].x);
         botmax_y = Math.max(botmax_y, bots[b].y);
-        // console.log("new iteration!");
-        // console.log("botmin_x: " + botmin_x + ", botmax_x: " + botmax_x);
-        // console.log("botmin_y: " + botmin_y + ", botmax_y: " + botmax_y)
-        // console.log();
     }
 
     var xran = botmax_x - botmin_x;
     var yran = botmax_y - botmin_y;
     zoombots = [];
+    
     for (var b in bots) {
         zoombots.push(newBot(
             (bots[b].x - botmin_x)*(x_range/xran) + 1, // x pos
@@ -191,8 +191,6 @@ function scaleToFit() {
             bots[b].angle, // angle
             bots[b].id// id
         ));
-        // console.log("X: " + zoombots[b].x);
-        // console.log("Y: " + zoombots[b].y);
     }
 
     updateInfo((x_range/xran), (y_range/yran));
