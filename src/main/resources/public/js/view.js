@@ -12,13 +12,12 @@ Bots have four fields: x coordinate, y coordinate, angle, and id.
 */
 
 const TIME_PER_UPDATE = 120; // modbot update interval in ms
-var zoomclicked = false; // whether the view is "zoomed" or not
 var bots = [            // hard-coded bots for testing
     newBot(1,1,0,"bob"), 
     newBot(3,3,0,"bobette")
     ]; 
-const x_range = 11; // x range for grid, TODO: capitalize const
-const y_range = 11; // y range for grid
+const X_RANGE = 11; // x range for grid, TODO: capitalize const
+const Y_RANGE = 11; // y range for grid
 var x_int = 40; // actual spacing between grid lines
 var y_int = 40;
 
@@ -63,7 +62,7 @@ function newBot(x, y, angle, id) {
 }
 
 /* Zoom-out function to make all active bots visible on grid. */
-$("#zoom_out").click(function() {
+$("#zoom-out").click(function() {
     if(bots.length!==0) {
         scaleToFit();
         zoomclicked = true;
@@ -74,15 +73,13 @@ $("#zoom_out").click(function() {
 
 /* Reset function to return to original view (from zoom-out). */
 $("#reset").click(function(){ 
-    if(zoomclicked){
-        updateInfo(x_int, y_int);
-        botContainer.removeChildren();
-        setupGridLines();
-        displayBots(bots);
-        grid.render(stage);
-        $("#zoom_out").css("display","inline");
-        $(this).css("display","none");
-    }
+    updateInfo(x_int, y_int);
+    botContainer.removeChildren();
+    setupGridLines();
+    displayBots(bots);
+    grid.render(stage);
+    $("#zoom-out").css("display","inline");
+    $(this).css("display","none");
 });
 
 /* Setting up a single modbot at (x, y) 
@@ -108,8 +105,8 @@ function displayBots(botArray) {
 /* Helper function to update HTML text indicating
    spacing intervals on view */
 function updateInfo(xint, yint){
-    $("#x_int").text(xint);
-    $("#y_int").text(yint);
+    $("#x-int").text(xint);
+    $("#y-int").text(yint);
 }
 
 /*
@@ -166,7 +163,7 @@ function getNewVisionData() {
     Re-displays a list of bots so that all bots are visible
     in view.
 
-    Array bots is not empty.
+    inv: bots is not empty.
 */
 function scaleToFit() {
 	var botmin_x = bots[0].x;
@@ -183,17 +180,17 @@ function scaleToFit() {
     var xran = botmax_x - botmin_x;
     var yran = botmax_y - botmin_y;
     zoombots = [];
-    
+
     for (var b in bots) {
         zoombots.push(newBot(
-            (bots[b].x - botmin_x)*(x_range/xran) + 1, // x pos
-            (bots[b].y - botmin_y)*(y_range/yran) + 1, // y pos
+            (bots[b].x - botmin_x)*(X_RANGE/xran) + 1, // x pos
+            (bots[b].y - botmin_y)*(Y_RANGE/yran) + 1, // y pos
             bots[b].angle, // angle
-            bots[b].id// id
+            bots[b].id // id
         ));
     }
 
-    updateInfo((x_range/xran), (y_range/yran));
+    updateInfo((X_RANGE/xran), (Y_RANGE/yran));
     botContainer.removeChildren();
     setupGridLines();
     displayBots(zoombots);
