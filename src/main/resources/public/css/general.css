@@ -37,6 +37,9 @@ button {
 	margin:10px;
 	border-radius:4px;
 }
+button#reset {
+	display:none;
+}
 button:hover { background:#DBDBDB; }
 .box button {
 	background:#ffffff;
