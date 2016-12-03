@@ -14,13 +14,13 @@ import java.util.Set;
  */
 public class OverheadVisionSystem extends VisionSystem {
 
-    private volatile HashSet<VisionObject> set;
+    private volatile HashSet<VisionObject> trackedObjectSet;
 
     public OverheadVisionSystem() {
         super(new VisionCoordinate(0, 0, 0));
         VisionListenServerThread vlst = new VisionListenServerThread(this);
         vlst.start();
-        set = new HashSet<VisionObject>();
+        trackedObjectSet = new HashSet<VisionObject>();
     }
 
     /**
@@ -36,13 +36,13 @@ public class OverheadVisionSystem extends VisionSystem {
             newSet.add(vo);
         }
 
-        this.set = newSet;
+        this.trackedObjectSet = newSet;
     }
 
 
     @Override
     public Set<VisionObject> getAllObjects() {
-        return set;
+        return trackedObjectSet;
     }
 
     private class UpdateHandler extends _BaseInterfaceDisp {
@@ -59,6 +59,12 @@ public class OverheadVisionSystem extends VisionSystem {
             return 0;
         }
 
+        /**
+         * Called every time the actual vision system pushes an update to this server
+         * @param data All objects currently seen by the system, in Blob form
+         * @param __current
+         * @return
+         */
         @Override
         public int update(Blob[] data, Current __current) {
             parent.processBlobs(data);
@@ -66,6 +72,10 @@ public class OverheadVisionSystem extends VisionSystem {
         }
     }
 
+    /**
+     * The ping server for listening occurs in its own thread to prevent program flow from
+     * being blocked.
+     */
     private class VisionListenServerThread extends Thread {
 
         OverheadVisionSystem parent;

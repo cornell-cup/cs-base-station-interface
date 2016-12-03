@@ -7,7 +7,7 @@ import basestation.bot.connection.MotorConnection;
 import basestation.bot.sensors.SensorCenter;
 
 /**
- * A early implementation of a modbot
+ * A early implementation of a modbot.
  */
 public class ModBot extends Bot {
     private final ModbotCommandCenter commandCenter;

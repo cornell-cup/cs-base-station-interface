@@ -20,12 +20,22 @@ public class VisionManager { //TODO incomplete
         visionSystemMap.put(visionCounter++, canonicalVisionSystem);
     }
 
+    /**
+     * Adds vs to be tracked by the VisionManager. Assumes vs is already calibrated to the
+     * canonicalVisionSystem
+     * @param vs
+     * @return the counter id of vs
+     */
     public int addVisionSystem(VisionSystem vs) {
         int ct = visionCounter;
         this.visionSystemMap.put(visionCounter++, vs);
         return ct;
     }
 
+    /**
+     *
+     * @return All entries of VisionSystems with their associated ids
+     */
     public Set<Map.Entry<Integer, VisionSystem>> getAllVisionMappings() {
         return visionSystemMap.entrySet();
     }

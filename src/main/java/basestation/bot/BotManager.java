@@ -8,7 +8,6 @@ import java.util.Set;
 
 /**
  * Holds a mapping of IDs and tracking for all bots
- * <p>
  * Used in the base station to keep track of all the robots
  */
 public class BotManager {

@@ -11,6 +11,7 @@ import java.util.Map;
 
 /**
  * Implements Connection by serializing through HTTP. Assumes the given endpoint is a server.
+ * FIXME: This is currently unused and untested.`
  */
 public class HTTPConnection extends Connection {
     private String ip;

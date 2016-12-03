@@ -7,7 +7,8 @@ import basestation.vision.VisionCoordinate;
 import basestation.vision.VisionManager;
 
 /**
- * Example Algorithm to make modbots dance in a small square
+ * Example Algorithm to make modbots dance in a small square.
+ * TODO: Move this to its own repo
  */
 public class SquareDance extends Thread {
 

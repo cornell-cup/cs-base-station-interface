@@ -1,16 +1,14 @@
 package basestation.vision;
 
-import org.omg.CORBA.portable.*;
-
 import java.io.*;
 import java.io.InputStream;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * VisionSystem to take in data from the Tango. Currently being prototyped.
+ * TODO (Fall 2016): Finish this interface
  */
 public class TangoVisionSystem extends VisionSystem {
 

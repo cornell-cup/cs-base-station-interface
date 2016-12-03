@@ -4,14 +4,16 @@ import java.util.Optional;
 
 /**
  * All vision coordinates are with respect to a coordinate systems.
- * The canonical coordinate system is such that 0 degrees points in the positive x direction.
+ * The canonical coordinate system is such that 0 degrees points in the positive x direction and positive
+ * rotation is in the clockwise direction.
+ * // TODO: Refactor to radians
  */
 public class VisionCoordinate {
     // Position in meters
     public final double x;
     public final double y;
 
-    // Radians, optional
+    // Radians, optional in case a system cannot present angles
     private final Optional<Double> theta;
 
     public VisionCoordinate(double x, double y) {
@@ -40,6 +42,12 @@ public class VisionCoordinate {
         return res;
     }
 
+    /**
+     * Returns the 2d euclidean distances to the other coordinate, assuming they
+     * are based on the same coordinate system
+     * @param other
+     * @return
+     */
     public double getDistanceTo(VisionCoordinate other) {
         return Math.sqrt(Math.pow(other.x - x, 2.) + Math.pow(other.y - y, 2.));
     }
@@ -53,7 +61,7 @@ public class VisionCoordinate {
     }
 
     public String toString() {
-        return "(" + String.format("%.2f", x) + "," + String.format("%.2f", y); //+ "," + String.format("%.2f", theta) + "deg)"; // TODO: Format in velocities and optional theta
+        return "(" + String.format("%.2f", x) + "," + String.format("%.2f", y) + "," + String.format("%.2f", theta.orElse(0.0)) + "deg)"; // TODO: Format in velocities and optional theta
     }
 
     public boolean equals(Object other) {
