@@ -1,38 +1,84 @@
 /* 
-pixi - for grid
+VIEW.JS
+
+All code associated with the view portion of the modbot web GUI. The view uses
+pixi.js to display the bots.
+
+Bots have coordinates (x,y) in which (0,0) is at the top left. Clicking on "zoom out"
+will display the bots such that all bots are visible on the view (in case some move beyond
+the current vision).
+
+Bots have four fields: x coordinate, y coordinate, angle, and id.
 */
 
-/*
-	SIMPLE SETUP OF GRID.
-*/
-var grid = PIXI.autoDetectRenderer(520, 520);
-document.body.appendChild(grid.view);
-var stage = new PIXI.Container();
-var botContainer = new PIXI.Container();
-var gridContainer = new PIXI.Container();
+const TIME_PER_UPDATE = 120; // modbot update interval in ms
+var zoomclicked = false; // whether the view is "zoomed" or not
+var bots = [            // hard-coded bots for testing
+    newBot(1,1,0,"bob"), 
+    newBot(3,3,0,"bobette")
+    ]; 
+const x_range = 11; // x range for grid
+const y_range = 11; // y range for grid
 
-stage.addChild(botContainer);
-stage.addChild(gridContainer);
+var botContainer;   // pixi elements for displaying information
+var gridContainer;
+var stage;
+var grid;
 
-grid.view.style.border = "1px dashed black";
-grid.view.style.position = "absolute";
-grid.view.style.display = "block";
+function main() {
+    botContainer = new PIXI.Container();
+    gridContainer = new PIXI.Container();
 
-// "fields"
-var bots = [newBot(1,1,0,"bob"), newBot(3,3,0,"bobette")];
-const x_range = 12;
-const y_range = 12;
+    stage = new PIXI.Container();
+    grid = PIXI.autoDetectRenderer(520, 520);
+    document.body.appendChild(grid.view);
 
-/* pseudo-CONSTRUCTOR for a bot object */
-function newBot(x, y, angle, id) {
-	var bot = {
-		x: x,
-		y: y,
-		angle: angle, // radians
-		id: id
-	};
-	return bot;
+    stage.addChild(botContainer);
+    stage.addChild(gridContainer);
+
+    grid.view.style.border = "1px dashed black";
+    grid.view.style.position = "absolute";
+    grid.view.style.display = "block";
+
+    setupGridLines();
+    displayBots(bots);
+    grid.render(stage);
+
+    //setInterval(getNewVisionData, TIME_PER_UPDATE);
 }
+
+/* pseudo-constructor for a bot object */
+function newBot(x, y, angle, id) {
+    var bot = {
+        x: x,
+        y: y,
+        angle: angle, // radians
+        id: id
+    };
+    return bot;
+}
+
+/* Zoom-out function to make all active bots visible on grid. */
+$("#zoom_out").click(function() {
+    if(bots.length!==0) {
+        scaleToFit();
+        zoomclicked = true;
+        $("#reset").css("display","inline");
+        $(this).css("display","none");
+    }
+});
+
+/* Reset function to return to original view (from zoom-out). */
+$("#reset").click(function(){ 
+    if(zoomclicked){
+        botContainer.removeChildren();
+        setupGridLines();
+        displayBots(bots);
+        grid.render(stage);
+        $("#zoom_out").css("display","inline");
+        $(this).css("display","none");
+    }
+});
 
 /* Setting up a single modbot at (x, y) 
 	where (0,0) is top left */
@@ -56,10 +102,6 @@ function displayBots(botArray) {
 		drawBot(botArray[b]);
 	}
 }
-
-displayBots(bots);
-var bots_2 = [newBot(0,0,0,"bob"), newBot(13,13,0,"bobette")];
-displayBots(bots_2);
 
 /*
 	Sets up grid lines within view.
@@ -88,14 +130,9 @@ function setupGridLines() {
     }
 }
 
-setupGridLines();
-grid.render(stage);
-
 /*
 	Updating location of bots on grid.
 */
-const TIME_PER_UPDATE = 120; // ms
-
 function getNewVisionData() {
     $.ajax({
         url: '/updateloc',
@@ -109,69 +146,54 @@ function getNewVisionData() {
                 bots.push(newBot(bot.x,bot.y,bot.angle,bot.id));
             }
 
+            setupGridLines();
             displayBots(bots);
             grid.render(stage);
         }
     });
 }
 
-setInterval(getNewVisionData, TIME_PER_UPDATE);
-
 /*
-	Zoom-out function to make all active bots visible on grid.
+    Re-displays a list of bots so that 
 */
-$("#zoom_out").click(function() {
-	if(bots.length!==0) scaleToFit(bots);
-});
-
-function scaleToFit(botlist) {
-
-	testDrawBot();
-
+function scaleToFit() {
 	var botmin_x = bots[0].x;
-	var botmin_y = bots[0].y;
-	var botmax_x = bots[0].x;
-	var botmax_y = bots[0].y;
+    var botmin_y = bots[0].y;
+    var botmax_x = bots[0].x;
+    var botmax_y = bots[0].y;
+    for (var b in bots) {
+        botmin_x = Math.min(botmin_x, bots[b].x);
+        botmin_y = Math.min(botmin_y, bots[b].y);
+        botmax_x = Math.max(botmax_x, bots[b].x);
+        botmax_y = Math.max(botmax_y, bots[b].y);
+        console.log("new iteration!");
+        console.log("botmin_x: " + botmin_x + ", botmax_x: " + botmax_x);
+        console.log("botmin_y: " + botmin_y + ", botmax_y: " + botmax_y)
+        console.log();
+    }
 
-	for (var b in bots) {
-		botmin_x = Math.min(botmin_x, bots[b].x);
-		botmin_y = Math.min(botmin_y, bots[b].y);
-		botmax_x = Math.max(botmax_x, bots[b].x);
-		botmax_y = Math.max(botmax_y, bots[b].y);
-		console.log("new iteration!");
-		console.log("botmin_x: " + botmin_x + ", botmax_x: " + botmax_x);
-		console.log("botmin_y: " + botmin_y + ", botmax_y: " + botmax_y)
-		console.log();
-	}
-
-	/*  TODO: rescale bot locations on grid so that they are to scale 
-		within x:[botmin_x, botmax_x] and y: [botmin_y, botmax_y]
-	*/
-	var xran = botmax_x - botmin_x;
-	var yran = botmax_y - botmin_y;
-
-	zoombots = [];
-	for (var b in bots) {
-		zoombots.push(newBot(
-			(bots[b].x - botmin_x)*(x_range/xran), // x pos
-			(bots[b].y - botmin_y)*(y_range/yran), // y pos
-			bots[b].angle, // angle
-			bots[b].id// id
-		));
-		console.log("X: " + zoombots[b].x);
-		console.log("Y: " + zoombots[b].y);
-	}
-
-	console.log("printing zoombots");
-	console.log(zoombots);
-
-	botContainer.removeChildren();
-	displayBots(zoombots);
+    /*  TODO: rescale bot locations on grid so that they are to scale 
+        within x:[botmin_x, botmax_x] and y: [botmin_y, botmax_y]
+    */
+    var xran = botmax_x - botmin_x;
+    var yran = botmax_y - botmin_y;
+    zoombots = [];
+    for (var b in bots) {
+        zoombots.push(newBot(
+            (bots[b].x - botmin_x)*(x_range/xran) + 1, // x pos
+            (bots[b].y - botmin_y)*(y_range/yran) + 1, // y pos
+            bots[b].angle, // angle
+            bots[b].id// id
+        ));
+        console.log("X: " + zoombots[b].x);
+        console.log("Y: " + zoombots[b].y);
+    }
+    console.log("printing zoombots");
+    console.log(zoombots);
+    botContainer.removeChildren();
+    setupGridLines();
+    displayBots(zoombots);
+    grid.render(stage);
 }
 
-function testDrawBot() {
-	console.log("testDrawBot() called.");
-	var testBot = [newBot(1, 2, 0, "bob")];
-	displayBots(testBot);
-	console.log("testDrawBot() ended.");
-}
+main();

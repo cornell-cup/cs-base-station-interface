@@ -50,36 +50,6 @@ function sendMotors(fl, fr, bl, br) {
 	});
 }
 
-/* UPDATES POSITION OF ROBOT ON VISION MAP.
-	Receives information from GET, of all active bots. 
-	Updates each of their locations in the view display. 
-
-	ifMove	true -> called from eventlistener, updating
-					the pos of a robot
-			false -> called from manageBots(), meaning
-					the inherent state of a bot has
-					changed (a bot added or removed).
-
-function update(ifMove) {
-	// if it is a position change
-	if(ifMove) {
-		$.ajax({
-			method: "GET",
-			url: getIP() + "/updateloc",
-			processData: false,
-			contentType: 'application/json'
-		});
-	}
-	// if it is an entire bot to add/remove
-	else {
-		$.ajax({
-			//
-		});
-	}
-}
-*/
-
-
 /* When .dir is clicked, send motors to take some kind of action. */
 $(".dir").click(function(event) {
 	var pow = getPower();
