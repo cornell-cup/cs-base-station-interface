@@ -4,7 +4,10 @@ import basestation.BaseStation;
 import basestation.vision.VisionCoordinate;
 
 /**
- * Controller for moving the bot to specified coordinates
+ * Controller for moving the bot to specified coordinates. Requires that the bot
+ * is linked in an active VisionSystem. The navigator works by receiving a destination, rotating toward that destination,
+ * and driving toward it in a loop. The navigator is meant as a proof of concept and can be used as a starting point
+ * for more advanced navigators.
  */
 public class ModbotNavigator {
 
@@ -65,10 +68,8 @@ public class ModbotNavigator {
     /**
      * Calculates the next necessary action to reach the desired destination and sends
      * the action to the bot. Sends the stop command once destination is reached.
-     * <p>
      * Route calculation is done by rotating until the bot's angle is within ANGLE_THRESHOLD of the angle to the
      * destination. Then the bot moves forward until it is within DISTANCE_THRESHOLD of the destination.
-     * <p>
      * Speed is slowed when close to the destination, but MAX_SPEED when far.
      */
     private void calcRoute() {
@@ -133,7 +134,9 @@ public class ModbotNavigator {
     }
 
     /**
-     * Used to call calcRoute at a roughly regular rate
+     * Used to call calcRoute at a roughly regular rate. Java has better mechanisms
+     * for rate-reliable scheduling, so this should be replaced in the future.
+     * SleepDuration may be set with a custom contructor for more precise navigation.
      */
     private class NavigationManager extends Thread {
 
@@ -145,6 +148,7 @@ public class ModbotNavigator {
             this.sleepDurationMillis = 200;
         }
 
+        // Custom sleep duration constructor
         NavigationManager(ModbotNavigator parent, int sleepDurationMillis) {
             this.parent = parent;
             this.sleepDurationMillis = sleepDurationMillis;

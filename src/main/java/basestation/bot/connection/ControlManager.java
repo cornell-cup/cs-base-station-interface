@@ -3,7 +3,8 @@ package basestation.bot.connection;
 import CommModule.BaseInterfacePrx;
 
 /**
- * Public to make matlab work
+ * A thread to manage commands to modbots. Some modbots discontinue their commands after 1 seconds while others
+ * continue the last received, so this resolves the two concerns by sending twice a second.
  */
 public class ControlManager extends Thread {
 
@@ -31,6 +32,14 @@ public class ControlManager extends Thread {
         }
     }
 
+    /**
+     * Sets the new constant for motors. Forwards the command immediately so that
+     * the bot will be responsive to controls.
+     * @param fl
+     * @param fr
+     * @param bl
+     * @param br
+     */
     protected void setMotors(int fl, int fr, int bl, int br) {
         this.fl = fl;
         this.fr = fr;

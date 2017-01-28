@@ -1,7 +1,5 @@
 package basestation.bot.connection;
 
-//import com.google.gson.JsonObject;
-
 /**
  * Represents a connection between the base station and a bot
  */
@@ -13,7 +11,7 @@ public abstract class Connection {
 
     /**
      * Used for being able to send arbitrary commands in the form of JSON. Useful for rapid prototyping
-     *
+     * FIXME: Decide if this should be included
      * @param data A command to send
      * @return true if successful, else false
      */

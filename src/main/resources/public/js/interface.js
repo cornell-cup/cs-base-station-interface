@@ -27,7 +27,7 @@ function getPort(){
 }
 
 function getPower(){
-	return $("#power").val() * 3;
+	return $("#power").val();
 }
 
 function getBotID() {
@@ -50,40 +50,10 @@ function sendMotors(fl, fr, bl, br) {
 	});
 }
 
-/* UPDATES POSITION OF ROBOT ON VISION MAP.
-	Receives information from GET, of all active bots. 
-	Updates each of their locations in the view display. 
-
-	ifMove	true -> called from eventlistener, updating
-					the pos of a robot
-			false -> called from manageBots(), meaning
-					the inherent state of a bot has
-					changed (a bot added or removed).
-
-function update(ifMove) {
-	// if it is a position change
-	if(ifMove) {
-		$.ajax({
-			method: "GET",
-			url: getIP() + "/updateloc",
-			processData: false,
-			contentType: 'application/json'
-		});
-	}
-	// if it is an entire bot to add/remove
-	else {
-		$.ajax({
-			//
-		});
-	}
-}
-*/
-
-
-/* When .dir is clicked, send motors to take some kind of action. */
+/* When .dir is clicked, send motors to act based on button clicked. */
 $(".dir").click(function(event) {
 	var pow = getPower();
-	var target = $(event.target);
+	var target = $(event.target); //$target
 
 	if(target.is("#fwd")) {
 		sendMotors(pow, pow, pow, pow);
@@ -107,18 +77,15 @@ $(".dir").click(function(event) {
 		sendMotors(0,0,0,0);
 	}
 	else {
-		console.log("Clicked on a direction button but nothing has been executed.");
+		console.error("Clicked on a direction button but nothing has been executed.");
 	}
-	//update(true);
 });
 
 /* Eventlistener for mouseclick on controls (adding, removing, etc.) */
 $(".controls").click(function(event) {
 	event.preventDefault();
 
-	console.log("clicked");
 	if($(event.target).is("#removeBot")){
-		console.log("#removeBot has been clicked.");
 		manageBots("/removeBot", $("#id").val(), $("#port").val());
 	}
 });

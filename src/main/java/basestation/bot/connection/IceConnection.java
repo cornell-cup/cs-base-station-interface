@@ -5,7 +5,7 @@ import CommModule.BaseInterfacePrxHelper;
 
 /**
  * Connection to support our Ice protocol
- * Sends controls over a rate-limited thread
+ * Sends controls over a rate-limited thread. This is the protocol that all legacy modbots operate with
  */
 public class IceConnection extends MotorConnection {
 

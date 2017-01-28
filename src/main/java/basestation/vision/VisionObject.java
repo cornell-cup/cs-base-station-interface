@@ -2,7 +2,8 @@ package basestation.vision;
 
 /**
  * Represents an object being tracked by a Vision System. Must have a persistent id in order to be
- * maintained between receipt of data.
+ * maintained between receipt of data. VisionObjects are functional and thus should be
+ * retrieved again if a newer version is desired.
  */
 public class VisionObject {
     /**
@@ -16,7 +17,7 @@ public class VisionObject {
     public final int vid;
 
     /**
-     * The coordinate of this object
+     * The coordinate of this object.
      */
     public final VisionCoordinate coord;
 

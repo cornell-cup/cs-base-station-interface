@@ -4,6 +4,11 @@ import basestation.bot.commands.CommandCenter;
 import basestation.bot.connection.Connection;
 import basestation.bot.sensors.SensorCenter;
 
+/**
+ * Represents any bot. We assume bots may present information and receive information,
+ * so this is separated into the commandCenter and sensorCenter. Bots also have a persistent
+ * connection which is represented by myConnection.
+ */
 public abstract class Bot {
     private Connection myConnection;
 

@@ -1,7 +1,8 @@
 package basestation.bot.connection;
 
 /**
- * Created by Administrator on 11/15/2016.
+ * An extension to a normal connection which allows custom power setting to each of the four wheels.
+ * Power values range from 0-255.
  */
 public abstract class MotorConnection extends Connection {
 
