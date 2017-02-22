@@ -455,7 +455,7 @@ public final class VisionInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
      * Contacts the remote server to verify that the object implements this type.
      * Raises a local exception if a communication error occurs.
      * @param __obj The untyped proxy.
-     * @param __ctx The Context map to sendKV with the invocation.
+     * @param __ctx The Context map to send with the invocation.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
     public static VisionInterfacePrx checkedCast(Ice.ObjectPrx __obj, java.util.Map<String, String> __ctx)
@@ -480,7 +480,7 @@ public final class VisionInterfacePrxHelper extends Ice.ObjectPrxHelperBase impl
      * Raises a local exception if a communication error occurs.
      * @param __obj The untyped proxy.
      * @param __facet The name of the desired facet.
-     * @param __ctx The Context map to sendKV with the invocation.
+     * @param __ctx The Context map to send with the invocation.
      * @return A proxy for this type, or null if the object does not support this type.
      **/
     public static VisionInterfacePrx checkedCast(Ice.ObjectPrx __obj, String __facet, java.util.Map<String, String> __ctx)
