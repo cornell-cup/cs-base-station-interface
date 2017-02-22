@@ -16,6 +16,6 @@ public class TCPTest {
         String ip = "192.168.4.209";
         int port = 1000;
         TCPConnection tcon = new TCPConnection(ip,port);
-        assertTrue(tcon.send("IMPORTANT","HI"));
+        assertTrue(tcon.sendKV("IMPORTANT","HI"));
     }
 }
