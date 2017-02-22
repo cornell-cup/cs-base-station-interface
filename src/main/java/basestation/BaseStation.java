@@ -5,14 +5,27 @@ import basestation.vision.VisionManager;
 
 /**
  * Contains logic to manage and unify input and output between bots and vision sources.
+ * This class is a singleton to prevent accidental BaseStation duplication.
  */
-
 public class BaseStation {
 
+    private BaseStation instance;
     private BotManager bManager;
     private VisionManager vManager;
 
-    public BaseStation() {
+    /**
+     * Part of the singleton pattern, returns the singleton BaseStation
+     * @return the singleton BaseStation instance
+     */
+    public BaseStation getInstance() {
+        if (instance == null) {
+            instance = new BaseStation();
+        }
+
+        return instance;
+    }
+
+    private BaseStation() {
         bManager = new BotManager();
         vManager = new VisionManager();
     }
