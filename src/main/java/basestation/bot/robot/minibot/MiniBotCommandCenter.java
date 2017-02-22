@@ -8,11 +8,11 @@ import basestation.bot.connection.TCPConnection;
  * <p>
  * Each bot must implement this class with their own commands.
  */
-public class MinibotCommandCenter implements CommandCenter {
+public class MiniBotCommandCenter implements CommandCenter {
     private final TCPConnection connection;
 
 
-    public MinibotCommandCenter(TCPConnection connection, MiniBot myBot) {
+    public MiniBotCommandCenter(TCPConnection connection, MiniBot myBot) {
         this.connection = connection;
     }
 

@@ -5,7 +5,7 @@ import basestation.bot.sensors.SensorCenter;
 /**
  * Hosts methods to retrieve data from all applicate minibot sensors
  */
-public class MinibotSensorCenter extends SensorCenter {
+public class MiniBotSensorCenter extends SensorCenter {
     @Override
     public String getAllDataJson() {
         return "";

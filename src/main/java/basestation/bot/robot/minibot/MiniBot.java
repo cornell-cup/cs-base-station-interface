@@ -1,32 +1,30 @@
 package basestation.bot.robot.minibot;
 
-import basestation.BaseStation;
 import basestation.bot.connection.TCPConnection;
 import basestation.bot.robot.Bot;
-import basestation.bot.connection.MotorConnection;
 import basestation.bot.sensors.SensorCenter;
 
 /**
  * Maintains our interface with a MiniBot
  */
 public class MiniBot extends Bot{
-    private final MinibotCommandCenter commandCenter;
-    private final MinibotSensorCenter sensorCenter;
+    private final MiniBotCommandCenter commandCenter;
+    private final MiniBotSensorCenter sensorCenter;
 
 
     /**
-     * Currently modbots are implemented using an ice connection
+     * Currently minibots are implemented using a TCP connection
      *
-     * @param c an ice connection that has already been created
+     * @param c a TCP connection that has already been created
      */
     public MiniBot(TCPConnection c) {
         super(c);
-        this.commandCenter = new MinibotCommandCenter(c, this);
-        this.sensorCenter = new MinibotSensorCenter();
+        this.commandCenter = new MiniBotCommandCenter(c, this);
+        this.sensorCenter = new MiniBotSensorCenter();
     }
 
     @Override
-    public MinibotCommandCenter getCommandCenter() {
+    public MiniBotCommandCenter getCommandCenter() {
         return commandCenter;
     }
 
