@@ -1,7 +1,7 @@
 package basestation.bot.connection;
 
 /**
- * Represents a connection between the base station and a bot
+ * Manages a connection between the base station and a bot.
  */
 public abstract class Connection {
     /**
@@ -10,17 +10,8 @@ public abstract class Connection {
     public abstract boolean connectionActive();
 
     /**
-     * Used for being able to send arbitrary commands in the form of JSON. Useful for rapid prototyping
-     * FIXME: Decide if this should be included
-     * @param data A command to send
-     * @return true if successful, else false
-     */
-    //public boolean sendArbitrary(JsonObject data) {
-     //   throw new Error("Unimplemented for this connection type");
-    //}
-
-    /**
-     * Safely disconnects from the bot
+     * Safely closes the connection.
+     * Invariant: After calling destroy, connectionActive() must return false.
      */
     public abstract void destroy();
 }

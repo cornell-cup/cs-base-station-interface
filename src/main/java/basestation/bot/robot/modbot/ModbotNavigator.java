@@ -25,11 +25,10 @@ public class ModbotNavigator {
     /**
      * Initialize the controller without any active commands
      *
-     * @param baseStation the active base station
      * @param myBot       the modbot this navigator is meant to control
      */
-    public ModbotNavigator(BaseStation baseStation, ModBot myBot) {
-        this.myStation = baseStation;
+    public ModbotNavigator(ModBot myBot) {
+        this.myStation = BaseStation.getInstance();
         this.myBot = myBot;
         this.destinationReached = true;
         NavigationManager myNavigationManager = new NavigationManager(this);

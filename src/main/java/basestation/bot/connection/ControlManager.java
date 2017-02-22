@@ -10,7 +10,7 @@ public class ControlManager extends Thread {
 
     private BaseInterfacePrx iface;
 
-    private int COMMANDS_PER_SECOND = 2; // Since the connection is already reliable, we do not need a high frequency
+    private static final int COMMANDS_PER_SECOND = 2; // Since the connection is already reliable, we do not need a high frequency
     private int fl;
     private int fr;
     private int bl;
@@ -40,7 +40,7 @@ public class ControlManager extends Thread {
      * @param bl
      * @param br
      */
-    protected void setMotors(int fl, int fr, int bl, int br) {
+    void setMotors(int fl, int fr, int bl, int br) {
         this.fl = fl;
         this.fr = fr;
         this.bl = bl;

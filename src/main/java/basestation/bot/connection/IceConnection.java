@@ -4,15 +4,15 @@ import CommModule.BaseInterfacePrx;
 import CommModule.BaseInterfacePrxHelper;
 
 /**
- * Connection to support our Ice protocol
- * Sends controls over a rate-limited thread. This is the protocol that all legacy modbots operate with
+ * Connection to support our Ice protocol.
+ * Sends controls over a rate-limited thread. This is the protocol that all legacy modbots operate with.
  */
 public class IceConnection extends MotorConnection {
 
     private final static double THROTTLE = 150; // Max 255 TODO set up a config file for this
 
     private Ice.Communicator ic;
-    private ControlManager cmonitor;
+    private ControlManager controlManager;
     private String identity;
 
     public IceConnection(String ip, int port) {
@@ -25,8 +25,8 @@ public class IceConnection extends MotorConnection {
             if (iface == null)
                 throw new Error("Invalid proxy");
             else {
-                cmonitor = new ControlManager(iface);
-                cmonitor.start();
+                controlManager = new ControlManager(iface);
+                controlManager.start();
             }
 
         } catch (Ice.LocalException e) {
@@ -43,7 +43,7 @@ public class IceConnection extends MotorConnection {
     }
 
     private void setMotorSpeed(int fl, int fr, int bl, int br) {
-        cmonitor.setMotors(fl, fr, bl, br);
+        controlManager.setMotors(fl, fr, bl, br);
     }
 
     @Override

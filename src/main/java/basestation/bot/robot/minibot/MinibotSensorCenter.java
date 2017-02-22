@@ -1,8 +1,5 @@
 package basestation.bot.robot.minibot;
 
-/**
- * Created by Administrator on 1/28/2017.
- */
 import basestation.bot.sensors.SensorCenter;
 
 /**

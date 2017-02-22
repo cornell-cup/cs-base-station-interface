@@ -2,12 +2,11 @@ package basestation.bot.robot.minibot;
 
 import basestation.BaseStation;
 import basestation.bot.robot.Bot;
-import basestation.bot.connection.IceConnection;
 import basestation.bot.connection.MotorConnection;
 import basestation.bot.sensors.SensorCenter;
 
 /**
- * Created by Administrator on 1/28/2017.
+ * Maintains our interface with a MiniBot
  */
 public class MiniBot extends Bot{
     private final MinibotCommandCenter commandCenter;
@@ -19,7 +18,6 @@ public class MiniBot extends Bot{
      *
      * @param c an ice connection that has already been created
      */
-    //change MotorConnection?
     public MiniBot(BaseStation myStation, MotorConnection c) {
         super(c);
         this.commandCenter = new MinibotCommandCenter(myStation, c, this);

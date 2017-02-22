@@ -21,6 +21,12 @@ public class VisionObject {
      */
     public final VisionCoordinate coord;
 
+    /**
+     * Creates a visionobject
+     * @param vs The VisionSystem this object belongs to
+     * @param vid The id assigned to this object by its VisionSystem
+     * @param myCoord The coordinate of this object in relation to its VisionSystem
+     */
     public VisionObject(VisionSystem vs, int vid, VisionCoordinate myCoord) {
         this.vs = vs;
         this.vid = vid;
@@ -33,15 +39,17 @@ public class VisionObject {
         this.coord = newCoord;
     }
 
+    @Override
     public String toString() {
         return "[Vision Object|" + vs + "|" + coord + "|" + vid + "]";
     }
 
+    @Override
     public boolean equals(Object o) {
-        if (!(o instanceof VisionObject)) return false;
-        return o.toString().equals(toString());
+        return o instanceof VisionObject && o.toString().equals(toString());
     }
 
+    @Override
     public int hashCode() {
         return toString().hashCode();
     }

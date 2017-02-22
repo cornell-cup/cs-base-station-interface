@@ -1,9 +1,6 @@
 package basestation.bot.commands;
 
-import basestation.BaseStation;
 import basestation.bot.connection.Connection;
-import basestation.bot.robot.modbot.ModBot;
-import basestation.vision.VisionCoordinate;
 
 /**
  * Extends four wheel movement with some useful commands.

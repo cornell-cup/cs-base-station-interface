@@ -97,6 +97,6 @@ public abstract class VisionSystem {
 
     @Override
     public boolean equals(Object other) {
-        return this.hashCode() == other.hashCode();
+        return other instanceof VisionSystem && this.hashCode() == other.hashCode();
     }
 }

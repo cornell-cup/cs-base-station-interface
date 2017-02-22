@@ -9,7 +9,7 @@ import basestation.vision.VisionManager;
  */
 public class BaseStation {
 
-    private BaseStation instance;
+    private static BaseStation instance;
     private BotManager bManager;
     private VisionManager vManager;
 
@@ -17,7 +17,7 @@ public class BaseStation {
      * Part of the singleton pattern, returns the singleton BaseStation
      * @return the singleton BaseStation instance
      */
-    public BaseStation getInstance() {
+    public static BaseStation getInstance() {
         if (instance == null) {
             instance = new BaseStation();
         }

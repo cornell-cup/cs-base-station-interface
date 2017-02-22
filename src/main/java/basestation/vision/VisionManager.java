@@ -5,7 +5,8 @@ import basestation.bot.robot.Bot;
 import java.util.*;
 
 /**
- * Collects input from multiple vision systems and exposes a unified vision API across the systems
+ * Collects input from multiple vision systems and exposes a unified vision API across the systems.
+ * Vision is relatively under-tested and may be issue-prone/ in need of redesign.
  */
 public class VisionManager { //TODO incomplete
 
