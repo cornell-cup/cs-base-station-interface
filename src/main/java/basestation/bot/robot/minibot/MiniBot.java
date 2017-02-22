@@ -23,6 +23,12 @@ public class MiniBot extends Bot{
         this.sensorCenter = new MiniBotSensorCenter();
     }
 
+    public MiniBot(TCPConnection c, String name) {
+        super(c, name);
+        this.commandCenter = new MiniBotCommandCenter(c, this);
+        this.sensorCenter = new MiniBotSensorCenter();
+    }
+
     @Override
     public MiniBotCommandCenter getCommandCenter() {
         return commandCenter;

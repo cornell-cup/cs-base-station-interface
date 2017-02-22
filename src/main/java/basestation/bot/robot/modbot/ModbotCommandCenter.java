@@ -9,11 +9,11 @@ import basestation.vision.VisionCoordinate;
  * A CommandCenter for a ModBot
  */
 public class ModbotCommandCenter extends ExtendedFourWheelMovement {
-    private final Connection connection;
+    private final MotorConnection connection;
     private final ModbotNavigator navigator;
 
-    public ModbotCommandCenter(Connection connection, ModBot myBot) {
-        super(connection);
+    public ModbotCommandCenter(MotorConnection connection, ModBot myBot) {
+        super();
         this.navigator = new ModbotNavigator(myBot);
         this.connection = connection;
     }
@@ -57,10 +57,9 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     }
 
     @Override
-    public void setWheelPower(double fl, double fr, double bl, double br) {
-        if (connection instanceof MotorConnection) {
+    public boolean setWheelPower(double fl, double fr, double bl, double br) {
             ((MotorConnection) connection).setMotorPower(fl, fr, bl, br);
-        }
+            return true;
     }
 
     public boolean sendKV(String key, String value) {
