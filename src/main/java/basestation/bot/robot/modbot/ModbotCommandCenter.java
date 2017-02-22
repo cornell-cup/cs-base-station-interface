@@ -66,4 +66,8 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
         }
     }
 
+    public boolean sendKV(String key, String value) {
+        return false; // TODO
+    }
+
 }

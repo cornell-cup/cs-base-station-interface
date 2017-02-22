@@ -8,4 +8,6 @@ package basestation.bot.commands;
  * If there are any important commands we believe all robots should have then place them here
  */
 public interface CommandCenter {
+
+    boolean sendKV(String key, String value);
 }

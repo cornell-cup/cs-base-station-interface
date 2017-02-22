@@ -1,6 +1,7 @@
 package basestation.bot.robot.minibot;
 
 import basestation.BaseStation;
+import basestation.bot.connection.TCPConnection;
 import basestation.bot.robot.Bot;
 import basestation.bot.connection.IceConnection;
 import basestation.bot.connection.MotorConnection;
@@ -20,7 +21,7 @@ public class MiniBot extends Bot{
      * @param c an ice connection that has already been created
      */
     //change MotorConnection?
-    public MiniBot(BaseStation myStation, MotorConnection c) {
+    public MiniBot(BaseStation myStation, TCPConnection c) {
         super(c);
         this.commandCenter = new MinibotCommandCenter(myStation, c, this);
         this.sensorCenter = new MinibotSensorCenter();
