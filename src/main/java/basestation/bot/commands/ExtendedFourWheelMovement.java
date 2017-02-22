@@ -9,8 +9,6 @@ import basestation.bot.connection.Connection;
  * that is between 0 and 100
  */
 public abstract class ExtendedFourWheelMovement implements FourWheelMovement {
-    public ExtendedFourWheelMovement(Connection connection) {
-    }
 
     public void forward(double power) {
         assert power >= 0 && power <= 100;

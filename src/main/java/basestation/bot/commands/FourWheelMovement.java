@@ -16,6 +16,7 @@ public interface FourWheelMovement extends CommandCenter {
      * @param fr power to set the front right wheel
      * @param bl power to set the back left wheel
      * @param br power to set the back right wheel
+     * @return true if the command was likely successful
      */
-    void setWheelPower(double fl, double fr, double bl, double br);
+    boolean setWheelPower(double fl, double fr, double bl, double br);
 }

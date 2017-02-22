@@ -22,6 +22,12 @@ public class ModBot extends Bot {
         this.sensorCenter = new ModbotSensorCenter();
     }
 
+    public ModBot(MotorConnection c, String name) {
+        super(c, name);
+        this.commandCenter = new ModbotCommandCenter(c, this);
+        this.sensorCenter = new ModbotSensorCenter();
+    }
+
     @Override
     public ModbotCommandCenter getCommandCenter() {
         return commandCenter;
