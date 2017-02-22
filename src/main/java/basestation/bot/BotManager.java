@@ -2,23 +2,25 @@ package basestation.bot;
 
 import basestation.bot.robot.Bot;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
 /**
- * Holds a mapping of IDs and tracking for all bots
- * Used in the base station to keep track of all the robots
+ * Tracks and manages all bots. Any bot that you create a connection to should be tracked under
+ * this manager to prevent errors.
  */
 public class BotManager {
-    /**
-     * Provides unique IDs for all bots
-     */
+    // Provides unique IDs for all bots
     private int botCounter;
 
     // Mapping from integer IDs to actual bots
     private Map<Integer, Bot> botMap;
 
+    /**
+     * Initializes the bot manager with a fresh map and counter
+     */
     public BotManager() {
         botCounter = 0;
         botMap = new HashMap<>();
@@ -26,6 +28,9 @@ public class BotManager {
 
     /**
      * Begins tracking bot under the BotManager and return its managed ID
+     *
+     * @param bot The bot object that was created for the bot
+     * @return The ID now associated with the bot
      */
     public int addBot(Bot bot) {
         botMap.put(botCounter, bot);
@@ -50,13 +55,21 @@ public class BotManager {
     }
 
     /**
-     * Returns all currently tracked bots from the BotManager. These bots may or may not be active. They are only
-     * actively added to the Manager and have not been removed.
+     * Returns the IDs of all currently tracked bots from the BotManager. The bots may not be
+     * active if the module using the BotManager is not careful to remove inactive bots.
      *
-     * @return All entries
+     * @return Integer IDs representing all bots being tracked by the BaseStation
      */
-    public Set<Map.Entry<Integer, Bot>> getAllTrackedBots() {
+    public Set<Map.Entry<Integer, Bot>> getAllTrackedBotIDs() {
         return botMap.entrySet();
+    }
+
+    /**
+     *
+     * @return A collection of all bots being tracked by the BotManager.
+     */
+    public Collection<Bot> getAllTrackedBots() {
+        return botMap.values();
     }
 
 }

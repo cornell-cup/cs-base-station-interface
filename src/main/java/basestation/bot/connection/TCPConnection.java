@@ -39,7 +39,7 @@ public class TCPConnection extends Connection {
         }
     }
 
-    public boolean send(String messageType, String message)  {
+    public boolean sendKV(String messageType, String message)  {
         String payload;
         payload = "<<<<" + messageType + "," + message + ">>>>";
         try {

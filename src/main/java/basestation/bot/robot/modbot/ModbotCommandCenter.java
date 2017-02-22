@@ -1,25 +1,20 @@
 package basestation.bot.robot.modbot;
 
-import basestation.BaseStation;
 import basestation.bot.commands.ExtendedFourWheelMovement;
 import basestation.bot.connection.Connection;
-import basestation.bot.connection.IceConnection;
 import basestation.bot.connection.MotorConnection;
 import basestation.vision.VisionCoordinate;
 
 /**
- * Class who's methods are all the commands that can be issued to a bot
- * <p>
- * Each bot must implement this class with their own commands.
+ * A CommandCenter for a ModBot
  */
 public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     private final Connection connection;
-
     private final ModbotNavigator navigator;
 
-    public ModbotCommandCenter(BaseStation parent, Connection connection, ModBot myBot) {
+    public ModbotCommandCenter(Connection connection, ModBot myBot) {
         super(connection);
-        this.navigator = new ModbotNavigator(parent, myBot);
+        this.navigator = new ModbotNavigator(myBot);
         this.connection = connection;
     }
 
@@ -33,6 +28,8 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     /**
      * Navigates the bot to (x,y) using its built in navigator.
      * Requires an active vision system and association between the bot and the system.
+     *
+     * @param vc The coordinate to go to, under the canonical vision system.
      */
     public void gotoCoord(VisionCoordinate vc) {
         this.navigator.setDestination(vc);

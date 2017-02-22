@@ -1,10 +1,5 @@
 package basestation.bot.robot.minibot;
 
-/**
- * Created by Administrator on 1/28/2017.
- */
-
-import basestation.BaseStation;
 import basestation.bot.commands.CommandCenter;
 import basestation.bot.connection.TCPConnection;
 
@@ -17,12 +12,13 @@ public class MinibotCommandCenter implements CommandCenter {
     private final TCPConnection connection;
 
 
-    public MinibotCommandCenter(BaseStation parent, TCPConnection connection, MiniBot myBot) {
+    public MinibotCommandCenter(TCPConnection connection, MiniBot myBot) {
         this.connection = connection;
     }
 
+    @Override
     public boolean sendKV(String type, String payload) {
-        return connection.send(type,payload);
+        return connection.sendKV(type, payload);
     }
 
 }
