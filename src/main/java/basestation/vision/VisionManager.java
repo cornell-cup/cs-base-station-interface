@@ -24,7 +24,7 @@ public class VisionManager { //TODO incomplete
     /**
      * Adds vs to be tracked by the VisionManager. Assumes vs is already calibrated to the
      * canonicalVisionSystem
-     * @param vs
+     * @param vs The visionSystem to begin tracking
      * @return the counter id of vs
      */
     public int addVisionSystem(VisionSystem vs) {
@@ -43,6 +43,7 @@ public class VisionManager { //TODO incomplete
 
     /**
      * Returns a list of vision objects with vision ids. Coordinates are made canonical.
+     * @return A list of all VisionObjects tracked across all VisionSystems, relative to the Canonical system
      */
     public List<VisionObject> getAllLocationData() {
         ArrayList<VisionObject> tracked = new ArrayList<>();
@@ -57,8 +58,8 @@ public class VisionManager { //TODO incomplete
      * Gets the location of a bot relative to the BaseStation's interpretation or null if
      * no such coordinate exists
      *
-     * @param bot
-     * @return
+     * @param bot The bot being looked up
+     * @return A vision coordinate or null
      */
     public VisionCoordinate getBotCoordinate(Bot bot) {
         for (VisionSystem vs : visionSystemMap.values()) {

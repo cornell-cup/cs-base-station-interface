@@ -70,7 +70,7 @@ public abstract class VisionSystem {
     /**
      * Returns the vision id for this system representing b or null if none exists
      *
-     * @param b
+     * @param b The bot for which you are looking up the id
      * @return the vision id or null if none exists
      */
     public Integer getIdForBot(Bot b) {

@@ -18,9 +18,9 @@ public class MiniBot extends Bot{
      *
      * @param c an ice connection that has already been created
      */
-    public MiniBot(BaseStation myStation, MotorConnection c) {
+    public MiniBot(MotorConnection c) {
         super(c);
-        this.commandCenter = new MinibotCommandCenter(myStation, c, this);
+        this.commandCenter = new MinibotCommandCenter(c, this);
         this.sensorCenter = new MinibotSensorCenter();
     }
 

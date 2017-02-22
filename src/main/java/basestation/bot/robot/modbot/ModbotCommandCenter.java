@@ -28,6 +28,8 @@ public class ModbotCommandCenter extends ExtendedFourWheelMovement {
     /**
      * Navigates the bot to (x,y) using its built in navigator.
      * Requires an active vision system and association between the bot and the system.
+     *
+     * @param vc The coordinate to go to, under the canonical vision system.
      */
     public void gotoCoord(VisionCoordinate vc) {
         this.navigator.setDestination(vc);

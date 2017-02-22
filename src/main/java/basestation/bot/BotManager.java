@@ -30,6 +30,7 @@ public class BotManager {
      * Begins tracking bot under the BotManager and return its managed ID
      *
      * @param bot The bot object that was created for the bot
+     * @return The ID now associated with the bot
      */
     public int addBot(Bot bot) {
         botMap.put(botCounter, bot);
