@@ -8,20 +8,20 @@ import basestation.bot.sensors.SensorCenter;
 /**
  * Represents any bot. We assume bots may present information and receive information,
  * so this is separated into the commandCenter and sensorCenter. Bots also have a persistent
- * connection which is represented by myConnection.
+ * connection which is represented by connection.
  */
 public abstract class Bot {
 
-    private Connection myConnection;
+    private Connection connection;
     private String name;
 
     public Bot(Connection c) {
-        this.myConnection = c;
+        this.connection = c;
         this.name = safeEscapeName("Unnamed Bot");
     }
 
     public Bot(Connection c, String name) {
-        this.myConnection = c;
+        this.connection = c;
         this.name = safeEscapeName(name);
     }
 
@@ -43,7 +43,7 @@ public abstract class Bot {
      * @return the bot's connection
      */
     public Connection getConnection() {
-        return myConnection;
+        return connection;
     }
 
     /**
@@ -58,7 +58,7 @@ public abstract class Bot {
      * Terminates the connection to the bot as safely as possible
      */
     public void destroy() {
-        myConnection.destroy();
+        connection.destroy();
     }
 
     /**
@@ -80,7 +80,7 @@ public abstract class Bot {
 
     @Override
     public String toString() {
-        return "[Bot|" + myConnection + "|" + getName() + "]";
+        return "[Bot|" + connection + "|" + getName() + "]";
     }
 
     @Override
