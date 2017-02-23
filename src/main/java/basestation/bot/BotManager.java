@@ -32,9 +32,13 @@ public class BotManager {
      * @param bot The bot object that was created for the bot
      * @return The name of the bot
      */
-    public String addBot(Bot bot) {
-        botMap.put(bot.getName(), bot);
-        return bot.getName();
+    public String addBot(Bot bot) throws Exception {
+        if (bot.getConnection().connectionActive()) {
+            botMap.put(bot.getName(), bot);
+            return bot.getName();
+        } else {
+            throw new Exception("The connection was not active. Not adding the bot.");
+        }
     }
 
     /**

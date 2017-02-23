@@ -3,16 +3,14 @@ package basestation.bot.connection;
 import java.io.*;
 import java.net.*;
 
-/**
- * Created by Administrator on 2/14/2017.
- */
 public class TCPConnection extends Connection {
 
     private String ip;
     private int port;
-    private Socket clientSocket;
-    private DataOutputStream outToServer;
-    private BufferedReader inFromServer;
+    private transient Socket clientSocket;
+    private transient DataOutputStream outToServer;
+    private transient BufferedReader inFromServer;
+    private boolean connectionNotRefused;
 
     public TCPConnection(String ip, int port) {
         this.ip=ip;
@@ -21,14 +19,16 @@ public class TCPConnection extends Connection {
             this.clientSocket = new Socket(ip, port);
             this.outToServer = new DataOutputStream(clientSocket.getOutputStream());
             this.inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            connectionNotRefused = true;
         } catch (IOException e) {
             System.err.println("Unable to establish connection! " + e);
+            connectionNotRefused = false;
         }
     }
 
     @Override
     public boolean connectionActive() {
-        return clientSocket.isConnected();
+        return connectionNotRefused && clientSocket.isConnected();
     }
 
     public void destroy() {
@@ -48,6 +48,7 @@ public class TCPConnection extends Connection {
             return true;
         } catch (IOException e) {
             e.printStackTrace();
+            connectionNotRefused = false;
             return false;
         }
     }

@@ -38,6 +38,15 @@ public abstract class Bot {
     public abstract SensorCenter getSensorCenter();
 
     /**
+     * Returns the connection associated with this bot. Should be used sparingly, as the CommandCenter
+     * and SensorCentor abstractions are built for convenience over the connection.
+     * @return the bot's connection
+     */
+    public Connection getConnection() {
+        return myConnection;
+    }
+
+    /**
      * Returns the name associated with the bot, if one was provided.
      * @return The name associated with the bot
      */
@@ -51,7 +60,6 @@ public abstract class Bot {
     public void destroy() {
         myConnection.destroy();
     }
-
 
     /**
      * Safely escapes the name of the bot to ensure it is unique and returns that string.

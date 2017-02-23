@@ -13,9 +13,9 @@ public class TCPTest {
      */
     @Test
     public void testConnect() {
-        String ip = "192.168.4.209";
-        int port = 1000;
+        String ip = "192.168.4.84";
+        int port = 10000;
         TCPConnection tcon = new TCPConnection(ip,port);
-        assertTrue(tcon.send("IMPORTANT","HI"));
+        assertTrue(tcon.sendKV("IMPORTANT","HI"));
     }
 }

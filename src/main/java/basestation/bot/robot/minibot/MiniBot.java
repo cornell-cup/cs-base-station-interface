@@ -8,8 +8,8 @@ import basestation.bot.sensors.SensorCenter;
  * Maintains our interface with a MiniBot
  */
 public class MiniBot extends Bot{
-    private final MiniBotCommandCenter commandCenter;
-    private final MiniBotSensorCenter sensorCenter;
+    private final transient MiniBotCommandCenter commandCenter;
+    private final transient MiniBotSensorCenter sensorCenter;
 
 
     /**
