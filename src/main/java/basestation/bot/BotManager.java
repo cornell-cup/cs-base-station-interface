@@ -1,5 +1,6 @@
 package basestation.bot;
 
+import basestation.bot.connection.UDPConnectionListener;
 import basestation.bot.robot.Bot;
 
 import java.util.Collection;
@@ -24,6 +25,8 @@ public class BotManager {
     public BotManager() {
         botCounter = 0;
         botMap = new ConcurrentHashMap<>();
+        UDPConnectionListener udpConnection = new UDPConnectionListener();
+        udpConnection.start();
     }
 
     /**
