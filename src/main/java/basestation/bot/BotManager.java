@@ -1,10 +1,12 @@
 package basestation.bot;
 
+import basestation.bot.connection.UDPConnectionListener;
 import basestation.bot.robot.Bot;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -18,12 +20,16 @@ public class BotManager {
     // Mapping from Bot Names to actual bots
     private Map<String, Bot> botMap;
 
+    private UDPConnectionListener udpConnection;
+
     /**
      * Initializes the bot manager with a fresh map and counter
      */
     public BotManager() {
         botCounter = 0;
         botMap = new ConcurrentHashMap<>();
+        udpConnection = new UDPConnectionListener();
+        udpConnection.start();
     }
 
     /**
@@ -80,4 +86,7 @@ public class BotManager {
         return botCounter++;
     }
 
+    public Set<String> getAllDiscoveredBots() {
+        return udpConnection.getAddressSet();
+    }
 }
