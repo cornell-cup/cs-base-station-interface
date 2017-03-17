@@ -19,7 +19,7 @@ public class UDPConnectionListener extends Thread{
     /**Contains the current list of IP addresses and when they last contacted the server*/
     private static Hashtable<String, Timestamp> ipList = new Hashtable<>();
 
-    /**Initializes an instance of UDPConnectionListener**/
+    /**Initializes a thread running an instance of UDPConnectionListener**/
     //Taken as a reference from
     //http://stackoverflow.com/questions/5472269/java-datagramsocket-listening-on-a-broadcast-address
     @Override
@@ -33,31 +33,29 @@ public class UDPConnectionListener extends Thread{
             DatagramPacket packet = new DatagramPacket(buf, buf.length);
 
             while (true) {
+                //Start accepting packets
                 System.out.println("Waiting for data");
                 socket.receive(packet);
-                System.out.println(packet);
-                System.out.println("Data received");
+                //System.out.println(packet);
+                System.out.println("Data received at: "+getCurrentTime());
 
                 //Get packet header (IP address) as a string for storage
                 String address = packet.getAddress().toString();
-                System.out.println(address);
+                System.out.println("Sent from: "+address);
 
                 //If address is already present, just replaces its current value with this one
                 ipList.put(address,getCurrentTime());
-                System.out.println(getCurrentTime());
             }
         }
         catch(SocketException e){
-            System.out.println("Socket's out");
+            System.out.println("Socket not available");
         }
         catch(UnknownHostException e){
-            System.out.println("Unknown host help");
+            System.out.println("Unknown host");
         }
         catch(IOException e){
-            System.out.println("User whyyy");
+            System.out.println("I/O Exception");
         }
-
-
     }
 
 
@@ -67,7 +65,7 @@ public class UDPConnectionListener extends Thread{
      * @returns a set of IP addresses currently being tracked
      * */
     //public static Set<String> getAddressList(){return ipList;}
-    public static Set<String> getAddressSet(){
+    public Set<String> getAddressSet(){
         //Check for any inactive addresses and removes them before returning the set of addresses in ipList
         cleanOut();
 
@@ -93,16 +91,18 @@ public class UDPConnectionListener extends Thread{
     private static void cleanOut(){
         //Get the collection of IP addresses
         Enumeration<String> address_keys = ipList.keys();
-        //Get the current time in nanoseconds
-        long now = getCurrentTime().getNanos();
+        //Get the current time in milliseconds
+        long now = getCurrentTime().getTime();
         //Get update threshold
-        long threshold = TimeUnit.SECONDS.toNanos(UPDATE_THRESHOLD);
+        long threshold = TimeUnit.SECONDS.toMillis(UPDATE_THRESHOLD);
 
         //Check each address if it should be evicted
         while(address_keys.hasMoreElements()){
+            //Get the logged time of the address in milliseconds
             String address = address_keys.nextElement();
-            long then = ipList.get(address).getNanos();
+            long then = ipList.get(address).getTime();
 
+            //If the time difference exceeds the threshold, then evict
             if(now-then > threshold){
                 ipList.remove(address);
             }
