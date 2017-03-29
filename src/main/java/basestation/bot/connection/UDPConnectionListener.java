@@ -38,14 +38,18 @@ public class UDPConnectionListener extends Thread{
                 socket.receive(packet);
 
                 //Get packet header (IP address) as a string for storage
-                String address = packet.getAddress().toString();
+                String address = packet.getAddress().toString().trim();
+                String myIp = InetAddress.getLocalHost().getHostAddress().trim();
+
+                if (address.substring(1).equals(myIp)) address = " localhost";
 
                 //If address is already present, just replaces its current value with this one
                 ipList.put(address,getCurrentTime());
             }
         }
         catch(SocketException e){
-            System.out.println("Socket not available");
+            System.err.println("Socket not available");
+            e.printStackTrace();
         }
         catch(UnknownHostException e){
             System.out.println("Unknown host");
