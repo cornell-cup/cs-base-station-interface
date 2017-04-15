@@ -8,7 +8,6 @@ package basestation.bot.commands;
  * If there are any important commands we believe all robots should have then place them here
  */
 public interface CommandCenter {
-
 	/**
      * Starts logging of data
      */
@@ -46,7 +45,7 @@ public interface CommandCenter {
      * @return Returns all key value pairs
      */
     JsonObject getAllData();
-
+    
     /**
      * Sends an arbitrary key and value over the associated bot's connection. Should only be used for quick prototyping,
      * with the goal of creating a method wrapper around sending the KV.
