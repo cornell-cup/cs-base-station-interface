@@ -1,4 +1,5 @@
 # cs-base-station-interface
+This repository may fall out of sync with the minibot platform. See https://github.com/cornell-cup/cs-minibot-platform for reference.
 Interface to represent any base station. This is not meant to be used standalone and should be used as a submodule within an implementing project. See: https://git-scm.com/docs/git-submodule
 Related to this, the source contains an interfaces folder. These specifically should be refactored into their own repos and should not be considered reliable.
 
